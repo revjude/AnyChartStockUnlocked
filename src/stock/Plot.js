@@ -612,6 +612,24 @@ anychart.stockModule.Plot.prototype.column = function(opt_data, opt_mappingSetti
 
 
 /**
+ * Creates and returns a new hollowcandles series.
+ * @param {(anychart.stockModule.data.TableMapping|anychart.stockModule.data.Table|Array.<Array.<*>>|string)=} opt_data
+ * @param {Object.<({column: number, type: anychart.enums.AggregationType, weights: number}|number)>=} opt_mappingSettings
+ *   An object where keys are field names and values are objects with fields:
+ *      - 'column': number - Column index, that the field should get values from;
+ *      - 'type': anychart.enums.AggregationType - How to group values for the field. Defaults to 'close'.
+ *      - 'weights': number - Column to get weights from for 'weightedAverage' grouping type. Note: If type set to
+ *          'weightedAverage', but opt_weightsColumn is not passed - uses 'average' grouping instead.
+ *   or numbers - just the column index to get values from. In this case the grouping type will be set to 'close'.
+ * @param {Object=} opt_csvSettings CSV parser settings if the string is passed.
+ * @return {anychart.stockModule.Series}
+ */
+anychart.stockModule.Plot.prototype.hollowcandles = function(opt_data, opt_mappingSettings, opt_csvSettings) {
+  return this.createSeriesByType(anychart.enums.StockSeriesType.HOLLOWCANDLES, opt_data, opt_mappingSettings, opt_csvSettings);
+};
+
+
+/**
  * Creates and returns a new jumpLine series.
  * @param {(anychart.stockModule.data.TableMapping|anychart.stockModule.data.Table|Array.<Array.<*>>|string)=} opt_data
  * @param {Object.<({column: number, type: anychart.enums.AggregationType, weights: number}|number)>=} opt_mappingSettings
@@ -4109,6 +4127,7 @@ anychart.stockModule.Plot.Dragger.prototype.limitY = function(y) {
   proto['area'] = proto.area;
   proto['candlestick'] = proto.candlestick;
   proto['column'] = proto.column;
+  proto['hollowcandles'] = proto.hollowcandles;
   proto['jumpLine'] = proto.jumpLine;
   proto['stick'] = proto.stick;
   proto['line'] = proto.line;

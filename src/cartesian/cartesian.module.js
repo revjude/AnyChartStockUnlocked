@@ -11,6 +11,7 @@ goog.require('anychart.core.drawers.Area');
 goog.require('anychart.core.drawers.Bubble');
 goog.require('anychart.core.drawers.Candlestick');
 goog.require('anychart.core.drawers.Column');
+goog.require('anychart.core.drawers.HollowCandles');
 goog.require('anychart.core.drawers.JumpLine');
 goog.require('anychart.core.drawers.Line');
 goog.require('anychart.core.drawers.Marker');
@@ -186,7 +187,7 @@ anychart.chartTypesMap[anychart.enums.ChartTypes.HILO] = anychart.hilo;
  * @deprecated Since 8.4.2 use anychart.candlestick() or anychart.ohlc() instead
  */
 anychart.financial = function(var_args) {
-  anychart.core.reporting.warning(anychart.enums.WarningCode.DEPRECATED, null, ['anychart.financial()', 'anychart.ohlc() or anychart.candlestick()'], true);
+  anychart.core.reporting.warning(anychart.enums.WarningCode.DEPRECATED, null, ['anychart.financial()', 'anychart.ohlc() or anychart.candlestick() or anychart.hollowcandles()'], true);
   var chart = new anychart.cartesianModule.Chart();
   chart.addThemes('financial');
   chart.setOption('defaultSeriesType', anychart.enums.CartesianSeriesType.CANDLESTICK);
@@ -409,6 +410,38 @@ anychart.candlestick = function(var_args) {
 anychart.chartTypesMap[anychart.enums.ChartTypes.CANDLESTICK] = anychart.candlestick;
 
 
+/**
+ * Default hollowcandles chart.<br/>
+ * <b>Note:</b> Contains predefined settings for axes and grids.
+ * @example
+ * var chart = anychart.hollowcandles([
+ *    [Date.UTC(2013, 07, 04), 511.53, 514.98, 505.79, 506.40],
+ *    [Date.UTC(2013, 07, 05), 507.84, 513.30, 507.23, 512.88],
+ *    [Date.UTC(2013, 07, 06), 512.36, 515.40, 510.58, 511.40],
+ *    [Date.UTC(2013, 07, 07), 513.10, 516.50, 511.47, 515.25],
+ *    [Date.UTC(2013, 07, 08), 515.02, 528.00, 514.62, 525.15]
+ * ]);
+ * chart.container(stage).draw();
+ * @param {...(anychart.data.View|anychart.data.Set|Array)} var_args Finance chart data.
+ * @return {anychart.cartesianModule.Chart} Chart with defaults for hollowcandles series.
+ */
+anychart.hollowcandles = function(var_args) {
+  var chart = new anychart.cartesianModule.Chart();
+  chart.addThemes('financial', 'hollowcandles');
+  chart.setOption('defaultSeriesType', anychart.enums.CartesianSeriesType.HOLLOWCANDLES);
+  chart.setType(anychart.enums.ChartTypes.HOLLOWCANDLES);
+  chart.setupAxes();
+  chart.setupStateSettings();
+
+  for (var i = 0, count = arguments.length; i < count; i++) {
+    chart[anychart.enums.CartesianSeriesType.HOLLOWCANDLES](arguments[i]);
+  }
+
+  return chart;
+};
+anychart.chartTypesMap[anychart.enums.ChartTypes.HOLLOWCANDLES] = anychart.hollowcandles;
+
+
 //exports
 goog.exportSymbol('anychart.area', anychart.area);
 goog.exportSymbol('anychart.bar', anychart.bar);
@@ -419,6 +452,7 @@ goog.exportSymbol('anychart.hilo', anychart.hilo);
 goog.exportSymbol('anychart.financial', anychart.financial);
 goog.exportSymbol('anychart.ohlc', anychart.ohlc);
 goog.exportSymbol('anychart.candlestick', anychart.candlestick);
+goog.exportSymbol('anychart.hollowcandles', anychart.hollowcandles);
 goog.exportSymbol('anychart.stick', anychart.stick);
 goog.exportSymbol('anychart.jumpLine', anychart.jumpLine);
 goog.exportSymbol('anychart.stepLine', anychart.stepLine);

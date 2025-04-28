@@ -327,6 +327,16 @@ goog.mixin(goog.global['anychart']['themes']['defaultTheme'], {
             'stroke': 'none'
           }
         },
+        'hollowcandles': {
+          'normal': {
+            'labels': {
+              'format': anychart.stockModule.defaultTheme.StockSeriesLabelFormatter
+            }
+          },
+          'tooltip': {
+            'format': anychart.stockModule.defaultTheme.StockOHLCTooltipFormatter
+          }
+        },
         'rangeColumn': {
           'normal': {
             'labels': {
@@ -637,6 +647,20 @@ goog.mixin(goog.global['anychart']['themes']['defaultTheme'], {
           }
         },
         'candlestick': {
+          'normal': {
+            'risingFill': anychart.stockModule.defaultTheme.stockScrollerUnselected,
+            'risingStroke': anychart.stockModule.defaultTheme.stockScrollerUnselected,
+            'fallingFill': anychart.stockModule.defaultTheme.stockScrollerUnselected,
+            'fallingStroke': anychart.stockModule.defaultTheme.stockScrollerUnselected
+          },
+          'selected': {
+            'risingFill': anychart.core.defaultTheme.risingColor,
+            'risingStroke': anychart.core.defaultTheme.risingColor,
+            'fallingFill': anychart.core.defaultTheme.fallingColor,
+            'fallingStroke': anychart.core.defaultTheme.fallingColor
+          }
+        },
+        'hollowcandles': {
           'normal': {
             'risingFill': anychart.stockModule.defaultTheme.stockScrollerUnselected,
             'risingStroke': anychart.stockModule.defaultTheme.stockScrollerUnselected,

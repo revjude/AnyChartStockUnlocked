@@ -1182,7 +1182,8 @@ anychart.themes.merging.mergingMap_ = (function() {
           'column',
           'box',
           ['range', ['Bar', 'Column']],
-          'candlestick'
+          'candlestick',
+          'hollowcolumns'
         ]]
       ]
     },
@@ -1546,7 +1547,8 @@ anychart.themes.merging.mergingMap_ = (function() {
         ['stock.defaultPlotSettings.defaultSeriesSettings.', [
           'column',
           'rangeColumn',
-          'candlestick'
+          'candlestick',
+          'hollowcolumns'
         ]]
       ]
     },
@@ -1588,7 +1590,8 @@ anychart.themes.merging.mergingMap_ = (function() {
         ['stock.scroller.defaultSeriesSettings.', [
           'column',
           'rangeColumn',
-          'candlestick'
+          'candlestick',
+          'hollowcolumns'
         ]]
       ]
     },

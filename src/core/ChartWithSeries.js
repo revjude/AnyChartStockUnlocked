@@ -959,6 +959,7 @@ anychart.core.ChartWithSeries.seriesReferenceValues = {
   'range-spline-area': ['high', 'low'],
   'ohlc': ['open', 'high', 'low', 'close'],
   'candlestick': ['open', 'high', 'low', 'close'],
+  'hollowcandles': ['open', 'high', 'low', 'close'],
   'box': ['lowest', 'q1', 'median', 'q3', 'highest'],
   'connector': ['points'],
   'choropleth': ['id', 'value'],

@@ -139,6 +139,26 @@ goog.provide('anychart.themes.light_earth');
             'fallingFill': '#333333 0.85'
           }
         },
+        'hollowcandles': {
+          'normal': {
+            'risingFill': '#827717',
+            'risingStroke': '#827717',
+            'fallingFill': '#c77532',
+            'fallingStroke': '#c77532'
+          },
+          'hovered': {
+            'risingFill': returnLightenSourceColor,
+            'risingStroke': returnDarkenSourceColor,
+            'fallingFill': returnLightenSourceColor,
+            'fallingStroke': returnDarkenSourceColor
+          },
+          'selected': {
+            'risingStroke': '3 #827717',
+            'fallingStroke': '3 #c77532',
+            'risingFill': '#333333 0.85',
+            'fallingFill': '#333333 0.85'
+          }
+        },
         'ohlc': {
           'normal': {
             'risingStroke': '#827717',
@@ -304,6 +324,20 @@ goog.provide('anychart.themes.light_earth');
             }
           },
           'candlestick': {
+            'normal': {
+              'risingFill': stockScrollerUnselected,
+              'risingStroke': stockScrollerUnselected,
+              'fallingFill': stockScrollerUnselected,
+              'fallingStroke': stockScrollerUnselected
+            },
+            'selected': {
+              'risingStroke': returnSourceColor60,
+              'fallingStroke': returnSourceColor60,
+              'risingFill': returnSourceColor60,
+              'fallingFill': returnSourceColor60
+            }
+          },
+          'hollowcandles': {
             'normal': {
               'risingFill': stockScrollerUnselected,
               'risingStroke': stockScrollerUnselected,

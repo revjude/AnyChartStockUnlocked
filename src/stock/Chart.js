@@ -328,6 +328,7 @@ anychart.stockModule.Chart.MOUSE_WHEEL_MAX_DELTA = 21;
 anychart.stockModule.Chart.ALLOWED_POINT_SETTINGS = {
   'area': false,
   'candlestick': null,
+  'hollowcandles': null,
   'column': null,
   'jump-line': true,
   'stick': true,
@@ -440,6 +441,21 @@ anychart.stockModule.Chart.prototype.createSeriesConfig = function(allowPointSet
     capabilities: capabilities,
     anchoredPositionTop: 'value',
     anchoredPositionBottom: 'zero'
+  };
+  res[anychart.enums.StockSeriesType.HOLLOWCANDLES] = {
+    drawerType: anychart.enums.SeriesDrawerTypes.HOLLOWCANDLES,
+    shapeManagerType: discreteShapeManager,
+    shapesConfig: [
+      anychart.core.shapeManagers.pathRisingFillStrokeConfig,
+      anychart.core.shapeManagers.pathRisingHatchConfig,
+      anychart.core.shapeManagers.pathFallingFillStrokeConfig,
+      anychart.core.shapeManagers.pathFallingHatchConfig
+    ],
+    secondaryShapesConfig: null,
+    postProcessor: null,
+    capabilities: capabilities,
+    anchoredPositionTop: 'high',
+    anchoredPositionBottom: 'low'
   };
   res[anychart.enums.StockSeriesType.JUMP_LINE] = {
     drawerType: anychart.enums.SeriesDrawerTypes.JUMP_LINE,

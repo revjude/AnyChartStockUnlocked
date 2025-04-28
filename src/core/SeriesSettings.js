@@ -18,7 +18,7 @@ anychart.core.SeriesSettings = function() {
       theme: 'areaLike'
     },
     {
-      seriesType: ['bar', 'column', 'box', 'rangeBar', 'rangeColumn', 'candlestick', 'waterfall'],
+      seriesType: ['bar', 'column', 'box', 'rangeBar', 'rangeColumn', 'candlestick', 'hollowcandles', 'waterfall'],
       theme: 'barLike'
     },
     {

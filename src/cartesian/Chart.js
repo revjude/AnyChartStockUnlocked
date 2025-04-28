@@ -163,6 +163,21 @@ anychart.cartesianModule.Chart.prototype.seriesConfig = (function() {
     anchoredPositionTop: 'value',
     anchoredPositionBottom: 'zero'
   };
+  res[anychart.enums.CartesianSeriesType.HOLLOWCANDLES] = {
+    drawerType: anychart.enums.SeriesDrawerTypes.HOLLOWCANDLES,
+    shapeManagerType: anychart.enums.ShapeManagerTypes.PER_POINT,
+    shapesConfig: [
+      anychart.core.shapeManagers.pathRisingFillStrokeConfig,
+      anychart.core.shapeManagers.pathRisingHatchConfig,
+      anychart.core.shapeManagers.pathFallingFillStrokeConfig,
+      anychart.core.shapeManagers.pathFallingHatchConfig
+    ],
+    secondaryShapesConfig: null,
+    postProcessor: null,
+    capabilities: capabilities,
+    anchoredPositionTop: 'high',
+    anchoredPositionBottom: 'low'
+  };
   res[anychart.enums.CartesianSeriesType.JUMP_LINE] = {
     drawerType: anychart.enums.SeriesDrawerTypes.JUMP_LINE,
     shapeManagerType: anychart.enums.ShapeManagerTypes.PER_POINT,
@@ -582,6 +597,7 @@ anychart.chartTypesMap[anychart.enums.ChartTypes.CARTESIAN] = anychart.cartesian
   // proto['box'] = proto.box;
   // proto['bubble'] = proto.bubble;
   // proto['candlestick'] = proto.candlestick;
+  // proto['hollowcandle'] = proto.hollowcandle;
   // proto['column'] = proto.column;
   // proto['line'] = proto.line;
   // proto['marker'] = proto.marker;

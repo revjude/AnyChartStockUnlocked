@@ -1687,6 +1687,42 @@ goog.exportSymbol('anychart.themes.defaultTheme', {
           'format': anychart.core.defaultTheme.OHLCTooltipFormatter
         }
       },
+      'hollowcandles': {
+        'normal': {
+          'risingFill': anychart.core.defaultTheme.risingColor,
+          'risingStroke': anychart.core.defaultTheme.risingColor,
+          'fallingFill': anychart.core.defaultTheme.fallingColor,
+          'fallingStroke': anychart.core.defaultTheme.fallingColor,
+          'risingHatchFill': false,
+          'fallingHatchFill': false,
+          'markers': {
+            'position': 'high'
+          },
+          'labels': {
+            'position': 'high',
+            'format': anychart.core.defaultTheme.returnX
+          }
+        },
+        'hovered': {
+          'risingFill': anychart.core.defaultTheme.returnLightenSourceColor,
+          'risingStroke': anychart.core.defaultTheme.returnDarkenSourceColor,
+          'fallingFill': anychart.core.defaultTheme.returnLightenSourceColor,
+          'fallingStroke': anychart.core.defaultTheme.returnDarkenSourceColor,
+          'risingHatchFill': null,
+          'fallingHatchFill': null
+        },
+        'selected': {
+          'risingFill': anychart.core.defaultTheme.defaultSelectColor,
+          'risingStroke': anychart.core.defaultTheme.defaultSelectColor,
+          'fallingFill': anychart.core.defaultTheme.defaultSelectColor,
+          'fallingStroke': anychart.core.defaultTheme.defaultSelectColor,
+          'risingHatchFill': null,
+          'fallingHatchFill': null
+        },
+        'tooltip': {
+          'format': anychart.core.defaultTheme.OHLCTooltipFormatter
+        }
+      },
       'column': {
         'isVertical': false,
         'normal': {

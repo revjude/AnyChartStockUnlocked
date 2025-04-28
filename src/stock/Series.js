@@ -8,6 +8,7 @@ goog.require('anychart.color');
 goog.require('anychart.core.drawers.Area');
 goog.require('anychart.core.drawers.Candlestick');
 goog.require('anychart.core.drawers.Column');
+goog.require('anychart.core.drawers.HollowCandles');
 goog.require('anychart.core.drawers.JumpLine');
 goog.require('anychart.core.drawers.Line');
 goog.require('anychart.core.drawers.Marker');

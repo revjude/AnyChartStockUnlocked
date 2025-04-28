@@ -28,6 +28,7 @@ anychart.enums.ChartTypes = {
   BULLET: 'bullet',
   CALENDAR: 'calendar',
   CANDLESTICK: 'candlestick',
+  HOLLOWCANDLES: 'hollowcandles',
   CARTESIAN: 'cartesian',
   CARTESIAN_3D: 'cartesian-3d',
   CIRCLE_PACKING: 'circle-packing',
@@ -1219,6 +1220,7 @@ anychart.enums.LegendItemIconType = {
   BUBBLE: 'bubble',
   CANDLESTICK: 'candlestick',
   COLUMN: 'column',
+  HOLLOWCANDLES: 'hollowcandles',
   LINE: 'line',
   OHLC: 'ohlc',
   RANGE_AREA: 'range-area',
@@ -1850,6 +1852,7 @@ anychart.enums.CartesianSeriesType = {
   BUBBLE: 'bubble',
   CANDLESTICK: 'candlestick',
   COLUMN: 'column',
+  HOLLOWCANDLES: 'hollowcandles',
   JUMP_LINE: 'jump-line',
   LINE: 'line',
   MARKER: 'marker',
@@ -1926,6 +1929,7 @@ anychart.enums.StockSeriesType = {
   // BUBBLE: 'bubble',
   CANDLESTICK: 'candlestick',
   COLUMN: 'column',
+  HOLLOWCANDLES: 'hollowcandles',
   LINE: 'line',
   MARKER: 'marker',
   OHLC: 'ohlc',
@@ -4857,7 +4861,8 @@ anychart.enums.SeriesDrawerTypes = {
   WATERFALL: 32,
   LINE_3D: 33,
   MOMENT: 34,
-  RANGE: 35
+  RANGE: 35,
+  HOLLOWCANDLES: 36
 };
 
 

@@ -101,6 +101,16 @@ goog.mixin(goog.global['anychart']['themes']['defaultTheme'], {
           }
         }
       },
+      'hollowcandles': {
+        'tooltip': {
+          'titleFormat': anychart.core.defaultTheme.returnDateTimeX
+        },
+        'normal': {
+          'labels': {
+            'format': anychart.core.defaultTheme.returnDateTimeX
+          }
+        }
+      },
       'ohlc': {
         'tooltip': {
           'titleFormat': anychart.core.defaultTheme.returnDateTimeX
@@ -133,6 +143,9 @@ goog.mixin(goog.global['anychart']['themes']['defaultTheme'], {
   },
   'candlestick' : {
     'defaultSeriesType': 'candlestick'
+  },
+  'hollowcandles' : {
+    'defaultSeriesType': 'hollowcandles'
   },
   'ohlc': {
     'defaultSeriesType': 'ohlc'

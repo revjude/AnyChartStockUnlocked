@@ -32,6 +32,7 @@ anychart.animations.AnimationBySeriesType['stick'] = anychart.animations.ColumnA
 anychart.animations.AnimationBySeriesType['mekko'] = anychart.animations.ColumnAnimation;
 //anychart.animations.AnimationBySeriesType['box'] =
 //anychart.animations.AnimationBySeriesType['candlestick'] =
+//anychart.animations.AnimationBySeriesType['hollowcandles'] =
 //anychart.animations.AnimationBySeriesType['marker'] =
 //anychart.animations.AnimationBySeriesType['ohlc'] =
 //anychart.animations.AnimationBySeriesType['range-bar'] =

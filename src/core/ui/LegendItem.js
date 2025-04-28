@@ -67,7 +67,8 @@ anychart.core.ui.LegendItem = function() {
     'spline': 'black',
     'step-line': 'black',
     'ohlc': 'black',
-    'candlestick': 'black'
+    'candlestick': 'black',
+    'hollowcandles': 'black'
   };
 
   /**
@@ -626,6 +627,19 @@ anychart.core.ui.LegendItem.prototype.getIconDrawer = function(opt_iconType) {
             .close();
       };
       break;
+
+      case anychart.enums.LegendItemIconType.HOLLOWCANDLES:
+        drawer = function(path, size) {
+          path.moveTo(size * 0.5, 0)
+              .lineTo(size * 0.5, size)
+              .moveTo(0, size * 0.3)
+              .lineTo(size, size * 0.3)
+              .lineTo(size, size * 0.7)
+              .lineTo(0, size * 0.7)
+              .lineTo(0, size * 0.3)
+              .close();
+        };
+        break;
 
     case anychart.enums.LegendItemIconType.OHLC:
       drawer = function(path, size) {

@@ -153,6 +153,7 @@ goog.exportSymbol('anychart.enums.LegendItemIconType.BAR', anychart.enums.Legend
 goog.exportSymbol('anychart.enums.LegendItemIconType.BUBBLE', anychart.enums.LegendItemIconType.BUBBLE);
 goog.exportSymbol('anychart.enums.LegendItemIconType.CANDLESTICK', anychart.enums.LegendItemIconType.CANDLESTICK);
 goog.exportSymbol('anychart.enums.LegendItemIconType.COLUMN', anychart.enums.LegendItemIconType.COLUMN);
+goog.exportSymbol('anychart.enums.LegendItemIconType.HOLLOWCANDLES', anychart.enums.LegendItemIconType.HOLLOWCANDLES);
 goog.exportSymbol('anychart.enums.LegendItemIconType.LINE', anychart.enums.LegendItemIconType.LINE);
 goog.exportSymbol('anychart.enums.LegendItemIconType.MARKER', anychart.enums.LegendItemIconType.MARKER);
 goog.exportSymbol('anychart.enums.LegendItemIconType.OHLC', anychart.enums.LegendItemIconType.OHLC);
@@ -713,6 +714,7 @@ goog.exportSymbol('anychart.enums.CartesianSeriesType.BOX', anychart.enums.Carte
 goog.exportSymbol('anychart.enums.CartesianSeriesType.BUBBLE', anychart.enums.CartesianSeriesType.BUBBLE);
 goog.exportSymbol('anychart.enums.CartesianSeriesType.CANDLESTICK', anychart.enums.CartesianSeriesType.CANDLESTICK);
 goog.exportSymbol('anychart.enums.CartesianSeriesType.COLUMN', anychart.enums.CartesianSeriesType.COLUMN);
+goog.exportSymbol('anychart.enums.CartesianSeriesType.HOLLOWCANDLES', anychart.enums.CartesianSeriesType.HOLLOWCANDLES);
 goog.exportSymbol('anychart.enums.CartesianSeriesType.LINE', anychart.enums.CartesianSeriesType.LINE);
 goog.exportSymbol('anychart.enums.CartesianSeriesType.MARKER', anychart.enums.CartesianSeriesType.MARKER);
 goog.exportSymbol('anychart.enums.CartesianSeriesType.OHLC', anychart.enums.CartesianSeriesType.OHLC);
@@ -742,6 +744,7 @@ goog.exportSymbol('anychart.enums.SparklineSeriesType.WIN_LOSS', anychart.enums.
 goog.exportSymbol('anychart.enums.StockSeriesType.AREA', anychart.enums.StockSeriesType.AREA);
 goog.exportSymbol('anychart.enums.StockSeriesType.CANDLESTICK', anychart.enums.StockSeriesType.CANDLESTICK);
 goog.exportSymbol('anychart.enums.StockSeriesType.COLUMN', anychart.enums.StockSeriesType.COLUMN);
+goog.exportSymbol('anychart.enums.StockSeriesType.HOLLOWCANDLES', anychart.enums.StockSeriesType.HOLLOWCANDLES);
 goog.exportSymbol('anychart.enums.StockSeriesType.LINE', anychart.enums.StockSeriesType.LINE);
 goog.exportSymbol('anychart.enums.StockSeriesType.MARKER', anychart.enums.StockSeriesType.MARKER);
 goog.exportSymbol('anychart.enums.StockSeriesType.OHLC', anychart.enums.StockSeriesType.OHLC);

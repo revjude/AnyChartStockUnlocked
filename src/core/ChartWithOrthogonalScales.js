@@ -2164,6 +2164,7 @@ anychart.core.ChartWithOrthogonalScales.prototype.specificContextMenuItems = fun
       seriesType = excludedPoints[i].getSeries().seriesType();
       var value;
       if (seriesType == anychart.enums.CartesianSeriesType.CANDLESTICK ||
+          seriesType == anychart.enums.CartesianSeriesType.HOLLOWCANDLES ||
           seriesType == anychart.enums.CartesianSeriesType.OHLC) {
         value = 'o - ' + excludedPoints[i].get('open') + ', h - ' + excludedPoints[i].get('high') +
             ', l - ' + excludedPoints[i].get('low') + ', c - ' + excludedPoints[i].get('close');

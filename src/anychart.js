@@ -888,6 +888,7 @@ goog.exportSymbol('anychart.stepLine', anychart.getFeatureOrError('anychart.step
 goog.exportSymbol('anychart.ohlc', anychart.getFeatureOrError('anychart.ohlc', 'OHLC chart'));
 goog.exportSymbol('anychart.candlestick', anychart.getFeatureOrError('anychart.candlestick', 'Candlestick chart'));
 goog.exportSymbol('anychart.column', anychart.getFeatureOrError('anychart.column', 'Column chart'));
+goog.exportSymbol('anychart.hollowcandles', anychart.getFeatureOrError('anychart.hollowcandles', 'Hollow Candles chart'));
 goog.exportSymbol('anychart.column3d', anychart.getFeatureOrError('anychart.column3d', '3D Column chart'));
 goog.exportSymbol('anychart.box', anychart.getFeatureOrError('anychart.box', 'Box chart'));
 goog.exportSymbol('anychart.financial', anychart.getFeatureOrError('anychart.financial', 'Financial chart'));

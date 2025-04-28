@@ -263,6 +263,26 @@ anychart.stockModule.Scroller.prototype.seriesConfig = (function() {
     anchoredPositionTop: 'value',
     anchoredPositionBottom: 'zero'
   };
+  res[anychart.enums.StockSeriesType.HOLLOWCANDLES] = {
+    drawerType: anychart.enums.SeriesDrawerTypes.HOLLOWCANDLES,
+    shapeManagerType: anychart.enums.ShapeManagerTypes.PER_SERIES,
+    shapesConfig: [
+      anychart.core.shapeManagers.pathScrollerRisingFillStrokeConfig,
+      anychart.core.shapeManagers.pathScrollerRisingHatchConfig,
+      anychart.core.shapeManagers.pathScrollerFallingFillStrokeConfig,
+      anychart.core.shapeManagers.pathScrollerFallingHatchConfig
+    ],
+    secondaryShapesConfig: [
+      anychart.core.shapeManagers.pathScrollerSelectRisingFillStrokeConfig,
+      anychart.core.shapeManagers.pathScrollerSelectRisingHatchConfig,
+      anychart.core.shapeManagers.pathScrollerSelectFallingFillStrokeConfig,
+      anychart.core.shapeManagers.pathScrollerSelectFallingHatchConfig
+    ],
+    postProcessor: null,
+    capabilities: capabilities,
+    anchoredPositionTop: 'high',
+    anchoredPositionBottom: 'low'
+  };
   res[anychart.enums.StockSeriesType.JUMP_LINE] = {
     drawerType: anychart.enums.SeriesDrawerTypes.JUMP_LINE,
     shapeManagerType: anychart.enums.ShapeManagerTypes.PER_POINT,
@@ -639,6 +659,24 @@ anychart.stockModule.Scroller.prototype.candlestick = function(opt_data, opt_map
  */
 anychart.stockModule.Scroller.prototype.column = function(opt_data, opt_mappingSettings, opt_csvSettings) {
   return this.createSeriesByType(anychart.enums.StockSeriesType.COLUMN, opt_data, opt_mappingSettings, opt_csvSettings);
+};
+
+
+/**
+ * Creates and returns a new hollowcandles series.
+ * @param {(anychart.stockModule.data.TableMapping|anychart.stockModule.data.Table|Array.<Array.<*>>|string)=} opt_data
+ * @param {Object.<({column: number, type: anychart.enums.AggregationType, weights: number}|number)>=} opt_mappingSettings
+ *   An object where keys are field names and values are objects with fields:
+ *      - 'column': number - Column index, that the field should get values from;
+ *      - 'type': anychart.enums.AggregationType - How to group values for the field. Defaults to 'close'.
+ *      - 'weights': number - Column to get weights from for 'weightedAverage' grouping type. Note: If type set to
+ *          'weightedAverage', but opt_weightsColumn is not passed - uses 'average' grouping instead.
+ *   or numbers - just the column index to get values from. In this case the grouping type will be set to 'close'.
+ * @param {Object=} opt_csvSettings CSV parser settings if the string is passed.
+ * @return {anychart.stockModule.ScrollerSeries}
+ */
+anychart.stockModule.Scroller.prototype.hollowcandles = function(opt_data, opt_mappingSettings, opt_csvSettings) {
+  return this.createSeriesByType(anychart.enums.StockSeriesType.HOLLOWCANDLES, opt_data, opt_mappingSettings, opt_csvSettings);
 };
 
 
@@ -1775,6 +1813,7 @@ anychart.stockModule.Scroller.prototype.setupElements = function(opt_default, op
   proto['area'] = proto.area;
   proto['candlestick'] = proto.candlestick;
   proto['column'] = proto.column;
+  proto['hollowcandles'] = proto.hollowcandles;
   proto['stick'] = proto.stick;
   proto['jumpLine'] = proto.jumpLine;
   proto['hilo'] = proto.hilo;
