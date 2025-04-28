@@ -174,6 +174,37 @@ anychart.core.ui.Paginator.prototype.SUPPORTED_CONSISTENCY_STATES =
     anychart.core.Text.prototype.SUPPORTED_CONSISTENCY_STATES |
     anychart.ConsistencyState.PAGINATOR_BACKGROUND;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.ui.Paginator.prototype.supported = function() {
+  return {
+    "sigs": [
+      "NEEDS_REDRAW",
+      "BOUNDS_CHANGED",
+      "ENABLED_STATE_CHANGED",
+      "Z_INDEX_STATE_CHANGED",
+      "BOUNDS_CHANGED"
+    ],
+    "cs": [
+      "ENABLED",
+      "CONTAINER",
+      "BOUNDS",
+      "Z_INDEX",
+      "APPEARANCE",
+      "PAGINATOR_BACKGROUND"
+    ]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.ui.Paginator.prototype.getThisType = function() {
+  return 'anychart.core.ui.Paginator';
+};
 
 /**
  * Paginator padding.
@@ -930,14 +961,18 @@ anychart.core.ui.Paginator.prototype.disposeInternal = function() {
 //exports
 (function() {
   var proto = anychart.core.ui.Paginator.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   // auto generated
   // proto['orientation'] = proto.orientation;
-  // proto['layout'] = proto.layout;
+  proto['ul_layout'] = proto.layout;//jb
   proto['background'] = proto.background;
   proto['padding'] = proto.padding;
   proto['margin'] = proto.margin;
   proto['currentPage'] = proto.currentPage;
   proto['getPagesCount'] = proto.getPagesCount;
+  proto['ul_supported'] = proto.supported;//jb
   // auto from anychart.core.Text
-  // proto['text'] = proto.text;
+  proto['ul_text'] = proto.text;//jb
+  proto['ul_supported'] = proto.supported;//jb
+  proto['ul_draw'] = proto.draw;//jb
 })();

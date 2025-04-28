@@ -120,6 +120,46 @@ anychart.core.ChartWithOrthogonalScales.prototype.SUPPORTED_CONSISTENCY_STATES =
     anychart.ConsistencyState.SCALE_CHART_SCALES_STATISTICS;
 
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.ChartWithOrthogonalScales.prototype.supported = function() {
+  return {
+    "sigs": [],
+    "cs": [
+      "ENABLED",
+      "CONTAINER",
+      "BOUNDS",
+      "Z_INDEX",
+      "CHART_LABELS",
+      "CHART_BACKGROUND",
+      "CHART_TITLE",
+      "A11Y",
+      "CHART_ANIMATION",
+      "CHART_CREDITS",
+      "CHART_LEGEND",
+      "SERIES_CHART_PALETTE",
+      "SERIES_CHART_MARKER_PALETTE",
+      "SERIES_CHART_HATCH_FILL_PALETTE",
+      "SERIES_CHART_SERIES",
+      "SCALE_CHART_SCALES",
+      "SCALE_CHART_SCALE_MAPS",
+      "SCALE_CHART_Y_SCALES",
+      "SCALE_CHART_STATISTICS",
+      "SCALE_CHART_SCALES_STATISTICS"
+    ]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.ChartWithOrthogonalScales.prototype.getThisType = function() {
+  return 'anychart.core.ChartWithOrthogonalScales';
+};
+
 //endregion
 //region --- Series specific settings
 //----------------------------------------------------------------------------------------------------------------------
@@ -2884,3 +2924,10 @@ anychart.core.ChartWithOrthogonalScales.prototype.disposeInternal = function() {
 
 
 //endregion
+
+//exports
+(function() {
+  var proto = anychart.core.ChartWithOrthogonalScales.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
+  proto['ul_supported'] = proto.supported;//jb
+})();

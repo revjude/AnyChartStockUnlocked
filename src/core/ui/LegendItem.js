@@ -176,6 +176,38 @@ anychart.core.ui.LegendItem.prototype.SUPPORTED_SIGNALS = anychart.core.Text.pro
 anychart.core.ui.LegendItem.prototype.SUPPORTED_CONSISTENCY_STATES =
     anychart.core.Text.prototype.SUPPORTED_CONSISTENCY_STATES; //ENABLED CONTAINER Z_INDEX APPEARANCE BOUNDS
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.ui.LegendItem.prototype.supported = function() {
+  return {
+    "sigs": [
+      "NEEDS_REDRAW",
+      "BOUNDS_CHANGED",
+      "ENABLED_STATE_CHANGED",
+      "Z_INDEX_STATE_CHANGED",
+      "BOUNDS_CHANGED",
+      "NEEDS_REAPPLICATION"
+    ],
+    "cs": [
+      "ENABLED",
+      "CONTAINER",
+      "BOUNDS",
+      "Z_INDEX",
+      "APPEARANCE"
+    ]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.ui.LegendItem.prototype.getThisType = function() {
+  return 'anychart.core.ui.LegendItem';
+};
+
 
 /**
  * Getter/setter for iconEnabled setting
@@ -1252,22 +1284,24 @@ anychart.core.ui.LegendItem.prototype.disposeInternal = function() {
 (function() {
   // Used only in a standalone
   var proto = anychart.core.ui.LegendItem.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   // auto generated
-  // proto['x'] = proto.x;
-  // proto['y'] = proto.y;
-  // proto['iconType'] = proto.iconType;
-  // proto['iconTextSpacing'] = proto.iconTextSpacing;
-  // proto['maxWidth'] = proto.maxWidth;
-  // proto['maxHeight'] = proto.maxHeight;
-  // proto['iconFill'] = proto.iconFill;
-  // proto['iconStroke'] = proto.iconStroke;
-  // proto['iconHatchFill'] = proto.iconHatchFill;
+  proto['ul_x'] = proto.x;//jb
+  proto['ul_y'] = proto.y;//jb
+  // proto['ul_iconType'] = proto.iconType;
+  // proto['ul_iconTextSpacing'] = proto.iconTextSpacing;
+  // proto['ul_maxWidth'] = proto.maxWidth;
+  proto['ul_maxHeight'] = proto.maxHeight;//jb
+  // proto['ul_iconFill'] = proto.iconFill;
+  // proto['ul_iconStroke'] = proto.iconStroke;
+  // proto['ul_iconHatchFill'] = proto.iconHatchFill;
   proto['getTextElement'] = proto.getTextElement;
   proto['getContentBounds'] = proto.getContentBounds;
   proto['getWidth'] = proto.getWidth;
   proto['getHeight'] = proto.getHeight;
   proto['draw'] = proto.draw;
   // auto from anychart.core.Text
-  // proto['text'] = proto.text;
+  proto['ul_text'] = proto.text;//jb
+  proto['ul_supported'] = proto.supported;//jb
 })();
 //endregion

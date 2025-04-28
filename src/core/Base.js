@@ -434,7 +434,11 @@ anychart.Signal = {
   NEEDS_UPDATE_MARKERS: 1 << 18,
 
   MEASURE_COLLECT: 1 << 19, //Special Measuriator signal to collect texts to measure.
-  MEASURE_BOUNDS: 1 << 20 //Special Measuriator signal to measure already collected texts.
+  MEASURE_BOUNDS: 1 << 20, //Special Measuriator signal to measure already collected texts.,
+  /**
+   * Combination of all states.
+   */
+  ALL: 0xFFFFFFFF
 };
 
 
@@ -603,6 +607,25 @@ anychart.core.Base.prototype.SUPPORTED_SIGNALS = 0;
  * @type {number}
  */
 anychart.core.Base.prototype.SUPPORTED_CONSISTENCY_STATES = 0;
+
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.Base.prototype.supported = function() {
+  return {
+    "sigs": [0],
+    "cs": [0]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.Base.prototype.getThisType = function() {
+  return 'anychart.core.Base';
+};
 
 
 /**
@@ -1104,7 +1127,7 @@ anychart.core.Base.prototype.hasInvalidationState = function(state) {
  * @param {(Object.<string, *>)=} opt_meta - Meta key-value config to be copied to signal event.
  */
 anychart.core.Base.prototype.dispatchSignal = function(signal, opt_force, opt_meta) {
-  signal &= this.SUPPORTED_SIGNALS;
+  signal &= this.SUPPORTED_SIGNALS;    
   if (!signal) return;
   if (isNaN(this.suspendedDispatching) || !!opt_force) {
     // Hack to prevent Signal events bubbling. May be we should use all advantages of bubbling but not now.
@@ -1784,7 +1807,7 @@ anychart.core.Base.prototype.removeAllListeners = function(opt_type) {
 //exports
 (function() {
   var proto = anychart.core.Base.prototype;
-  proto['listen'] = proto.listen;//doc|ex
+    proto['listen'] = proto.listen;//doc|ex
   proto['listenOnce'] = proto.listenOnce;//doc|ex
   proto['unlisten'] = proto.unlisten;//doc|ex
   proto['unlistenByKey'] = proto.unlistenByKey;//doc|ex
@@ -1793,13 +1816,169 @@ anychart.core.Base.prototype.removeAllListeners = function(opt_type) {
   proto['isConsistent'] = proto.isConsistent; // Added for debug purposes! Do not add to API and docs.
   proto['suspendSignalsDispatching'] = proto.suspendSignalsDispatching;
   proto['resumeSignalsDispatching'] = proto.resumeSignalsDispatching;
+  proto['ul_dispatchSignal'] = proto.dispatchSignal;//jb
+  proto['ul_invalidate'] = proto.invalidate;//jb
+  proto['ul_supported'] = proto.supported;//jb
+  
+  goog.exportSymbol('anychart.Signal.NEEDS_REDRAW', anychart.Signal.NEEDS_REDRAW);
+  goog.exportSymbol('anychart.Signal.NEEDS_REAPPLICATION', anychart.Signal.NEEDS_REAPPLICATION);
+  goog.exportSymbol('anychart.Signal.NEEDS_RECALCULATION', anychart.Signal.NEEDS_RECALCULATION);
+  goog.exportSymbol('anychart.Signal.BOUNDS_CHANGED', anychart.Signal.BOUNDS_CHANGED);
+  goog.exportSymbol('anychart.Signal.DATA_CHANGED', anychart.Signal.DATA_CHANGED);
+  goog.exportSymbol('anychart.Signal.META_CHANGED', anychart.Signal.META_CHANGED);
+  goog.exportSymbol('anychart.Signal.NEED_UPDATE_LEGEND', anychart.Signal.NEED_UPDATE_LEGEND);
+  goog.exportSymbol('anychart.Signal.NEED_UPDATE_COLOR_RANGE', anychart.Signal.NEED_UPDATE_COLOR_RANGE);
+  goog.exportSymbol('anychart.Signal.NEED_UPDATE_FULL_RANGE_ITEMS', anychart.Signal.NEED_UPDATE_FULL_RANGE_ITEMS);
+  goog.exportSymbol('anychart.Signal.NEED_UPDATE_TICK_DEPENDENT', anychart.Signal.NEED_UPDATE_TICK_DEPENDENT);
+  goog.exportSymbol('anychart.Signal.NEED_UPDATE_OVERLAP', anychart.Signal.NEED_UPDATE_OVERLAP);
+  goog.exportSymbol('anychart.Signal.NEEDS_UPDATE_A11Y', anychart.Signal.NEEDS_UPDATE_A11Y);
+  goog.exportSymbol('anychart.Signal.NEEDS_REDRAW_LABELS', anychart.Signal.NEEDS_REDRAW_LABELS);
+  goog.exportSymbol('anychart.Signal.NEEDS_REDRAW_APPEARANCE', anychart.Signal.NEEDS_REDRAW_APPEARANCE);
+  goog.exportSymbol('anychart.Signal.NEEDS_UPDATE_TOOLTIP', anychart.Signal.NEEDS_UPDATE_TOOLTIP);
+  goog.exportSymbol('anychart.Signal.ENABLED_STATE_CHANGED', anychart.Signal.ENABLED_STATE_CHANGED);
+  goog.exportSymbol('anychart.Signal.Z_INDEX_STATE_CHANGED', anychart.Signal.Z_INDEX_STATE_CHANGED);
+  goog.exportSymbol('anychart.Signal.NEED_RECALCULATE_LEGEND', anychart.Signal.NEED_RECALCULATE_LEGEND);
+  goog.exportSymbol('anychart.Signal.NEEDS_UPDATE_MARKERS', anychart.Signal.NEEDS_UPDATE_MARKERS);
+  goog.exportSymbol('anychart.Signal.ALL', anychart.Signal.ALL);
+  goog.exportSymbol('anychart.ConsistencyState.ONLY_DISPATCHING', anychart.ConsistencyState.ONLY_DISPATCHING);
+  goog.exportSymbol('anychart.ConsistencyState.ENABLED', anychart.ConsistencyState.ENABLED);
+  goog.exportSymbol('anychart.ConsistencyState.CONTAINER', anychart.ConsistencyState.CONTAINER);
+  goog.exportSymbol('anychart.ConsistencyState.BOUNDS', anychart.ConsistencyState.BOUNDS);
+  goog.exportSymbol('anychart.ConsistencyState.Z_INDEX', anychart.ConsistencyState.Z_INDEX);
+  goog.exportSymbol('anychart.ConsistencyState.APPEARANCE', anychart.ConsistencyState.APPEARANCE);
+  goog.exportSymbol('anychart.ConsistencyState.A11Y', anychart.ConsistencyState.A11Y);
+  goog.exportSymbol('anychart.ConsistencyState.DATA_MASK', anychart.ConsistencyState.DATA_MASK);
+  goog.exportSymbol('anychart.ConsistencyState.CHART_BACKGROUND', anychart.ConsistencyState.CHART_BACKGROUND);
+  goog.exportSymbol('anychart.ConsistencyState.CHART_TITLE', anychart.ConsistencyState.CHART_TITLE);
+  goog.exportSymbol('anychart.ConsistencyState.CHART_LABELS', anychart.ConsistencyState.CHART_LABELS);
+  goog.exportSymbol('anychart.ConsistencyState.CHART_LEGEND', anychart.ConsistencyState.CHART_LEGEND);
+  goog.exportSymbol('anychart.ConsistencyState.CHART_CREDITS', anychart.ConsistencyState.CHART_CREDITS);
+  goog.exportSymbol('anychart.ConsistencyState.CHART_ANIMATION', anychart.ConsistencyState.CHART_ANIMATION);
+  goog.exportSymbol('anychart.ConsistencyState.SERIES_CHART_PALETTE', anychart.ConsistencyState.SERIES_CHART_PALETTE);
+  goog.exportSymbol('anychart.ConsistencyState.SERIES_CHART_MARKER_PALETTE', anychart.ConsistencyState.SERIES_CHART_MARKER_PALETTE);
+  goog.exportSymbol('anychart.ConsistencyState.SERIES_CHART_HATCH_FILL_PALETTE', anychart.ConsistencyState.SERIES_CHART_HATCH_FILL_PALETTE);
+  goog.exportSymbol('anychart.ConsistencyState.SERIES_CHART_SERIES', anychart.ConsistencyState.SERIES_CHART_SERIES);
+  goog.exportSymbol('anychart.ConsistencyState.SCALE_CHART_SCALES', anychart.ConsistencyState.SCALE_CHART_SCALES);
+  goog.exportSymbol('anychart.ConsistencyState.SCALE_CHART_SCALE_MAPS', anychart.ConsistencyState.SCALE_CHART_SCALE_MAPS);
+  goog.exportSymbol('anychart.ConsistencyState.SCALE_CHART_Y_SCALES', anychart.ConsistencyState.SCALE_CHART_Y_SCALES);
+  goog.exportSymbol('anychart.ConsistencyState.SCALE_CHART_STATISTICS', anychart.ConsistencyState.SCALE_CHART_STATISTICS);
+  goog.exportSymbol('anychart.ConsistencyState.SCALE_CHART_SCALES_STATISTICS', anychart.ConsistencyState.SCALE_CHART_SCALES_STATISTICS);
+  goog.exportSymbol('anychart.ConsistencyState.AXES_CHART_AXES', anychart.ConsistencyState.AXES_CHART_AXES);
+  goog.exportSymbol('anychart.ConsistencyState.AXES_CHART_AXES_MARKERS', anychart.ConsistencyState.AXES_CHART_AXES_MARKERS);
+  goog.exportSymbol('anychart.ConsistencyState.AXES_CHART_GRIDS', anychart.ConsistencyState.AXES_CHART_GRIDS);
+  goog.exportSymbol('anychart.ConsistencyState.AXES_CHART_CROSSHAIR', anychart.ConsistencyState.AXES_CHART_CROSSHAIR);
+  goog.exportSymbol('anychart.ConsistencyState.AXES_CHART_ANNOTATIONS', anychart.ConsistencyState.AXES_CHART_ANNOTATIONS);
+  goog.exportSymbol('anychart.ConsistencyState.AXES_CHART_QUARTER', anychart.ConsistencyState.AXES_CHART_QUARTER);
+  goog.exportSymbol('anychart.ConsistencyState.AXES_CHART_CROSSLINES', anychart.ConsistencyState.AXES_CHART_CROSSLINES);
+  goog.exportSymbol('anychart.ConsistencyState.SERIES_HATCH_FILL', anychart.ConsistencyState.SERIES_HATCH_FILL);
+  goog.exportSymbol('anychart.ConsistencyState.SERIES_MARKERS', anychart.ConsistencyState.SERIES_MARKERS);
+  goog.exportSymbol('anychart.ConsistencyState.SERIES_LABELS', anychart.ConsistencyState.SERIES_LABELS);
+  goog.exportSymbol('anychart.ConsistencyState.SERIES_DATA', anychart.ConsistencyState.SERIES_DATA);
+  goog.exportSymbol('anychart.ConsistencyState.SERIES_POINTS', anychart.ConsistencyState.SERIES_POINTS);
+  goog.exportSymbol('anychart.ConsistencyState.SERIES_COLOR', anychart.ConsistencyState.SERIES_COLOR);
+  goog.exportSymbol('anychart.ConsistencyState.SERIES_CLIP', anychart.ConsistencyState.SERIES_CLIP);
+  goog.exportSymbol('anychart.ConsistencyState.SERIES_ERROR', anychart.ConsistencyState.SERIES_ERROR);
+  goog.exportSymbol('anychart.ConsistencyState.SERIES_OUTLIERS', anychart.ConsistencyState.SERIES_OUTLIERS);
+  goog.exportSymbol('anychart.ConsistencyState.SERIES_SHAPE_MANAGER', anychart.ConsistencyState.SERIES_SHAPE_MANAGER);
+  goog.exportSymbol('anychart.ConsistencyState.SERIES_COLOR_SCALE', anychart.ConsistencyState.SERIES_COLOR_SCALE);
+  goog.exportSymbol('anychart.ConsistencyState.CALLOUT_TITLE', anychart.ConsistencyState.CALLOUT_TITLE);
+  goog.exportSymbol('anychart.ConsistencyState.CALLOUT_LABELS', anychart.ConsistencyState.CALLOUT_LABELS);
+  goog.exportSymbol('anychart.ConsistencyState.CALLOUT_BACKGROUND', anychart.ConsistencyState.CALLOUT_BACKGROUND);
+  goog.exportSymbol('anychart.ConsistencyState.AXIS_TITLE', anychart.ConsistencyState.AXIS_TITLE);
+  goog.exportSymbol('anychart.ConsistencyState.AXIS_LABELS', anychart.ConsistencyState.AXIS_LABELS);
+  goog.exportSymbol('anychart.ConsistencyState.AXIS_TICKS', anychart.ConsistencyState.AXIS_TICKS);
+  goog.exportSymbol('anychart.ConsistencyState.AXIS_OVERLAP', anychart.ConsistencyState.AXIS_OVERLAP);
+  goog.exportSymbol('anychart.ConsistencyState.COLOR_RANGE_MARKER', anychart.ConsistencyState.COLOR_RANGE_MARKER);
+  goog.exportSymbol('anychart.ConsistencyState.GRIDS_POSITION', anychart.ConsistencyState.GRIDS_POSITION);
+  goog.exportSymbol('anychart.ConsistencyState.BASE_GRID_REDRAW', anychart.ConsistencyState.BASE_GRID_REDRAW);
+  goog.exportSymbol('anychart.ConsistencyState.BASE_GRID_HOVER', anychart.ConsistencyState.BASE_GRID_HOVER);
+  goog.exportSymbol('anychart.ConsistencyState.BUTTON_BACKGROUND', anychart.ConsistencyState.BUTTON_BACKGROUND);
+  goog.exportSymbol('anychart.ConsistencyState.BUTTON_CURSOR', anychart.ConsistencyState.BUTTON_CURSOR);
+  goog.exportSymbol('anychart.ConsistencyState.CREDITS_POSITION', anychart.ConsistencyState.CREDITS_POSITION);
+  goog.exportSymbol('anychart.ConsistencyState.CREDITS_REDRAW_IMAGE', anychart.ConsistencyState.CREDITS_REDRAW_IMAGE);
+  goog.exportSymbol('anychart.ConsistencyState.BACKGROUND_POINTER_EVENTS', anychart.ConsistencyState.BACKGROUND_POINTER_EVENTS);
+  goog.exportSymbol('anychart.ConsistencyState.LABEL_BACKGROUND', anychart.ConsistencyState.LABEL_BACKGROUND);
+  goog.exportSymbol('anychart.ConsistencyState.LABEL_VISIBILITY', anychart.ConsistencyState.LABEL_VISIBILITY);
+  goog.exportSymbol('anychart.ConsistencyState.LABELS_FACTORY_BACKGROUND', anychart.ConsistencyState.LABELS_FACTORY_BACKGROUND);
+  goog.exportSymbol('anychart.ConsistencyState.LABELS_FACTORY_HANDLERS', anychart.ConsistencyState.LABELS_FACTORY_HANDLERS);
+  goog.exportSymbol('anychart.ConsistencyState.LABELS_FACTORY_CLIP', anychart.ConsistencyState.LABELS_FACTORY_CLIP);
+  goog.exportSymbol('anychart.ConsistencyState.LABELS_FACTORY_CONNECTOR', anychart.ConsistencyState.LABELS_FACTORY_CONNECTOR);
+  goog.exportSymbol('anychart.ConsistencyState.LABELS_FACTORY_CACHE', anychart.ConsistencyState.LABELS_FACTORY_CACHE);
+  goog.exportSymbol('anychart.ConsistencyState.LABELS_FACTORY_POSITION', anychart.ConsistencyState.LABELS_FACTORY_POSITION);
+  goog.exportSymbol('anychart.ConsistencyState.LEGEND_BACKGROUND', anychart.ConsistencyState.LEGEND_BACKGROUND);
+  goog.exportSymbol('anychart.ConsistencyState.LEGEND_TITLE', anychart.ConsistencyState.LEGEND_TITLE);
+  goog.exportSymbol('anychart.ConsistencyState.LEGEND_SEPARATOR', anychart.ConsistencyState.LEGEND_SEPARATOR);
+  goog.exportSymbol('anychart.ConsistencyState.LEGEND_PAGINATOR', anychart.ConsistencyState.LEGEND_PAGINATOR);
+  goog.exportSymbol('anychart.ConsistencyState.LEGEND_RECREATE_ITEMS', anychart.ConsistencyState.LEGEND_RECREATE_ITEMS);
+  goog.exportSymbol('anychart.ConsistencyState.LEGEND_DRAG', anychart.ConsistencyState.LEGEND_DRAG);
+  goog.exportSymbol('anychart.ConsistencyState.MARKERS_FACTORY_HANDLERS', anychart.ConsistencyState.MARKERS_FACTORY_HANDLERS);
+  goog.exportSymbol('anychart.ConsistencyState.PAGINATOR_BACKGROUND', anychart.ConsistencyState.PAGINATOR_BACKGROUND);
+  goog.exportSymbol('anychart.ConsistencyState.SCROLLBAR_POSITION', anychart.ConsistencyState.SCROLLBAR_POSITION);
+  goog.exportSymbol('anychart.ConsistencyState.SPLITTER_POSITION', anychart.ConsistencyState.SPLITTER_POSITION);
+  goog.exportSymbol('anychart.ConsistencyState.TITLE_BACKGROUND', anychart.ConsistencyState.TITLE_BACKGROUND);
+  goog.exportSymbol('anychart.ConsistencyState.TOOLTIP_POSITION', anychart.ConsistencyState.TOOLTIP_POSITION);
+  goog.exportSymbol('anychart.ConsistencyState.TOOLTIP_TITLE', anychart.ConsistencyState.TOOLTIP_TITLE);
+  goog.exportSymbol('anychart.ConsistencyState.TOOLTIP_SEPARATOR', anychart.ConsistencyState.TOOLTIP_SEPARATOR);
+  goog.exportSymbol('anychart.ConsistencyState.TOOLTIP_CONTENT', anychart.ConsistencyState.TOOLTIP_CONTENT);
+  goog.exportSymbol('anychart.ConsistencyState.TOOLTIP_BACKGROUND', anychart.ConsistencyState.TOOLTIP_BACKGROUND);
+  goog.exportSymbol('anychart.ConsistencyState.TOOLTIP_VISIBILITY', anychart.ConsistencyState.TOOLTIP_VISIBILITY);
+  goog.exportSymbol('anychart.ConsistencyState.TOOLTIP_MODE', anychart.ConsistencyState.TOOLTIP_MODE);
+  goog.exportSymbol('anychart.ConsistencyState.TOOLTIP_ALLOWANCE', anychart.ConsistencyState.TOOLTIP_ALLOWANCE);
+  goog.exportSymbol('anychart.ConsistencyState.TOOLTIP_HTML_MODE', anychart.ConsistencyState.TOOLTIP_HTML_MODE);
+  goog.exportSymbol('anychart.ConsistencyState.TABLE_CELL_BOUNDS', anychart.ConsistencyState.TABLE_CELL_BOUNDS);
+  goog.exportSymbol('anychart.ConsistencyState.TABLE_OVERLAP', anychart.ConsistencyState.TABLE_OVERLAP);
+  goog.exportSymbol('anychart.ConsistencyState.TABLE_BORDERS', anychart.ConsistencyState.TABLE_BORDERS);
+  goog.exportSymbol('anychart.ConsistencyState.TABLE_FILLS', anychart.ConsistencyState.TABLE_FILLS);
+  goog.exportSymbol('anychart.ConsistencyState.TABLE_CONTENT', anychart.ConsistencyState.TABLE_CONTENT);
+  goog.exportSymbol('anychart.ConsistencyState.TABLE_STRUCTURE', anychart.ConsistencyState.TABLE_STRUCTURE);
+  goog.exportSymbol('anychart.ConsistencyState.SCROLLER_THUMBS_SHAPE', anychart.ConsistencyState.SCROLLER_THUMBS_SHAPE);
+  goog.exportSymbol('anychart.ConsistencyState.SCROLLER_ORIENTATION', anychart.ConsistencyState.SCROLLER_ORIENTATION);
+  goog.exportSymbol('anychart.ConsistencyState.SCROLLER_AUTO_HIDE', anychart.ConsistencyState.SCROLLER_AUTO_HIDE);
+  goog.exportSymbol('anychart.ConsistencyState.STOCK_PLOTS_APPEARANCE', anychart.ConsistencyState.STOCK_PLOTS_APPEARANCE);
+  goog.exportSymbol('anychart.ConsistencyState.STOCK_SCROLLER', anychart.ConsistencyState.STOCK_SCROLLER);
+  goog.exportSymbol('anychart.ConsistencyState.STOCK_DATA', anychart.ConsistencyState.STOCK_DATA);
+  goog.exportSymbol('anychart.ConsistencyState.STOCK_SCALES', anychart.ConsistencyState.STOCK_SCALES);
+  goog.exportSymbol('anychart.ConsistencyState.STOCK_GAP', anychart.ConsistencyState.STOCK_GAP);
+  goog.exportSymbol('anychart.ConsistencyState.STOCK_SPLITTERS', anychart.ConsistencyState.STOCK_SPLITTERS);
+  goog.exportSymbol('anychart.ConsistencyState.STOCK_PLOT_BACKGROUND', anychart.ConsistencyState.STOCK_PLOT_BACKGROUND);
+  goog.exportSymbol('anychart.ConsistencyState.STOCK_PLOT_SERIES', anychart.ConsistencyState.STOCK_PLOT_SERIES);
+  goog.exportSymbol('anychart.ConsistencyState.STOCK_PLOT_AXES', anychart.ConsistencyState.STOCK_PLOT_AXES);
+  goog.exportSymbol('anychart.ConsistencyState.STOCK_PLOT_DT_AXIS', anychart.ConsistencyState.STOCK_PLOT_DT_AXIS);
+  goog.exportSymbol('anychart.ConsistencyState.STOCK_PLOT_GRIDS', anychart.ConsistencyState.STOCK_PLOT_GRIDS);
+  goog.exportSymbol('anychart.ConsistencyState.STOCK_PLOT_LEGEND', anychart.ConsistencyState.STOCK_PLOT_LEGEND);
+  goog.exportSymbol('anychart.ConsistencyState.STOCK_PLOT_PALETTE', anychart.ConsistencyState.STOCK_PLOT_PALETTE);
+  goog.exportSymbol('anychart.ConsistencyState.STOCK_PLOT_ANNOTATIONS', anychart.ConsistencyState.STOCK_PLOT_ANNOTATIONS);
+  goog.exportSymbol('anychart.ConsistencyState.STOCK_PLOT_PRICE_INDICATORS', anychart.ConsistencyState.STOCK_PLOT_PRICE_INDICATORS);
+  goog.exportSymbol('anychart.ConsistencyState.STOCK_PLOT_NO_DATA_LABEL', anychart.ConsistencyState.STOCK_PLOT_NO_DATA_LABEL);
+  goog.exportSymbol('anychart.ConsistencyState.STOCK_PLOT_EVENT_MARKERS', anychart.ConsistencyState.STOCK_PLOT_EVENT_MARKERS);
+  goog.exportSymbol('anychart.ConsistencyState.STOCK_PLOT_TITLE', anychart.ConsistencyState.STOCK_PLOT_TITLE);
+  goog.exportSymbol('anychart.ConsistencyState.STOCK_PLOT_AXIS_MARKERS', anychart.ConsistencyState.STOCK_PLOT_AXIS_MARKERS);
+  goog.exportSymbol('anychart.ConsistencyState.STOCK_PRICE_INDICATOR_LABEL', anychart.ConsistencyState.STOCK_PRICE_INDICATOR_LABEL);
+  goog.exportSymbol('anychart.ConsistencyState.STOCK_PRICE_INDICATOR_SERIES', anychart.ConsistencyState.STOCK_PRICE_INDICATOR_SERIES);
+  goog.exportSymbol('anychart.ConsistencyState.STOCK_DTAXIS_BACKGROUND', anychart.ConsistencyState.STOCK_DTAXIS_BACKGROUND);
+  goog.exportSymbol('anychart.ConsistencyState.STOCK_SCROLLER_SERIES', anychart.ConsistencyState.STOCK_SCROLLER_SERIES);
+  goog.exportSymbol('anychart.ConsistencyState.STOCK_SCROLLER_AXIS', anychart.ConsistencyState.STOCK_SCROLLER_AXIS);
+  goog.exportSymbol('anychart.ConsistencyState.ANNOTATIONS_ANCHORS', anychart.ConsistencyState.ANNOTATIONS_ANCHORS);
+  goog.exportSymbol('anychart.ConsistencyState.ANNOTATIONS_LAST_POINT', anychart.ConsistencyState.ANNOTATIONS_LAST_POINT);
+  goog.exportSymbol('anychart.ConsistencyState.ANNOTATIONS_SHAPES', anychart.ConsistencyState.ANNOTATIONS_SHAPES);
+  goog.exportSymbol('anychart.ConsistencyState.ANNOTATIONS_MARKERS', anychart.ConsistencyState.ANNOTATIONS_MARKERS);
+  goog.exportSymbol('anychart.ConsistencyState.ANNOTATIONS_INTERACTIVITY', anychart.ConsistencyState.ANNOTATIONS_INTERACTIVITY);
+  goog.exportSymbol('anychart.ConsistencyState.ANNOTATIONS_LABELS', anychart.ConsistencyState.ANNOTATIONS_LABELS);
+  goog.exportSymbol('anychart.ConsistencyState.ANNOTATIONS_LEVELS', anychart.ConsistencyState.ANNOTATIONS_LEVELS);
+  goog.exportSymbol('anychart.ConsistencyState.ANNOTATIONS_CONTROLLER_ANNOTATIONS', anychart.ConsistencyState.ANNOTATIONS_CONTROLLER_ANNOTATIONS);
+  goog.exportSymbol('anychart.ConsistencyState.ANNOTATIONS_CONTROLLER_DRAWING_MODE', anychart.ConsistencyState.ANNOTATIONS_CONTROLLER_DRAWING_MODE);
+  goog.exportSymbol('anychart.ConsistencyState.EVENT_MARKERS_DATA', anychart.ConsistencyState.EVENT_MARKERS_DATA);
+  goog.exportSymbol('anychart.ConsistencyState.ALL', anychart.ConsistencyState.ALL);
+  
   proto = anychart.SignalEvent.prototype;
+    proto['ul_hasSignal'] = proto.hasSignal;//jb
   proto['targetNeedsRedraw'] = proto.targetNeedsRedraw;//doc
   proto['targetBoundsChanged'] = proto.targetBoundsChanged;//doc
   proto['targetDataChanged'] = proto.targetDataChanged;//doc
   proto['targetMetaChanged'] = proto.targetMetaChanged;//doc
   proto['targetNeedsReapplication'] = proto.targetNeedsReapplication;//doc
   proto['targetNeedsRecalculation'] = proto.targetNeedsRecalculation;//doc
+  
   goog.exportSymbol('anychart.PointState.NORMAL', anychart.PointState.NORMAL);
   goog.exportSymbol('anychart.PointState.HOVER', anychart.PointState.HOVER);
   goog.exportSymbol('anychart.PointState.SELECT', anychart.PointState.SELECT);

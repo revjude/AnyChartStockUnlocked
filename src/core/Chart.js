@@ -257,6 +257,41 @@ anychart.core.Chart.prototype.SUPPORTED_CONSISTENCY_STATES =
 
 
 /**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.Chart.prototype.supported = function() {
+  return {
+    "sigs": [
+      "NEEDS_REDRAW",
+      "BOUNDS_CHANGED",
+      "ENABLED_STATE_CHANGED",
+      "Z_INDEX_STATE_CHANGED"
+    ],
+    "cs": [
+      "ENABLED",
+      "CONTAINER",
+      "BOUNDS",
+      "Z_INDEX",
+      "CHART_LABELS",
+      "CHART_BACKGROUND",
+      "CHART_TITLE",
+      "A11Y",
+      "CHART_ANIMATION",
+      "CHART_CREDITS"
+    ]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.Chart.prototype.getThisType = function() {
+  return 'anychart.core.Chart';
+};
+
+/**
  * Chart content bounds.
  * @type {anychart.math.Rect}
  * @protected
@@ -3977,6 +4012,7 @@ anychart.core.Chart.prototype.id = function(opt_value) {
  */
 (function() {
   var proto = anychart.core.Chart.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['a11y'] = proto.a11y;
   proto['animation'] = proto.animation;
   proto['autoRedraw'] = proto.autoRedraw;
@@ -4033,5 +4069,6 @@ anychart.core.Chart.prototype.id = function(opt_value) {
   proto['id'] = proto.id;
   proto['fullScreen'] = proto.fullScreen;
   proto['isFullScreenAvailable'] = proto.isFullScreenAvailable;
+  proto['ul_supported'] = proto.supported;//jb
 })();
 

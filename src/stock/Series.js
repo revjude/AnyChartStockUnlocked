@@ -834,6 +834,7 @@ anychart.stockModule.Series.prototype.disposeInternal = function() {
 //exports
 (function() {
   var proto = anychart.stockModule.Series.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['data'] = proto.data;
   proto['allowPointSettings'] = proto.allowPointSettings;
 })();

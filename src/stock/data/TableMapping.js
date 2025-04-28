@@ -204,6 +204,7 @@ anychart.stockModule.data.TableMapping.prototype.getTable = function() {
 //exports
 (function() {
   var proto = anychart.stockModule.data.TableMapping.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['addField'] = proto.addField;
   proto['createSelectable'] = proto.createSelectable;
 })();

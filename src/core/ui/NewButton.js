@@ -44,6 +44,37 @@ anychart.core.ui.NewButton.prototype.SUPPORTED_CONSISTENCY_STATES =
 anychart.core.ui.NewButton.prototype.SUPPORTED_SIGNALS =
     anychart.core.VisualBase.prototype.SUPPORTED_SIGNALS;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.ui.NewButton.prototype.supported = function() {
+  return {
+    "sigs": [
+      "NEEDS_REDRAW",
+      "BOUNDS_CHANGED",
+      "ENABLED_STATE_CHANGED",
+      "Z_INDEX_STATE_CHANGED"
+    ],
+    "cs": [
+      "ENABLED",
+      "CONTAINER",
+      "BOUNDS",
+      "Z_INDEX",
+      "APPEARANCE",
+      "BUTTON_BACKGROUND",
+      "BUTTON_CURSOR"
+    ]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.ui.NewButton.prototype.getThisType = function() {
+  return 'anychart.core.ui.NewButton';
+};
 
 //endregion
 //region --- Style states
@@ -927,10 +958,13 @@ anychart.core.ui.NewButton.prototype.disposeInternal = function() {
 // exports
 (function() {
   var proto = anychart.core.ui.NewButton.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['normal'] = proto.normal;
   proto['hovered'] = proto.hovered;
   proto['selected'] = proto.selected;
   proto['padding'] = proto.padding;
-  // proto['position'] = proto.position;
+  proto['ul_position'] = proto.position;//jb
+  proto['ul_supported'] = proto.supported;//jb
+  proto['ul_draw'] = proto.draw;//jb
 })();
 //endregion

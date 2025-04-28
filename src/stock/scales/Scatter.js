@@ -220,6 +220,24 @@ anychart.stockModule.scales.Scatter.prototype.SUPPORTED_SIGNALS =
     anychart.Signal.NEED_UPDATE_FULL_RANGE_ITEMS |
     anychart.Signal.DATA_CHANGED; // This signal means that gaps were changed. DVF-3076.
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.stockModule.scales.Scatter.prototype.supported = function() {
+  return {
+    "sigs": ["NEED_UPDATE_TICK_DEPENDENT","NEED_UPDATE_FULL_RANGE_ITEMS","DATA_CHANGED"],
+    "cs": []
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.stockModule.scales.Scatter.prototype.getThisType = function() {
+  return 'anychart.stockModule.scales.Scatter';
+};
 
 //endregion
 /**
@@ -1031,6 +1049,7 @@ anychart.stockModule.scales.IKeyIndexTransformer.prototype.getIndexByKey = funct
 //exports
 (function() {
   var proto = anychart.stockModule.scales.Scatter.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['ticks'] = proto.ticks;
   proto['ticksCount'] = proto.ticksCount;
   proto['getFullMinimum'] = proto.getFullMinimum;
@@ -1041,4 +1060,6 @@ anychart.stockModule.scales.IKeyIndexTransformer.prototype.getIndexByKey = funct
   proto['inverseTransform'] = proto.inverseTransform;
   proto['minimumGap'] = proto.minimumGap;
   proto['maximumGap'] = proto.maximumGap;
+  proto['ul_calculate'] = proto.calculate;//jb
+  proto['ul_supported'] = proto.supported;//jb
 })();

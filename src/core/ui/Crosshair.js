@@ -111,6 +111,37 @@ anychart.core.ui.Crosshair.prototype.SUPPORTED_CONSISTENCY_STATES =
     anychart.core.VisualBase.prototype.SUPPORTED_CONSISTENCY_STATES |
     anychart.ConsistencyState.APPEARANCE;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.ui.Crosshair.prototype.supported = function() {
+  return {
+    "sigs": [
+      "NEEDS_REDRAW",
+      "BOUNDS_CHANGED",
+      "ENABLED_STATE_CHANGED",
+      "Z_INDEX_STATE_CHANGED",
+      "NEEDS_REAPPLICATION"
+    ],
+    "cs": [
+      "ENABLED",
+      "CONTAINER",
+      "BOUNDS",
+      "Z_INDEX",
+      "APPEARANCE"
+    ]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.ui.Crosshair.prototype.getThisType = function() {
+  return 'anychart.core.ui.Crosshair';
+};
+
 
 //endregion
 //region -- Descriptors.
@@ -1199,6 +1230,9 @@ anychart.core.ui.Crosshair.prototype.setupByJSON = function(config, opt_default)
 //exports
 (function() {
   var proto = anychart.core.ui.Crosshair.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['xLabel'] = proto.xLabel;
   proto['yLabel'] = proto.yLabel;
+  proto['ul_supported'] = proto.supported;//jb
+  proto['ul_draw'] = proto.draw;//jb
 })();

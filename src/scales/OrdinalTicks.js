@@ -30,6 +30,24 @@ goog.inherits(anychart.scales.OrdinalTicks, anychart.core.Base);
  */
 anychart.scales.OrdinalTicks.prototype.SUPPORTED_SIGNALS = anychart.Signal.NEEDS_REAPPLICATION;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.scales.OrdinalTicks.prototype.supported = function() {
+  return {
+    "sigs": ["NEEDS_REAPPLICATION"],
+    "cs": []
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.scales.OrdinalTicks.prototype.getThisType = function() {
+  return 'anychart.scales.OrdinalTicks';
+};
 
 /**
  * Fixed interval setting.
@@ -389,9 +407,11 @@ anychart.scales.OrdinalTicks.prototype.setupByJSON = function(config, opt_defaul
 //exports
 (function() {
   var proto = anychart.scales.OrdinalTicks.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['interval'] = proto.interval;//doc|ex
   proto['maxCount'] = proto.maxCount;
   proto['set'] = proto.set;//doc|ex
   proto['get'] = proto.get;//doc|ex
   proto['names'] = proto.names;//doc|ex
+  proto['ul_supported'] = proto.supported;//jb
 })();

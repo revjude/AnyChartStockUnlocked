@@ -155,6 +155,41 @@ anychart.core.ui.LabelsFactory.prototype.SUPPORTED_CONSISTENCY_STATES =
     anychart.ConsistencyState.LABELS_FACTORY_CLIP |
     anychart.ConsistencyState.LABELS_FACTORY_CONNECTOR;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.ui.LabelsFactory.prototype.supported = function() {
+  return {
+    "sigs": [
+      "NEEDS_REDRAW",
+      "BOUNDS_CHANGED",
+      "ENABLED_STATE_CHANGED",
+      "Z_INDEX_STATE_CHANGED",
+      "BOUNDS_CHANGED"
+    ],
+    "cs": [
+      "ENABLED",
+      "CONTAINER",
+      "BOUNDS",
+      "Z_INDEX",
+      "APPEARANCE",
+      "LABELS_FACTORY_BACKGROUND",
+      "LABELS_FACTORY_HANDLERS",
+      "LABELS_FACTORY_CLIP",
+      "LABELS_FACTORY_CONNECTOR"
+    ]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.ui.LabelsFactory.prototype.getThisType = function() {
+  return 'anychart.core.ui.LabelsFactory';
+};
+
 
 /**
  * Enumeration to handle composite event handlers attachment on DOM create.
@@ -1364,6 +1399,41 @@ anychart.core.ui.LabelsFactory.Label.prototype.SUPPORTED_CONSISTENCY_STATES =
     anychart.ConsistencyState.LABELS_FACTORY_CLIP |
     anychart.ConsistencyState.LABELS_FACTORY_CONNECTOR |
     anychart.ConsistencyState.LABELS_FACTORY_CACHE;
+
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.ui.LabelsFactory.Label.prototype.supported = function() {
+  return {
+    "sigs": [
+      "NEEDS_REDRAW",
+      "BOUNDS_CHANGED",
+      "ENABLED_STATE_CHANGED",
+      "Z_INDEX_STATE_CHANGED",
+      "BOUNDS_CHANGED"
+    ],
+    "cs": [
+      "ENABLED",
+      "CONTAINER",
+      "BOUNDS",
+      "Z_INDEX",
+      "APPEARANCE",
+      "LABELS_FACTORY_POSITION",
+      "LABELS_FACTORY_CLIP",
+      "LABELS_FACTORY_CONNECTOR",
+      "LABELS_FACTORY_CACHE"
+    ]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.ui.LabelsFactory.Label.prototype.getThisType = function() {
+  return 'anychart.core.ui.LabelsFactory.Label';
+};
 
 
 //endregion
@@ -2991,6 +3061,7 @@ anychart.standalones.labelsFactory = function() {
 //exports
 (function() {
   var proto = anychart.core.ui.LabelsFactory.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['background'] = proto.background;
   proto['padding'] = proto.padding;
   proto['enabled'] = proto.enabled;
@@ -3004,21 +3075,23 @@ anychart.standalones.labelsFactory = function() {
   // proto['offsetY'] = proto.offsetY;
   // proto['connectorStroke'] = proto.connectorStroke;
   // proto['rotation'] = proto.rotation;
-  // proto['width'] = proto.width;
-  // proto['height'] = proto.height;
+  proto['ul_width'] = proto.width;//jb
+  proto['ul_height'] = proto.height;//jb
   // proto['adjustFontSize'] = proto.adjustFontSize;
   // proto['minFontSize'] = proto.minFontSize;
   // proto['maxFontSize'] = proto.maxFontSize;
+  proto['ul_supported'] = proto.supported;//jb
 
   proto = anychart.core.ui.LabelsFactory.Label.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['getIndex'] = proto.getIndex;
   proto['padding'] = proto.padding;
   proto['background'] = proto.background;
   proto['clear'] = proto.clear;
   proto['measureWithText'] = proto.measureWithText;
   proto['draw'] = proto.draw;
-  // proto['autoAnchor'] = proto.autoAnchor;//don't public
-  // proto['autoRotation'] = proto.autoRotation;//don't public
+  proto['ul_autoAnchor'] = proto.autoAnchor;//don't public//jb
+  proto['ul_autoRotation'] = proto.autoRotation;//don't public//jb
   // proto['rotation'] = proto.rotation;
   // proto['textFormatter'] = proto.textFormatter;
   // proto['positionFormatter'] = proto.positionFormatter;
@@ -3027,15 +3100,17 @@ anychart.standalones.labelsFactory = function() {
   // proto['offsetX'] = proto.offsetX;
   // proto['offsetY'] = proto.offsetY;
   // proto['connectorStroke'] = proto.connectorStroke;
-  // proto['width'] = proto.width;
-  // proto['height'] = proto.height;
-  // proto['enabled'] = proto.enabled;
+  proto['ul_width'] = proto.width;//jb
+  proto['ul_height'] = proto.height;//jb
+  proto['ul_enabled'] = proto.enabled;//jb
   // proto['adjustFontSize'] = proto.adjustFontSize;
   // proto['minFontSize'] = proto.minFontSize;
   // proto['maxFontSize'] = proto.maxFontSize;
+  proto['ul_supported'] = proto.supported;//jb
 
 
   proto = anychart.standalones.LabelsFactory.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   goog.exportSymbol('anychart.standalones.labelsFactory', anychart.standalones.labelsFactory);
   proto['draw'] = proto.draw;
   proto['parentBounds'] = proto.parentBounds;

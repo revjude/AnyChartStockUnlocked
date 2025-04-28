@@ -85,6 +85,24 @@ anychart.core.series.RenderingSettings.prototype.SUPPORTED_SIGNALS =
     anychart.Signal.NEEDS_RECALCULATION |
     anychart.Signal.NEEDS_REAPPLICATION;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.series.RenderingSettings.prototype.supported = function() {
+  return {
+    "sigs": ["NEEDS_REDRAW","NEEDS_RECALCULATION","NEEDS_REAPPLICATION"],
+    "cs": []
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.series.RenderingSettings.prototype.getThisType = function() {
+  return 'anychart.core.series.RenderingSettings';
+};
 
 //endregion
 //region --- Internal methods
@@ -463,20 +481,21 @@ anychart.core.series.RenderingSettings.PointContext.prototype.getStackedZero = f
 //exports
 (function() {
   var proto = anychart.core.series.RenderingSettings.prototype;
-  //proto['start'] = proto.start;
-  //proto['point'] = proto.point;
-  //proto['finish'] = proto.finish;
-  //proto['needsZero'] = proto.needsZero;
-  //proto['needsWidth'] = proto.needsWidth;
-  //proto['yValues'] = proto.yValues;
+    proto['ul_start'] = proto.start;//jb
+  // proto['point'] = proto.point;
+  // proto['finish'] = proto.finish;
+  // proto['needsZero'] = proto.needsZero;
+  // proto['needsWidth'] = proto.needsWidth;
+  // proto['yValues'] = proto.yValues;
   proto['shapes'] = proto.shapes;
+  proto['ul_supported'] = proto.supported;//jb
 
   proto = anychart.core.series.RenderingSettings.Context.prototype;
-  proto['getShapesGroup'] = proto.getShapesGroup;
+    proto['getShapesGroup'] = proto.getShapesGroup;
   proto['getStat'] = proto.getStat;
 
   proto = anychart.core.series.RenderingSettings.PointContext.prototype;
-  proto['getDataValue'] = proto.getDataValue;
+    proto['getDataValue'] = proto.getDataValue;
   proto['getStackedValue'] = proto.getStackedValue;
   proto['getStackedZero'] = proto.getStackedZero;
 })();

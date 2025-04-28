@@ -32,6 +32,25 @@ goog.inherits(anychart.palettes.Markers, anychart.core.Base);
  */
 anychart.palettes.Markers.prototype.SUPPORTED_SIGNALS = anychart.Signal.NEEDS_REAPPLICATION;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.palettes.Markers.prototype.supported = function() {
+  return {
+    "sigs": ["NEEDS_REAPPLICATION"],
+    "cs": []
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.palettes.Markers.prototype.getThisType = function() {
+  return 'anychart.palettes.Markers';
+};
+
 
 /**
  * Setter for the marker at index if the opt_marker set, getter otherwise.
@@ -163,7 +182,9 @@ anychart.palettes.markers = function(opt_value, var_args) {
 //exports
 (function() {
   var proto = anychart.palettes.Markers.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   goog.exportSymbol('anychart.palettes.markers', anychart.palettes.markers);
   proto['itemAt'] = proto.itemAt;
   proto['items'] = proto.items;
+  proto['ul_supported'] = proto.supported;//jb
 })();

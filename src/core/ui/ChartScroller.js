@@ -58,6 +58,7 @@ anychart.core.ui.ChartScroller.prototype.setupByJSON = function(config, opt_defa
 //exports
 (function() {
   var proto = anychart.core.ui.ChartScroller.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   // auto generated
   // proto['position'] = proto.position;
 })();

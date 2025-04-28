@@ -137,6 +137,24 @@ anychart.core.utils.Error.prototype.SUPPORTED_SIGNALS =
 anychart.core.utils.Error.prototype.SUPPORTED_CONSISTENCY_STATES =
     anychart.ConsistencyState.APPEARANCE;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.utils.Error.prototype.supported = function() {
+  return {
+    "sigs": ["NEEDS_RECALCULATION"],
+    "cs": ["APPEARANCE"]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.utils.Error.prototype.getThisType = function() {
+  return 'anychart.core.utils.Error';
+};
 
 /**
  * Sets error mode.
@@ -780,6 +798,7 @@ anychart.core.utils.ISeriesWithError.prototype.yScale = function(opt_value) {};
 //exports
 (function() {
   var proto = anychart.core.utils.Error.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['mode'] = proto.mode;
   proto['xError'] = proto.xError;
   proto['xUpperError'] = proto.xUpperError;
@@ -791,4 +810,6 @@ anychart.core.utils.ISeriesWithError.prototype.yScale = function(opt_value) {};
   proto['valueErrorWidth'] = proto.valueErrorWidth;
   proto['xErrorStroke'] = proto.xErrorStroke;
   proto['valueErrorStroke'] = proto.valueErrorStroke;
+  proto['ul_supported'] = proto.supported;//jb
+  proto['ul_draw'] = proto.draw;//jb
 })();

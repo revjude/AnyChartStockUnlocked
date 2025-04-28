@@ -54,6 +54,25 @@ goog.inherits(anychart.core.ui.Center, anychart.core.Base);
 anychart.core.ui.Center.prototype.SUPPORTED_SIGNALS =
     anychart.Signal.NEEDS_REDRAW | anychart.Signal.BOUNDS_CHANGED;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.ui.Center.prototype.supported = function() {
+  return {
+    "sigs": ["NEEDS_REDRAW","BOUNDS_CHANGED"],
+    "cs": []
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.ui.Center.prototype.getThisType = function() {
+  return 'anychart.core.ui.Center';
+};
+
 
 //endregion
 //region --- IObjectWithSettings overrides
@@ -268,11 +287,13 @@ anychart.core.ui.Center.prototype.disposeInternal = function() {
 //exports
 (function() {
   var proto = anychart.core.ui.Center.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   // proto['stroke'] = proto.stroke;
-  // proto['fill'] = proto.fill;
+  proto['ul_fill'] = proto.fill;//jb
 
   proto['content'] = proto.content;
   proto['getPoint'] = proto.getPoint;
   proto['getBounds'] = proto.getBounds;
+  proto['ul_supported'] = proto.supported;//jb
 })();
 //endregion

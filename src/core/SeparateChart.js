@@ -46,6 +46,41 @@ anychart.core.SeparateChart.prototype.SUPPORTED_CONSISTENCY_STATES =
     anychart.core.Chart.prototype.SUPPORTED_CONSISTENCY_STATES |
     anychart.ConsistencyState.CHART_LEGEND;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.SeparateChart.prototype.supported = function() {
+  return {
+    "sigs": [
+      "NEEDS_REDRAW",
+      "BOUNDS_CHANGED",
+      "ENABLED_STATE_CHANGED",
+      "Z_INDEX_STATE_CHANGED"
+    ],
+    "cs": [
+      "ENABLED",
+      "CONTAINER",
+      "BOUNDS",
+      "Z_INDEX",
+      "CHART_LABELS",
+      "CHART_BACKGROUND",
+      "CHART_TITLE",
+      "A11Y",
+      "CHART_ANIMATION",
+      "CHART_CREDITS",
+      "CHART_LEGEND"
+    ]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.SeparateChart.prototype.getThisType = function() {
+  return 'anychart.core.SeparateChart';
+};
 
 /**
  * Sets chart type. Needed for proper serialization.
@@ -295,7 +330,9 @@ anychart.core.SeparateChart.prototype.disposeInternal = function() {
 //exports
 (function() {
   var proto = anychart.core.SeparateChart.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['legend'] = proto.legend;//doc|ex
   proto['interactivity'] = proto.interactivity;
   proto['noData'] = proto.noData;
+  proto['ul_supported'] = proto.supported;//jb
 })();

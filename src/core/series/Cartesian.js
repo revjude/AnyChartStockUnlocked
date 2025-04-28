@@ -66,6 +66,49 @@ anychart.core.series.Cartesian.prototype.SUPPORTED_CONSISTENCY_STATES = anychart
  */
 anychart.core.series.Cartesian.prototype.SUPPORTED_SIGNALS = anychart.core.series.Base.prototype.SUPPORTED_SIGNALS;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.series.Cartesian.prototype.supported = function() {
+  return {
+    "sigs": [
+      "NEEDS_REDRAW",
+      "BOUNDS_CHANGED",
+      "ENABLED_STATE_CHANGED",
+      "Z_INDEX_STATE_CHANGED",
+      "DATA_CHANGED",
+      "NEEDS_RECALCULATION",
+      "NEED_UPDATE_LEGEND",
+      "NEEDS_UPDATE_A11Y"
+    ],
+    "cs": [
+      "ENABLED",
+      "CONTAINER",
+      "BOUNDS",
+      "Z_INDEX",
+      "SERIES_DATA",
+      "SERIES_LABELS",
+      "SERIES_MARKERS",
+      "SERIES_OUTLIERS",
+      "SERIES_ERROR",
+      "SERIES_COLOR",
+      "SERIES_CLIP",
+      "SERIES_POINTS",
+      "SERIES_SHAPE_MANAGER",
+      "A11Y",
+      "SERIES_COLOR_SCALE"
+    ]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.series.Cartesian.prototype.getThisType = function() {
+  return 'anychart.core.series.Cartesian';
+};
 
 //endregion
 //region --- Typedefs
@@ -1977,6 +2020,7 @@ anychart.core.series.Cartesian.prototype.disposeInternal = function() {
 //exports
 (function() {
   var proto = anychart.core.series.Cartesian.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['data'] = proto.data;
   proto['xScale'] = proto.xScale;
 
@@ -1992,5 +2036,7 @@ anychart.core.series.Cartesian.prototype.disposeInternal = function() {
   proto['keepOnlyPoints'] = proto.keepOnlyPoints;
   proto['includeAllPoints'] = proto.includeAllPoints;
   proto['getExcludedPoints'] = proto.getExcludedPoints;
+  proto['ul_supported'] = proto.supported;//jb
+  proto['ul_draw'] = proto.draw;//jb
 })();
 //endregion

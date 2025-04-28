@@ -243,6 +243,39 @@ anychart.core.ui.Scroller.prototype.SUPPORTED_CONSISTENCY_STATES =
     anychart.ConsistencyState.SCROLLER_AUTO_HIDE |
     anychart.ConsistencyState.SCROLLER_THUMBS_SHAPE;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.ui.Scroller.prototype.supported = function() {
+  return {
+    "sigs": [
+      "NEEDS_REDRAW",
+      "BOUNDS_CHANGED",
+      "ENABLED_STATE_CHANGED",
+      "Z_INDEX_STATE_CHANGED"
+    ],
+    "cs": [
+      "ENABLED",
+      "CONTAINER",
+      "BOUNDS",
+      "Z_INDEX",
+      "APPEARANCE",
+      "SCROLLER_ORIENTATION",
+      "SCROLLER_AUTO_HIDE",
+      "SCROLLER_THUMBS_SHAPE"
+    ]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.ui.Scroller.prototype.getThisType = function() {
+  return 'anychart.core.ui.Scroller';
+};
+
 
 /**
  * Scroller min height.
@@ -1690,27 +1723,31 @@ anychart.standalones.scroller = function() {
 //exports
 (function() {
   var proto = anychart.core.ui.Scroller.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['thumbs'] = proto.thumbs;
   // auto generated
-  // proto['height'] = proto.height;
-  // proto['minHeight'] = proto.minHeight;
-  // proto['maxHeight'] = proto.maxHeight;
-  // proto['orientation'] = proto.orientation;
-  // proto['autoHide'] = proto.autoHide;
-  // proto['fill'] = proto.fill;
+  proto['ul_height'] = proto.height;//jb
+  // proto['ul_minHeight'] = proto.minHeight;
+  // proto['ul_maxHeight'] = proto.maxHeight;
+  // proto['ul_orientation'] = proto.orientation;
+  // proto['ul_autoHide'] = proto.autoHide;
+  proto['ul_fill'] = proto.fill;//jb
   // proto['selectedFill'] = proto.selectedFill;
   // proto['outlineStroke'] = proto.outlineStroke;
   // proto['allowRangeChange'] = proto.allowRangeChange;
   // proto['inverted'] = proto.inverted;
+  proto['ul_supported'] = proto.supported;//jb
 
   proto = anychart.core.ui.Scroller.Thumbs.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['normal'] = proto.normal;
   proto['hovered'] = proto.hovered;
   // auto generated
-  // proto['fill'] = proto.fill;
+  proto['ul_fill'] = proto.fill;//jb
   // proto['stroke'] = proto.stroke;
 
   proto = anychart.standalones.Scroller.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   goog.exportSymbol('anychart.standalones.scroller', anychart.standalones.scroller);
   proto['setRange'] = proto.setRange;
   proto['startRatio'] = proto.startRatio;
@@ -1720,4 +1757,5 @@ anychart.standalones.scroller = function() {
   proto['container'] = proto.container;
   proto['padding'] = proto.padding;
   proto['draw'] = proto.draw;
+  proto['ul_supported'] = proto.supported;//jb
 })();

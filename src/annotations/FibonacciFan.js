@@ -362,5 +362,6 @@ anychart.annotationsModule.FibonacciFan.prototype.disposeInternal = function() {
 //export
 (function() {
   var proto = anychart.annotationsModule.FibonacciFan.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['timeLevels'] = proto.timeLevels;
 })();

@@ -207,6 +207,43 @@ anychart.core.ui.Legend.prototype.SUPPORTED_CONSISTENCY_STATES =
     anychart.ConsistencyState.LEGEND_RECREATE_ITEMS |
     anychart.ConsistencyState.LEGEND_DRAG;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.ui.Legend.prototype.supported = function() {
+  return {
+    "sigs": [
+      "NEEDS_REDRAW",
+      "BOUNDS_CHANGED",
+      "ENABLED_STATE_CHANGED",
+      "Z_INDEX_STATE_CHANGED",
+      "BOUNDS_CHANGED"
+    ],
+    "cs": [
+      "ENABLED",
+      "CONTAINER",
+      "BOUNDS",
+      "Z_INDEX",
+      "APPEARANCE",
+      "LEGEND_BACKGROUND",
+      "LEGEND_TITLE",
+      "LEGEND_SEPARATOR",
+      "LEGEND_PAGINATOR",
+      "LEGEND_RECREATE_ITEMS",
+      "LEGEND_DRAG"
+    ]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.ui.Legend.prototype.getThisType = function() {
+  return 'anychart.core.ui.Legend';
+};
+
 
 /**
  * Type definition for legend item provider.
@@ -2426,6 +2463,7 @@ anychart.standalones.legend = function() {
 //exports
 (function() {
   var proto = anychart.core.ui.Legend.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['items'] = proto.items;
   proto['itemsFormatter'] = proto.itemsFormatter;
   proto['margin'] = proto.margin;
@@ -2442,10 +2480,10 @@ anychart.standalones.legend = function() {
   // proto['inverted'] = proto.inverted;
   // proto['itemsLayout'] = proto.itemsLayout;
   // proto['iconSize'] = proto.iconSize;
-  // proto['width'] = proto.width;
-  // proto['height'] = proto.height;
-  // proto['maxWidth'] = proto.maxWidth;
-  // proto['maxHeight'] = proto.maxHeight;
+  proto['ul_width'] = proto.width;//jb
+  proto['ul_height'] = proto.height;//jb
+  // proto['ul_maxWidth'] = proto.maxWidth;
+  proto['ul_maxHeight'] = proto.maxHeight;//jb
   // proto['align'] = proto.align;
   // proto['drag'] = proto.drag;
   // proto['itemsFormat'] = proto.itemsFormat;
@@ -2456,8 +2494,10 @@ anychart.standalones.legend = function() {
   // proto['iconTextSpacing'] = proto.iconTextSpacing;
   // proto['position'] = proto.position;
   // proto['positionMode'] = proto.positionMode;
+  proto['ul_supported'] = proto.supported;//jb
 
   proto = anychart.standalones.Legend.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   goog.exportSymbol('anychart.standalones.legend', anychart.standalones.legend);
   proto['draw'] = proto.draw;
   proto['parentBounds'] = proto.parentBounds;

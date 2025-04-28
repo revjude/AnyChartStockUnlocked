@@ -45,6 +45,24 @@ goog.inherits(anychart.core.utils.Bounds, anychart.core.Base);
  */
 anychart.core.utils.Bounds.prototype.SUPPORTED_SIGNALS = anychart.Signal.NEEDS_REAPPLICATION;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.utils.Bounds.prototype.supported = function() {
+  return {
+    "sigs": ["NEEDS_REAPPLICATION"],
+    "cs": []
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.utils.Bounds.prototype.getThisType = function() {
+  return 'anychart.core.utils.Bounds';
+};
 
 /**
  * Auto-calculated value for top. If set - used as a default for top.
@@ -669,6 +687,7 @@ anychart.core.utils.Bounds.prototype.setupSpecial = function(isDefault, var_args
 //exports
 (function() {
   var proto = anychart.core.utils.Bounds.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['top'] = proto.top;
   proto['right'] = proto.right;
   proto['bottom'] = proto.bottom;
@@ -681,4 +700,5 @@ anychart.core.utils.Bounds.prototype.setupSpecial = function(isDefault, var_args
   proto['maxHeight'] = proto.maxHeight;
   proto['set'] = proto.set;
   proto['toRect'] = proto.toRect;
+  proto['ul_supported'] = proto.supported;//jb
 })();

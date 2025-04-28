@@ -64,6 +64,24 @@ anychart.core.settings.populate(anychart.core.utils.Interactivity, anychart.core
  */
 anychart.core.utils.Interactivity.prototype.SUPPORTED_SIGNALS = anychart.Signal.NEEDS_REAPPLICATION;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.utils.Interactivity.prototype.supported = function() {
+  return {
+    "sigs": ["NEEDS_REAPPLICATION"],
+    "cs": []
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.utils.Interactivity.prototype.getThisType = function() {
+  return 'anychart.core.utils.Interactivity';
+};
 
 /**
  * @inheritDoc
@@ -87,6 +105,8 @@ anychart.core.utils.Interactivity.prototype.serialize = function() {
 //exports
 (function() {
   // auto generated
+  var proto = anychart.core.utils.Interactivity.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   // proto['spotRadius'] = proto.spotRadius;
   // proto['multiSelectOnClick'] = proto.multiSelectOnClick;
   // proto['unselectOnClickOutOfPoint'] = proto.unselectOnClickOutOfPoint;
@@ -94,4 +114,5 @@ anychart.core.utils.Interactivity.prototype.serialize = function() {
   // proto['selectionMode'] = proto.selectionMode;
   // proto['zoomOnMouseWheel'] = proto.zoomOnMouseWheel;
   // proto['scrollOnMouseWheel'] = proto.scrollOnMouseWheel;
+  proto['ul_supported'] = proto.supported;//jb
 })();

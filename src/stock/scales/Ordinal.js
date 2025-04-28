@@ -61,6 +61,7 @@ anychart.stockModule.scales.Ordinal.prototype.ensureTicksIteratorCreated = funct
 //exports
 (function() {
   var proto = anychart.stockModule.scales.Ordinal.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['transform'] = proto.transform;
   proto['inverseTransform'] = proto.inverseTransform;
 })();

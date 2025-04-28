@@ -166,6 +166,24 @@ anychart.stockModule.Controller.prototype.SUPPORTED_CONSISTENCY_STATES = anychar
  */
 anychart.stockModule.Controller.prototype.SUPPORTED_SIGNALS = anychart.Signal.DATA_CHANGED;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.stockModule.Controller.prototype.supported = function() {
+  return {
+    "sigs": ["DATA_CHANGED"],
+    "cs": ["STOCK_DATA"]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.stockModule.Controller.prototype.getThisType = function() {
+  return 'anychart.stockModule.Controller';
+};
 
 /**
  * Registers passed anychart.stockModule.data.TableSelectable as a new source.
@@ -894,3 +912,9 @@ anychart.stockModule.Controller.prototype.getGlobalPointsCountForCurrentGrouping
 anychart.stockModule.controller = function() {
   return new anychart.stockModule.Controller();
 };
+
+(function() {
+  var proto = anychart.stockModule.Controller.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
+  proto['ul_supported'] = proto.supported;//jb
+})();

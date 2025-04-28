@@ -71,6 +71,24 @@ anychart.palettes.RangeColors.prototype.SUPPORTED_SIGNALS = anychart.Signal.NEED
  */
 anychart.palettes.RangeColors.prototype.SUPPORTED_CONSISTENCY_STATES = anychart.ConsistencyState.APPEARANCE;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.palettes.RangeColors.prototype.supported = function() {
+  return {
+    "sigs": ["NEEDS_REAPPLICATION"],
+    "cs": ["APPEARANCE"]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.palettes.RangeColors.prototype.getThisType = function() {
+  return 'anychart.palettes.RangeColors';
+};
 
 /**
  * Color palette.
@@ -376,8 +394,10 @@ anychart.palettes.rangeColors = function(opt_value, var_args) {
 //exports
 (function() {
   var proto = anychart.palettes.RangeColors.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   goog.exportSymbol('anychart.palettes.rangeColors', anychart.palettes.rangeColors);
   proto['itemAt'] = proto.itemAt;
   proto['items'] = proto.items;
   proto['count'] = proto.count;
+  proto['ul_supported'] = proto.supported;//jb
 })();

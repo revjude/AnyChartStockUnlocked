@@ -287,6 +287,41 @@ anychart.core.ui.Tooltip.prototype.SUPPORTED_SIGNALS =
     anychart.Signal.ENABLED_STATE_CHANGED |
     anychart.Signal.NEEDS_UPDATE_TOOLTIP; //This signal literally means that HTML-tooltip must be used.
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.ui.Tooltip.prototype.supported = function() {
+  return {
+    "sigs": [
+      "NEEDS_REDRAW",
+      "BOUNDS_CHANGED",
+      "ENABLED_STATE_CHANGED",
+      "Z_INDEX_STATE_CHANGED",
+      "NEEDS_UPDATE_TOOLTIP"
+    ],
+    "cs": [
+      "ENABLED",
+      "CONTAINER",
+      "BOUNDS",
+      "Z_INDEX",
+      "TOOLTIP_POSITION",
+      "TOOLTIP_TITLE",
+      "TOOLTIP_SEPARATOR",
+      "TOOLTIP_CONTENT",
+      "TOOLTIP_BACKGROUND",
+      "TOOLTIP_MODE"
+    ]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.ui.Tooltip.prototype.getThisType = function() {
+  return 'anychart.core.ui.Tooltip';
+};
 
 /**
  * Capabilities.
@@ -2429,16 +2464,19 @@ anychart.core.ui.Tooltip.prototype.disposeInternal = function() {
 //exports
 (function() {
   var proto = anychart.core.ui.Tooltip.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['title'] = proto.title;
   proto['separator'] = proto.separator;
   proto['background'] = proto.background;
   proto['padding'] = proto.padding;
   proto['hide'] = proto.hide;
   proto['textSettings'] = proto.textSettings;
+  proto['ul_supported'] = proto.supported;//jb
+  proto['ul_draw'] = proto.draw;//jb
   // auto generated
   // proto['useHtml'] = proto.useHtml;
-  // proto['width'] = proto.width;
-  // proto['height'] = proto.height;
+  proto['ul_width'] = proto.width;//jb
+  proto['ul_height'] = proto.height;//jb
   // proto['titleFormat'] = proto.titleFormat;
   // proto['format'] = proto.format;
   // proto['unionFormat'] = proto.unionFormat;

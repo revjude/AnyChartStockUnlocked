@@ -56,6 +56,33 @@ anychart.core.utils.Quarter.prototype.SUPPORTED_CONSISTENCY_STATES =
     anychart.ConsistencyState.QUARTER_TITLE |
     anychart.ConsistencyState.QUARTER_LABELS;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.utils.Quarter.prototype.supported = function() {
+  return {
+    "sigs": [],
+    "cs": [
+      "ENABLED",
+      "CONTAINER",
+      "BOUNDS",
+      "Z_INDEX",
+      "APPEARANCE",
+      "BACKGROUND_POINTER_EVENTS",
+      "QUARTER_TITLE",
+      "QUARTER_LABELS"
+    ]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.utils.Quarter.prototype.getThisType = function() {
+  return 'anychart.core.utils.Quarter';
+};
 
 /**
  * Title zIndex.
@@ -343,9 +370,12 @@ anychart.core.utils.Quarter.prototype.disposeInternal = function() {
 //region --- exports
 (function() {
   var proto = anychart.core.utils.Quarter.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['title'] = proto.title;
   proto['margin'] = proto.margin;
   proto['padding'] = proto.padding;
   proto['label'] = proto.label;
+  proto['ul_supported'] = proto.supported;//jb
+  proto['ul_draw'] = proto.draw;//jb
 })();
 //endregion

@@ -463,6 +463,7 @@ anychart.core.utils.LegendItemSettings.prototype.setupByJSON = function(config, 
 //exports
 (function() {
   var proto = anychart.core.utils.LegendItemSettings.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['iconTextSpacing'] = proto.iconTextSpacing;
   proto['iconEnabled'] = proto.iconEnabled;
   proto['iconType'] = proto.iconType;

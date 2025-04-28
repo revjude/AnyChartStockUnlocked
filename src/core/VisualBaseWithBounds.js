@@ -30,6 +30,35 @@ anychart.core.VisualBaseWithBounds.prototype.SUPPORTED_SIGNALS = anychart.core.V
 anychart.core.VisualBaseWithBounds.prototype.SUPPORTED_CONSISTENCY_STATES =
     anychart.core.VisualBase.prototype.SUPPORTED_CONSISTENCY_STATES;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.VisualBaseWithBounds.prototype.supported = function() {
+  return {
+    "sigs": [
+      "NEEDS_REDRAW",
+      "BOUNDS_CHANGED",
+      "ENABLED_STATE_CHANGED",
+      "Z_INDEX_STATE_CHANGED"
+    ],
+    "cs": [
+      "ENABLED",
+      "CONTAINER",
+      "BOUNDS",
+      "Z_INDEX"
+    ]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.VisualBaseWithBounds.prototype.getThisType = function() {
+  return 'anychart.core.VisualBaseWithBounds';
+};
+
 
 //endregion
 //region --- Utility
@@ -235,6 +264,7 @@ anychart.core.VisualBaseWithBounds.prototype.disposeInternal = function() {
 //exports
 (function() {
   var proto = anychart.core.VisualBaseWithBounds.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['bounds'] = proto.bounds;//doc|ex
   proto['top'] = proto.top;//doc|ex
   proto['right'] = proto.right;//doc|ex
@@ -247,4 +277,5 @@ anychart.core.VisualBaseWithBounds.prototype.disposeInternal = function() {
   proto['maxWidth'] = proto.maxWidth;
   proto['maxHeight'] = proto.maxHeight;
   proto['getPixelBounds'] = proto.getPixelBounds;
+  proto['ul_supported'] = proto.supported;//jb
 })();

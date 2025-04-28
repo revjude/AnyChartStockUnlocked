@@ -259,6 +259,37 @@ anychart.stockModule.eventMarkers.Group.prototype.SUPPORTED_SIGNALS =
     anychart.core.VisualBase.prototype.SUPPORTED_SIGNALS |
     anychart.Signal.NEEDS_REDRAW;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.stockModule.eventMarkers.Group.prototype.supported = function() {
+  return {
+    "sigs": [
+      "NEEDS_REDRAW",
+      "BOUNDS_CHANGED",
+      "ENABLED_STATE_CHANGED",
+      "Z_INDEX_STATE_CHANGED",
+      "NEEDS_REDRAW"
+    ],
+    "cs": [
+      "ENABLED",
+      "CONTAINER",
+      "BOUNDS",
+      "Z_INDEX",
+      "APPEARANCE",
+      "EVENT_MARKERS_DATA"
+    ]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.stockModule.eventMarkers.Group.prototype.getThisType = function() {
+  return 'anychart.stockModule.eventMarkers.Group';
+};
 
 /**
  * Connector invalidation signal.
@@ -1206,10 +1237,13 @@ anychart.stockModule.eventMarkers.Group.prototype.disposeInternal = function() {
 //exports
 (function() {
   var proto = anychart.stockModule.eventMarkers.Group.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['data'] = proto.data;
   proto['tooltip'] = proto.tooltip;
   proto['getMarker'] = proto.getMarker;
   proto['normal'] = proto.normal;
   proto['hovered'] = proto.hovered;
   proto['selected'] = proto.selected;
+  proto['ul_supported'] = proto.supported;//jb
+  proto['ul_draw'] = proto.draw;//jb
 })();

@@ -252,6 +252,42 @@ anychart.annotationsModule.Base.prototype.SUPPORTED_SIGNALS =
 
 
 /**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.annotationsModule.Base.prototype.supported = function() {
+  return {
+    "sigs": [
+      "NEEDS_REDRAW",
+      "BOUNDS_CHANGED",
+      "ENABLED_STATE_CHANGED",
+      "Z_INDEX_STATE_CHANGED"
+    ],
+    "cs": [
+      "ENABLED",
+      "CONTAINER",
+      "BOUNDS",
+      "Z_INDEX",
+      "APPEARANCE",
+      "ANNOTATIONS_ANCHORS",
+      "ANNOTATIONS_LAST_POINT",
+      "ANNOTATIONS_SHAPES",
+      "ANNOTATIONS_INTERACTIVITY",
+      "ANNOTATIONS_MARKERS"
+    ]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.annotationsModule.Base.prototype.getThisType = function() {
+  return 'anychart.annotationsModule.Base';
+};
+
+
+/**
  * Anchors support state.
  * @type {anychart.annotationsModule.AnchorSupport}
  */
@@ -1348,4 +1384,7 @@ anychart.annotationsModule.Base.prototype.disposeInternal = function() {
   proto['normal'] = proto.normal;
   proto['hovered'] = proto.hovered;
   proto['selected'] = proto.selected;
+  proto['ul_supported'] = proto.supported;//jb
+  proto['ul_draw'] = proto.draw;//jb
+  proto['ul_type'] = proto.getThisType;//jb
 })();

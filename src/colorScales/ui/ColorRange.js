@@ -66,6 +66,37 @@ anychart.colorScalesModule.ui.ColorRange.prototype.SUPPORTED_CONSISTENCY_STATES 
     anychart.ConsistencyState.COLOR_RANGE_MARKER;
 
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.colorScalesModule.ui.ColorRange.prototype.supported = function() {
+  return {
+    "sigs": [],
+    "cs": [
+      "ENABLED",
+      "CONTAINER",
+      "BOUNDS",
+      "Z_INDEX",
+      "APPEARANCE",
+      "AXIS_TITLE",
+      "AXIS_LABELS",
+      "AXIS_TICKS",
+      "AXIS_OVERLAP",
+      "COLOR_RANGE_MARKER"
+    ]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.colorScalesModule.ui.ColorRange.prototype.getThisType = function() {
+  return 'anychart.colorScalesModule.ui.ColorRange';
+};
+
+
 /** @inheritDoc */
 anychart.colorScalesModule.ui.ColorRange.prototype.createTicks = function() {
   return new anychart.colorScalesModule.ui.ColorRangeTicks();
@@ -1086,6 +1117,7 @@ anychart.standalones.colorRange = function() {
 //exports
 (function() {
   var proto = anychart.colorScalesModule.ui.ColorRange.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['marker'] = proto.marker;
   // auto generated
   //proto['colorLineSize'] = proto.colorLineSize;
@@ -1093,12 +1125,14 @@ anychart.standalones.colorRange = function() {
   //proto['align'] = proto.align;
 
   proto = anychart.standalones.ColorRange.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   goog.exportSymbol('anychart.standalones.colorRange', anychart.standalones.colorRange);
   proto['padding'] = proto.padding;
   proto['draw'] = proto.draw;
   proto['parentBounds'] = proto.parentBounds;
   proto['container'] = proto.container;
   // auto generated
-  //proto['colorLineSize'] = proto.colorLineSize;
+  // proto['colorLineSize'] = proto.colorLineSize;
+  proto['ul_supported'] = proto.supported;//jb
 })();
 

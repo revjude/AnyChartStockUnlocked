@@ -24,6 +24,25 @@ goog.inherits(anychart.core.utils.Animation, anychart.core.Base);
  */
 anychart.core.utils.Animation.prototype.SUPPORTED_SIGNALS = anychart.Signal.NEEDS_REAPPLICATION;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.utils.Animation.prototype.supported = function() {
+  return {
+    "sigs": ["NEEDS_REAPPLICATION"],
+    "cs": []
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.utils.Animation.prototype.getThisType = function() {
+  return 'anychart.core.utils.Animation';
+};
+
 
 /**
  * @type {!Object<string, anychart.core.settings.PropertyDescriptor>}
@@ -97,7 +116,9 @@ anychart.core.utils.Animation.prototype.setupSpecial = function(isDefault, var_a
 //exports
 (function() {
   var proto = anychart.core.utils.Animation.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   // auto generated
-  //proto['enabled'] = proto.enabled;
-  //proto['duration'] = proto.duration;
+  proto['ul_enabled'] = proto.enabled;//jb
+  proto['ul_duration'] = proto.duration;//jb
+  proto['ul_supported'] = proto.supported;//jb
 })();

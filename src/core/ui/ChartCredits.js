@@ -32,6 +32,25 @@ anychart.core.ui.ChartCredits.prototype.SUPPORTED_CONSISTENCY_STATES = anychart.
 /** @inheritDoc */
 anychart.core.ui.ChartCredits.prototype.SUPPORTED_SIGNALS = anychart.Signal.NEEDS_REAPPLICATION;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.ui.ChartCredits.prototype.supported = function() {
+  return {
+    "sigs": ["NEEDS_REAPPLICATION"],
+    "cs": ["APPEARANCE"]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.ui.ChartCredits.prototype.getThisType = function() {
+  return 'anychart.core.ui.ChartCredits';
+};
+
 
 /**
  * @type {string}
@@ -259,10 +278,12 @@ anychart.core.ui.ChartCredits.prototype.setupByJSON = function(config) {
 //exports
 (function() {
   var proto = anychart.core.ui.ChartCredits.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['text'] = proto.text;//doc|ex
   proto['url'] = proto.url;//doc|ex
   proto['alt'] = proto.alt;//doc|ex
   proto['imgAlt'] = proto.imgAlt;
   proto['logoSrc'] = proto.logoSrc;//doc|ex
   proto['enabled'] = proto.enabled;//doc|ex
+  proto['ul_supported'] = proto.supported;//jb
 })();

@@ -38,6 +38,24 @@ goog.inherits(anychart.scales.ScatterTicks, anychart.core.Base);
  */
 anychart.scales.ScatterTicks.prototype.SUPPORTED_SIGNALS = anychart.Signal.NEEDS_REAPPLICATION;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.scales.ScatterTicks.prototype.supported = function() {
+  return {
+    "sigs": ["NEEDS_REAPPLICATION"],
+    "cs": []
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.scales.ScatterTicks.prototype.getThisType = function() {
+  return 'anychart.scales.ScatterTicks';
+};
 
 /**
  * Fixed interval setting.
@@ -323,6 +341,8 @@ anychart.scales.ScatterTicks.prototype.mode = function(opt_value) {
  * @return {Array} Array of two values: [newMin, newMax].
  */
 anychart.scales.ScatterTicks.prototype.setupAsMajor = function(min, max, opt_canModifyMin, opt_canModifyMax, opt_logBase, opt_borderLog) {
+  //console.log("ScatterTicks.setupAsMajor(min, max, opt_canModifyMin, opt_canModifyMax, opt_logBase, opt_borderLog)");
+  //console.log(arguments);
   var result;
   if (this.explicit_) {
     this.autoTicks_ = null;
@@ -431,6 +451,8 @@ anychart.scales.ScatterTicks.prototype.setupAsMinor = function(values, opt_logBa
  * @private
  */
 anychart.scales.ScatterTicks.prototype.setupLogarithmic_ = function(min, max, logBase, borderLog, canModifyMin, canModifyMax) {
+  //console.log("setupLogarithmic_ = function(min, max, logBase, borderLog, canModifyMin, canModifyMax)");
+  //console.log(arguments);
   var minLog = anychart.math.log(Math.abs(min), logBase);
   var maxLog = anychart.math.log(Math.abs(max), logBase);
   var minMaxProd = min * max;
@@ -501,6 +523,8 @@ anychart.scales.ScatterTicks.prototype.setupLogarithmic_ = function(min, max, lo
  * @private
  */
 anychart.scales.ScatterTicks.prototype.setupLinear_ = function(min, max, canModifyMin, canModifyMax, opt_allowFractionalTicks, opt_base) {
+  //console.log("ScatterTicks.setupLinear_(min, max, canModifyMin, canModifyMax, opt_allowFractionalTicks, opt_base)");
+  //console.log(arguments);
   opt_base = opt_base || 0;
   var interval = this.interval_;
   var minCount = this.minCount_;
@@ -818,6 +842,7 @@ anychart.scales.ScatterTicks.prototype.setupByJSON = function(config, opt_defaul
 //exports
 (function() {
   var proto = anychart.scales.ScatterTicks.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['interval'] = proto.interval;//doc|ex
   proto['allowFractional'] = proto.allowFractional;
   proto['count'] = proto.count;//doc|ex
@@ -825,4 +850,5 @@ anychart.scales.ScatterTicks.prototype.setupByJSON = function(config, opt_defaul
   proto['set'] = proto.set;//doc|ex
   proto['get'] = proto.get;//doc|ex
   proto['mode'] = proto.mode;//doc|ex
+  proto['ul_supported'] = proto.supported;//jb
 })();

@@ -69,6 +69,25 @@ anychart.core.utils.Space.NormalizedSpace;
  */
 anychart.core.utils.Space.prototype.SUPPORTED_SIGNALS = anychart.Signal.NEEDS_REAPPLICATION;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.utils.Space.prototype.supported = function() {
+  return {
+    "sigs": ["NEEDS_REAPPLICATION"],
+    "cs": []
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.utils.Space.prototype.getThisType = function() {
+  return 'anychart.core.utils.Space';
+};
+
 
 //region -- Space descriptors
 /**
@@ -463,10 +482,12 @@ anychart.core.utils.Space.prototype.setupByJSON = function(config, opt_default) 
 //exports
 (function() {
   var proto = anychart.core.utils.Space.prototype;
-  // proto['top'] = proto.top;
+  proto['ul_type'] = proto.getThisType;//jb
+  proto['ul_top'] = proto.top;//jb
   // proto['right'] = proto.right;
-  // proto['bottom'] = proto.bottom;
-  // proto['left'] = proto.left;
+  proto['ul_bottom'] = proto.bottom;//jb
+  proto['ul_left'] = proto.left;//jb
   proto['set'] = proto.set;
+  proto['ul_supported'] = proto.supported;//jb
 })();
 //endregion

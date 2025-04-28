@@ -66,6 +66,24 @@ anychart.stockModule.eventMarkers.ChartController.prototype.SUPPORTED_CONSISTENC
  */
 anychart.stockModule.eventMarkers.ChartController.prototype.SUPPORTED_SIGNALS = anychart.Signal.NEEDS_REDRAW;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.stockModule.eventMarkers.ChartController.prototype.supported = function() {
+  return {
+    "sigs": ["NEEDS_REDRAW"],
+    "cs": ["EVENT_MARKERS_DATA"]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.stockModule.eventMarkers.ChartController.prototype.getThisType = function() {
+  return 'anychart.stockModule.eventMarkers.ChartController';
+};
 
 /**
  * Connector invalidation signal.
@@ -353,10 +371,12 @@ anychart.stockModule.eventMarkers.ChartController.prototype.disposeInternal = fu
 //exports
 (function() {
   var proto = anychart.stockModule.eventMarkers.ChartController.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['group'] = proto.group;
   proto['data'] = proto.data;
   proto['tooltip'] = proto.tooltip;
   proto['normal'] = proto.normal;
   proto['hovered'] = proto.hovered;
   proto['selected'] = proto.selected;
+  proto['ul_supported'] = proto.supported;//jb
 })();

@@ -202,6 +202,30 @@ anychart.core.ui.LabelsSettings.prototype.SUPPORTED_SIGNALS =
     anychart.Signal.NEEDS_REAPPLICATION | // Settings not related to text itself (like padding).
     anychart.Signal.ENABLED_STATE_CHANGED; // Special state to start collecting suspended signal or to dispatch collected signal.
 
+/**
+* Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.ui.LabelsSettings.prototype.supported = function() {
+  return {
+    "sigs": [
+      0,
+      "NEEDS_REDRAW",
+      "BOUNDS_CHANGED",
+      "NEEDS_REAPPLICATION",
+      "ENABLED_STATE_CHANGED"
+    ],
+    "cs": []
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.ui.LabelsSettings.prototype.getThisType = function() {
+  return 'anychart.core.ui.LabelsSettings';
+};
 
 /**
  * @inheritDoc
@@ -691,8 +715,10 @@ anychart.core.ui.LabelsSettings.prototype.disposeInternal = function() {
  */
 (function() {
   var proto = anychart.core.ui.LabelsSettings.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['padding'] = proto.padding;
   proto['background'] = proto.background;
+  proto['ul_supported'] = proto.supported;//jb
 })();
 
 

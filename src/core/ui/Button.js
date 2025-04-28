@@ -87,6 +87,39 @@ anychart.core.ui.Button.prototype.SUPPORTED_CONSISTENCY_STATES =
     anychart.ConsistencyState.BUTTON_BACKGROUND |
     anychart.ConsistencyState.BUTTON_CURSOR;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.ui.Button.prototype.supported = function() {
+  return {
+    "sigs": [
+      "NEEDS_REDRAW",
+      "BOUNDS_CHANGED",
+      "ENABLED_STATE_CHANGED",
+      "Z_INDEX_STATE_CHANGED",
+      "BOUNDS_CHANGED"
+    ],
+    "cs": [
+      "ENABLED",
+      "CONTAINER",
+      "BOUNDS",
+      "Z_INDEX",
+      "APPEARANCE",
+      "BUTTON_BACKGROUND",
+      "BUTTON_CURSOR"
+    ]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.ui.Button.prototype.getThisType = function() {
+  return 'anychart.core.ui.Button';
+};
+
 
 /**
  * State of a button.
@@ -849,17 +882,22 @@ anychart.core.ui.Button.prototype.disposeInternal = function() {
   anychart.core.ui.Button.base(this, 'disposeInternal');
 };
 
-
-//proto['text'] = proto.text;
-//proto['padding'] = proto.padding;
-//proto['position'] = proto.position;
-//proto['width'] = proto.width;
-//proto['height'] = proto.height;
-//proto['setOnClickListener'] = proto.setOnClickListener;
-//proto['normal'] = proto.normal;
-//proto['hover'] = proto.hover;
-//proto['pushed'] = proto.pushed;
-//proto['checked'] = proto.checked;
-//proto['disabled'] = proto.disabled;
+(function() {
+  var proto = anychart.core.ui.Button.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
+  proto['ul_text'] = proto.text;//jb
+  proto['ul_padding'] = proto.padding;//jb
+  proto['ul_position'] = proto.position;//jb
+  proto['ul_width'] = proto.width;//jb
+  proto['ul_height'] = proto.height;//jb
+  proto['ul_setOnClickListener'] = proto.setOnClickListener;//jb
+  proto['ul_normal'] = proto.normal;//jb
+  proto['ul_hover'] = proto.hover;//jb
+  proto['ul_pushed'] = proto.pushed;//jb
+  proto['ul_checked'] = proto.checked;//jb
+  proto['ul_disabled'] = proto.disabled;//jb
+  proto['ul_supported'] = proto.supported;//jb
+  proto['ul_draw'] = proto.draw;//jb
+})();
 
 //exports

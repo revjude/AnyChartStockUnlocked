@@ -178,6 +178,40 @@ anychart.core.Axis.prototype.SUPPORTED_CONSISTENCY_STATES =
 anychart.core.Axis.prototype.SUPPORTED_SIGNALS = anychart.core.VisualBase.prototype.SUPPORTED_SIGNALS;
 
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.Axis.prototype.supported = function() {
+  return {
+    "sigs": [
+      "NEEDS_REDRAW",
+      "BOUNDS_CHANGED",
+      "ENABLED_STATE_CHANGED",
+      "Z_INDEX_STATE_CHANGED"
+    ],
+    "cs": [
+      "ENABLED",
+      "CONTAINER",
+      "BOUNDS",
+      "Z_INDEX",
+      "APPEARANCE",
+      "AXIS_TITLE",
+      "AXIS_LABELS",
+      "AXIS_TICKS",
+      "AXIS_OVERLAP"
+    ]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.Axis.prototype.getThisType = function() {
+  return 'anychart.core.Axis';
+};
+
 //endregion
 //region --- Properties
 /**
@@ -2522,6 +2556,7 @@ anychart.standalones.axes.linear = function() {
 //exports
 (function() {
   var proto = anychart.core.Axis.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['title'] = proto.title;
   proto['labels'] = proto.labels;
   proto['minorLabels'] = proto.minorLabels;
@@ -2533,7 +2568,11 @@ anychart.standalones.axes.linear = function() {
   proto['padding'] = proto.padding;
   proto['getPixelBounds'] = proto.getPixelBounds;
   proto['valueTarget'] = proto.valueTarget;
+  proto['ul_supported'] = proto.supported;//jb
+  proto['ul_draw'] = proto.draw;//jb
+
   proto = anychart.standalones.axes.Linear.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   goog.exportSymbol('anychart.standalones.axes.linear', anychart.standalones.axes.linear);
   proto['padding'] = proto.padding;
   proto['draw'] = proto.draw;

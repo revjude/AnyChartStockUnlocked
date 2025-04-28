@@ -187,6 +187,37 @@ anychart.core.ui.MarkersFactory.prototype.SUPPORTED_CONSISTENCY_STATES =
     anychart.ConsistencyState.APPEARANCE |
     anychart.ConsistencyState.MARKERS_FACTORY_HANDLERS;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.ui.MarkersFactory.prototype.supported = function() {
+  return {
+    "sigs": [
+      "NEEDS_REDRAW",
+      "BOUNDS_CHANGED",
+      "ENABLED_STATE_CHANGED",
+      "Z_INDEX_STATE_CHANGED"
+    ],
+    "cs": [
+      "ENABLED",
+      "CONTAINER",
+      "BOUNDS",
+      "Z_INDEX",
+      "APPEARANCE",
+      "MARKERS_FACTORY_HANDLERS"
+    ]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.ui.MarkersFactory.prototype.getThisType = function() {
+  return 'anychart.core.ui.MarkersFactory';
+};
+
 
 /**
  * Enumeration to handle composite event handlers attachment on DOM create.
@@ -817,6 +848,36 @@ anychart.core.ui.MarkersFactory.Marker.prototype.SUPPORTED_CONSISTENCY_STATES =
     anychart.core.VisualBase.prototype.SUPPORTED_CONSISTENCY_STATES |
     anychart.ConsistencyState.APPEARANCE;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.ui.MarkersFactory.Marker.prototype.supported = function() {
+  return {
+    "sigs": [
+      "NEEDS_REDRAW",
+      "BOUNDS_CHANGED",
+      "ENABLED_STATE_CHANGED",
+      "Z_INDEX_STATE_CHANGED"
+    ],
+    "cs": [
+      "ENABLED",
+      "CONTAINER",
+      "BOUNDS",
+      "Z_INDEX",
+      "APPEARANCE"
+    ]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.ui.MarkersFactory.Marker.getThisType = function() {
+  return 'anychart.core.ui.MarkersFactory';
+};
+
 
 /**
  * Returns marker DOM element.
@@ -1329,6 +1390,7 @@ anychart.standalones.markersFactory = function() {
 //exports
 (function() {
   var proto = anychart.core.ui.MarkersFactory.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   // auto generated
   // proto['positionFormatter'] = proto.positionFormatter;
   // proto['position'] = proto.position;
@@ -1338,12 +1400,14 @@ anychart.standalones.markersFactory = function() {
   // proto['rotation'] = proto.rotation;
   // proto['type'] = proto.type;
   // proto['size'] = proto.size;
-  // proto['fill'] = proto.fill;
-  // proto['stroke'] = proto.stroke;
+  proto['ul_fill'] = proto.fill;//jb
+  // proto['ul_stroke'] = proto.stroke;
   proto['disablePointerEvents'] = proto.disablePointerEvents;
   proto['enabled'] = proto.enabled;
+  proto['ul_supported'] = proto.supported;//jb
 
   proto = anychart.core.ui.MarkersFactory.Marker.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   // auto generated
   // proto['positionFormatter'] = proto.positionFormatter;
   // proto['position'] = proto.position;
@@ -1351,12 +1415,14 @@ anychart.standalones.markersFactory = function() {
   // proto['offsetX'] = proto.offsetX;
   // proto['offsetY'] = proto.offsetY;
   // proto['rotation'] = proto.rotation;
-  // proto['type'] = proto.type;
+  proto['ul_type'] = proto.type;//jb
   // proto['size'] = proto.size;
-  // proto['fill'] = proto.fill;
+  proto['ul_fill'] = proto.fill;//jb
   // proto['stroke'] = proto.stroke;
+  proto['ul_supported'] = proto.supported;//jb
 
   proto = anychart.standalones.MarkersFactory.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   goog.exportSymbol('anychart.standalones.markersFactory', anychart.standalones.markersFactory);
   proto['draw'] = proto.draw;
   proto['parentBounds'] = proto.parentBounds;
@@ -1366,6 +1432,7 @@ anychart.standalones.markersFactory = function() {
   proto['measure'] = proto.measure;
 
   proto = anychart.standalones.MarkersFactory.Marker.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['enabled'] = proto.enabled;
   proto['draw'] = proto.draw;
   proto['clear'] = proto.clear;

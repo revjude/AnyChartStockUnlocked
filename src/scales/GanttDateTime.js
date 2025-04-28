@@ -223,6 +223,25 @@ anychart.scales.GanttDateTime.prototype.SUPPORTED_SIGNALS =
     anychart.Signal.NEEDS_RECALCULATION | // Any scale changes, except calendar.
     anychart.Signal.NEEDS_REAPPLICATION;  // Calendar-specific signal.
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.scales.GanttDateTime.prototype.supported = function() {
+  return {
+    "sigs": ["NEEDS_RECALCULATION","NEEDS_REAPPLICATION"],
+    "cs": []
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.scales.GanttDateTime.prototype.getThisType = function() {
+  return 'anychart.scales.GanttDateTime';
+};
+
 
 //endregion
 //region -- Type Definitions.
@@ -2104,6 +2123,7 @@ anychart.scales.GanttDateTime.prototype.setupByJSON = function(config, opt_defau
 //exports
 (function() {
   var proto = anychart.scales.GanttDateTime.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['getRange'] = proto.getRange;
   proto['getTotalRange'] = proto.getTotalRange;
   proto['minimum'] = proto.minimum;
@@ -2119,6 +2139,7 @@ anychart.scales.GanttDateTime.prototype.setupByJSON = function(config, opt_defau
   proto['zoomLevels'] = proto.zoomLevels;
   proto['maxTicksCount'] = proto.maxTicksCount;
   proto['calendar'] = proto.calendar;
+  proto['ul_supported'] = proto.supported;//jb
 })();
 
 

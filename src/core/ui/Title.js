@@ -230,6 +230,37 @@ anychart.core.ui.Title.prototype.SUPPORTED_CONSISTENCY_STATES =
     anychart.ConsistencyState.APPEARANCE |
     anychart.ConsistencyState.TITLE_BACKGROUND;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.ui.Title.prototype.supported = function() {
+  return {
+    "sigs": [
+      "NEEDS_REDRAW",
+      "BOUNDS_CHANGED",
+      "ENABLED_STATE_CHANGED",
+      "Z_INDEX_STATE_CHANGED"
+    ],
+    "cs": [
+      "ENABLED",
+      "CONTAINER",
+      "BOUNDS",
+      "Z_INDEX",
+      "APPEARANCE",
+      "TITLE_BACKGROUND"
+    ]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.ui.Title.prototype.getThisType = function() {
+  return 'anychart.core.ui.Title';
+};
+
 
 //endregion
 //region -- Optimized props descriptors
@@ -1225,6 +1256,7 @@ anychart.standalones.title = function() {
 //exports
 (function() {
   var proto = anychart.core.ui.Title.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   // proto['fontSize'] = proto.fontSize;
   // proto['fontFamily'] = proto.fontFamily;
   // proto['fontColor'] = proto.fontColor;
@@ -1245,20 +1277,24 @@ anychart.standalones.title = function() {
   // proto['disablePointerEvents'] = proto.disablePointerEvents;
   // proto['useHtml'] = proto.useHtml;
   proto['textSettings'] = proto.textSettings;
-  // proto['text'] = proto.text;
+  proto['ul_text'] = proto.text;//jb
   proto['background'] = proto.background;
   // proto['rotation'] = proto.rotation;
-  // proto['width'] = proto.width;
-  // proto['height'] = proto.height;
+  proto['ul_width'] = proto.width;//jb
+  proto['ul_height'] = proto.height;//jb
   proto['margin'] = proto.margin;
   proto['padding'] = proto.padding;
   // proto['align'] = proto.align;
   // proto['orientation'] = proto.orientation;
   proto['getRemainingBounds'] = proto.getRemainingBounds;
+  proto['ul_supported'] = proto.supported;//jb
 
   proto = anychart.standalones.Title.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   goog.exportSymbol('anychart.standalones.title', anychart.standalones.title);
   proto['draw'] = proto.draw;
   proto['parentBounds'] = proto.parentBounds;
   proto['container'] = proto.container;
+  proto['ul_supported'] = proto.supported;//jb
+  proto['ul_draw'] = proto.draw;//jb
 })();

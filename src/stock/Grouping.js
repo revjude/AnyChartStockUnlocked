@@ -88,6 +88,24 @@ anychart.stockModule.Grouping.Level;
  */
 anychart.stockModule.Grouping.prototype.SUPPORTED_SIGNALS = anychart.Signal.NEEDS_REAPPLICATION;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.stockModule.Grouping.prototype.supported = function() {
+  return {
+    "sigs": ["NEEDS_REAPPLICATION"],
+    "cs": []
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.stockModule.Grouping.prototype.getThisType = function() {
+  return 'anychart.stockModule.Grouping';
+};
 
 /**
  * If the grouping is enabled.
@@ -458,6 +476,7 @@ anychart.stockModule.Grouping.prototype.setupByJSON = function(config, opt_defau
 //exports
 (function() {
   var proto = anychart.stockModule.Grouping.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['enabled'] = proto.enabled;
   proto['forced'] = proto.forced;
   proto['levels'] = proto.levels;
@@ -466,4 +485,5 @@ anychart.stockModule.Grouping.prototype.setupByJSON = function(config, opt_defau
   proto['minPixPerPoint'] = proto.minPixPerPoint;
   proto['getCurrentDataInterval'] = proto.getCurrentDataInterval;
   proto['isGrouped'] = proto.isGrouped;
+  proto['ul_supported'] = proto.supported;//jb
 })();

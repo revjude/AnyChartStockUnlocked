@@ -170,6 +170,39 @@ anychart.core.axisMarkers.TextBase.prototype.SUPPORTED_SIGNALS =
 anychart.core.axisMarkers.TextBase.prototype.SUPPORTED_CONSISTENCY_STATES =
     anychart.core.ui.LabelBase.prototype.SUPPORTED_CONSISTENCY_STATES;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.axisMarkers.TextBase.prototype.supported = function() {
+  return {
+    "sigs": [
+      "NEEDS_REDRAW",
+      "BOUNDS_CHANGED",
+      "ENABLED_STATE_CHANGED",
+      "Z_INDEX_STATE_CHANGED",
+      "BOUNDS_CHANGED",
+      "NEEDS_RECALCULATION"
+    ],
+    "cs": [
+      "ENABLED",
+      "CONTAINER",
+      "BOUNDS",
+      "Z_INDEX",
+      "APPEARANCE",
+      "LABEL_BACKGROUND"
+    ]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.axisMarkers.TextBase.prototype.getThisType = function() {
+  return 'anychart.core.axisMarkers.TextBase';
+};
+
 
 //endregion
 //region -- Descriptors.
@@ -646,3 +679,8 @@ anychart.core.axisMarkers.TextBase.prototype.disposeInternal = function() {
 
 
 //endregion
+(function() {
+  var proto = anychart.core.axisMarkers.TextBase.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
+  proto['ul_supported'] = proto.supported;//jb
+})();

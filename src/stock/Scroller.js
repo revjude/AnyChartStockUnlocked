@@ -116,6 +116,41 @@ anychart.stockModule.Scroller.prototype.SUPPORTED_CONSISTENCY_STATES =
     anychart.ConsistencyState.STOCK_SCROLLER_SERIES |
     anychart.ConsistencyState.STOCK_SCROLLER_AXIS;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.stockModule.Scroller.prototype.supported = function() {
+  return {
+    "sigs": [
+      "NEEDS_REDRAW",
+      "BOUNDS_CHANGED",
+      "ENABLED_STATE_CHANGED",
+      "Z_INDEX_STATE_CHANGED",
+      "NEEDS_RECALCULATION"
+    ],
+    "cs": [
+      "ENABLED",
+      "CONTAINER",
+      "BOUNDS",
+      "Z_INDEX",
+      "APPEARANCE",
+      "SCROLLER_ORIENTATION",
+      "SCROLLER_AUTO_HIDE",
+      "SCROLLER_THUMBS_SHAPE",
+      "STOCK_SCROLLER_SERIES",
+      "STOCK_SCROLLER_AXIS"
+    ]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.stockModule.Scroller.prototype.getThisType = function() {
+  return 'anychart.stockModule.Scroller';
+};
 
 /**
  * Series z-index in chart root layer.
@@ -1736,6 +1771,7 @@ anychart.stockModule.Scroller.prototype.setupElements = function(opt_default, op
 //exports
 (function() {
   var proto = anychart.stockModule.Scroller.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['area'] = proto.area;
   proto['candlestick'] = proto.candlestick;
   proto['column'] = proto.column;
@@ -1765,6 +1801,8 @@ anychart.stockModule.Scroller.prototype.setupElements = function(opt_default, op
   proto['removeAllSeries'] = proto.removeAllSeries;
   proto['palette'] = proto.palette;
   proto['hatchFillPalette'] = proto.hatchFillPalette;
+  proto['ul_supported'] = proto.supported;//jb
+  proto['ul_draw'] = proto.draw;//jb
   // auto generated methods
   //proto['adl'] = proto.adl;
   //proto['ama'] = proto.ama;

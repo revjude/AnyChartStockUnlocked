@@ -50,6 +50,25 @@ goog.inherits(anychart.core.ui.Outline, anychart.core.Base);
 anychart.core.ui.Outline.prototype.SUPPORTED_SIGNALS =
     anychart.Signal.NEEDS_REDRAW;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.ui.Outline.prototype.supported = function() {
+  return {
+    "sigs": ["NEEDS_REDRAW"],
+    "cs": []
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.ui.Outline.prototype.getThisType = function() {
+  return 'anychart.core.ui.Outline';
+};
+
 
 //endregion
 //region --- IObjectWithSettings overrides
@@ -226,11 +245,13 @@ anychart.core.ui.Outline.prototype.disposeInternal = function() {
 //region --- Exports
 //exports
 (function() {
-  // var proto = anychart.core.ui.Outline.prototype;
+  var proto = anychart.core.ui.Outline.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   // proto['stroke'] = proto.stroke;
-  // proto['fill'] = proto.fill;
-  // proto['width'] = proto.width;
+  proto['ul_fill'] = proto.fill;//jb
+  proto['ul_width'] = proto.width;//jb
   // proto['offset'] = proto.offset;
-  // proto['enabled'] = proto.enabled;
+  proto['ul_enabled'] = proto.enabled;//jb
+  proto['ul_supported'] = proto.supported;//jb
 })();
 //endregion

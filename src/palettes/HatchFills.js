@@ -31,6 +31,25 @@ goog.inherits(anychart.palettes.HatchFills, anychart.core.Base);
  */
 anychart.palettes.HatchFills.prototype.SUPPORTED_SIGNALS = anychart.Signal.NEEDS_REAPPLICATION;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.palettes.HatchFills.prototype.supported = function() {
+  return {
+    "sigs": ["NEEDS_REAPPLICATION"],
+    "cs": []
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.palettes.HatchFills.prototype.getThisType = function() {
+  return 'anychart.palettes.HatchFills';
+};
+
 
 /**
  * Setter for the hatchFill at index if the opt_hatchFill set, getter otherwise.
@@ -171,7 +190,9 @@ anychart.palettes.hatchFills = function(opt_value, var_args) {
 //exports
 (function() {
   var proto = anychart.palettes.HatchFills.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   goog.exportSymbol('anychart.palettes.hatchFills', anychart.palettes.hatchFills);
   proto['itemAt'] = proto.itemAt;
   proto['items'] = proto.items;
+  proto['ul_supported'] = proto.supported;//jb
 })();

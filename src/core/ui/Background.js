@@ -81,6 +81,36 @@ anychart.core.ui.Background.prototype.SUPPORTED_CONSISTENCY_STATES =
     anychart.ConsistencyState.APPEARANCE |
     anychart.ConsistencyState.BACKGROUND_POINTER_EVENTS;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.ui.Background.prototype.supported = function() {
+  return {
+    "sigs": [
+      "NEEDS_REDRAW",
+      "BOUNDS_CHANGED",
+      "ENABLED_STATE_CHANGED",
+      "Z_INDEX_STATE_CHANGED"
+    ],
+    "cs": [
+      "ENABLED",
+      "CONTAINER",
+      "BOUNDS",
+      "Z_INDEX",
+      "APPEARANCE",
+      "BACKGROUND_POINTER_EVENTS"
+    ]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.ui.Background.prototype.getThisType = function() {
+  return 'anychart.core.ui.Background';
+};
 
 //endregion
 //region -- Optimized props descriptors
@@ -767,7 +797,8 @@ anychart.standalones.background = function() {
 //exports
 (function() {
   var proto = anychart.core.ui.Background.prototype;
-  // proto['fill'] = proto.fill;//in docs/final
+  proto['ul_type'] = proto.getThisType;//jb
+  proto['ul_fill'] = proto.fill;//in docs/final//jb
   // proto['stroke'] = proto.stroke;//in docs/final
   // proto['topStroke'] = proto.topStroke;
   // proto['rightStroke'] = proto.rightStroke;
@@ -775,8 +806,10 @@ anychart.standalones.background = function() {
   // proto['leftStroke'] = proto.leftStroke;
   // proto['cornerType'] = proto.cornerType;//in docs/final
   proto['corners'] = proto.corners;//in docs/final
+  proto['ul_supported'] = proto.supported;//jb
 
   proto = anychart.standalones.Background.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   goog.exportSymbol('anychart.standalones.background', anychart.standalones.background);
   proto['draw'] = proto.draw;
   proto['parentBounds'] = proto.parentBounds;

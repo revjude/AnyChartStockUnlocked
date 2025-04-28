@@ -70,6 +70,25 @@ anychart.scales.Base.prototype.SUPPORTED_SIGNALS =
     anychart.Signal.NEEDS_REAPPLICATION |
     anychart.Signal.NEEDS_RECALCULATION;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.scales.Base.prototype.supported = function() {
+  return {
+    "sigs": ["NEEDS_REAPPLICATION","NEEDS_RECALCULATION"],
+    "cs": []
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.scales.Base.prototype.getThisType = function() {
+  return 'anychart.scales.Base';
+};
+
 
 /**
  * @param {*} value Value to transform in input scope.
@@ -512,7 +531,9 @@ anychart.scales.Base.setupScale = function(currentScale, opt_newScaleSetupValue,
 //exports
 (function() {
   var proto = anychart.scales.Base.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['inverted'] = proto.inverted;//doc|ex
   proto['startAutoCalc'] = proto.startAutoCalc;//doc|need-ex
   proto['finishAutoCalc'] = proto.finishAutoCalc;//doc|need-ex
+  proto['ul_supported'] = proto.supported;//jb
 })();

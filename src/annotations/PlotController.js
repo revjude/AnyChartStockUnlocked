@@ -122,6 +122,33 @@ anychart.annotationsModule.PlotController.prototype.SUPPORTED_CONSISTENCY_STATES
     anychart.ConsistencyState.ANNOTATIONS_CONTROLLER_DRAWING_MODE;
 
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.annotationsModule.PlotController.prototype.supported = function() {
+  return {
+    "sigs": [],
+    "cs": [
+      "ENABLED",
+      "CONTAINER",
+      "BOUNDS",
+      "Z_INDEX",
+      "ANNOTATIONS_CONTROLLER_ANNOTATIONS",
+      "ANNOTATIONS_CONTROLLER_DRAWING_MODE"
+    ]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.annotationsModule.PlotController.prototype.getThisType = function() {
+  return 'anychart.annotationsModule.PlotController';
+};
+
+
 //endregion
 //region Public methods
 //----------------------------------------------------------------------------------------------------------------------
@@ -1312,6 +1339,7 @@ anychart.annotationsModule.PlotController.AnchorDragger.prototype.handleDragEnd_
 //exports
 (function() {
   var proto = anychart.annotationsModule.PlotController.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['add'] = proto.add;
   proto['startDrawing'] = proto.startDrawing;
   proto['cancelDrawing'] = proto.cancelDrawing;
@@ -1347,4 +1375,6 @@ anychart.annotationsModule.PlotController.AnchorDragger.prototype.handleDragEnd_
   proto['fromXml'] = proto.fromXml;
   proto['toXml'] = proto.toXml;
   goog.exportSymbol('anychart.annotations.PlotController', anychart.annotationsModule.PlotController);
+  proto['ul_supported'] = proto.supported;//jb
+  proto['ul_draw'] = proto.draw;//jb
 })();

@@ -42,6 +42,25 @@ goog.inherits(anychart.palettes.DistinctColors, anychart.core.Base);
  */
 anychart.palettes.DistinctColors.prototype.SUPPORTED_SIGNALS = anychart.Signal.NEEDS_REAPPLICATION;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.palettes.DistinctColors.prototype.supported = function() {
+  return {
+    "sigs": ["NEEDS_REAPPLICATION"],
+    "cs": []
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.palettes.DistinctColors.prototype.getThisType = function() {
+  return 'anychart.palettes.DistinctColors';
+};
+
 
 /**
  * Getter/setter for color palette colors from list by index.
@@ -160,7 +179,9 @@ anychart.palettes.distinctColors = function(opt_value, var_args) {
 //exports
 (function() {
   var proto = anychart.palettes.DistinctColors.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   goog.exportSymbol('anychart.palettes.distinctColors', anychart.palettes.distinctColors);
   proto['itemAt'] = proto.itemAt;
   proto['items'] = proto.items;
+  proto['ul_supported'] = proto.supported;//jb
 })();

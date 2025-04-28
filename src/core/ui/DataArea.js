@@ -24,6 +24,30 @@ anychart.consistency.supportStates(anychart.core.ui.DataArea, anychart.enums.Sto
  */
 anychart.core.ui.DataArea.prototype.SUPPORTED_SIGNALS = anychart.core.VisualBase.prototype.SUPPORTED_SIGNALS;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.ui.DataArea.prototype.supported = function() {
+  return {
+    "sigs": [
+      "NEEDS_REDRAW",
+      "BOUNDS_CHANGED",
+      "ENABLED_STATE_CHANGED",
+      "Z_INDEX_STATE_CHANGED"
+    ],
+    "cs": []
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.ui.DataArea.prototype.getThisType = function() {
+  return 'anychart.core.ui.DataArea';
+};
+
 
 //endregion
 //region Infrastructure
@@ -150,6 +174,9 @@ anychart.core.ui.DataArea.prototype.disposeInternal = function() {
 //exports
 (function() {
   var proto = anychart.core.ui.DataArea.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['background'] = proto.background;
+  proto['ul_supported'] = proto.supported;//jb
+  proto['ul_draw'] = proto.draw;//jb
 })();
 //endregion

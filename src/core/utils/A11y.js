@@ -64,6 +64,24 @@ anychart.core.utils.A11y.prototype.SUPPORTED_SIGNALS = anychart.core.Base.protot
     anychart.Signal.NEEDS_REAPPLICATION |
     anychart.Signal.BOUNDS_CHANGED; //Note: literally this signal here means that a11y is enabled or disabled.
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.utils.A11y.prototype.supported = function() {
+  return {
+    "sigs": [0,"NEEDS_REAPPLICATION","BOUNDS_CHANGED"],
+    "cs": []
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.utils.A11y.prototype.getThisType = function() {
+  return 'anychart.core.utils.A11y';
+};
 
 /**
  * Gets/sets parent a11y. See field's description.
@@ -355,13 +373,16 @@ anychart.core.utils.SeriesA11y.prototype.disposeInternal = function() {
 //exports
 (function() {
   var proto = anychart.core.utils.ChartA11y.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   // auto generated
-  // proto['enabled'] = proto.enabled;
+  proto['ul_enabled'] = proto.enabled;//jb
   // proto['titleFormat'] = proto.titleFormat;
-  // proto['mode'] = proto.mode;
+  proto['ul_mode'] = proto.mode;//jb
   proto = anychart.core.utils.SeriesA11y.prototype;
+  proto['ul_type'] = proto.getThisType;//jb//jb
   // auto generated
-  // proto['enabled'] = proto.enabled;
-  // proto['titleFormat'] = proto.titleFormat;
+  proto['ul_enabled'] = proto.enabled;//jb
+  //proto['titleFormat'] = proto.titleFormat;
+  proto['ul_supported'] = proto.supported;//jb
 })();
 

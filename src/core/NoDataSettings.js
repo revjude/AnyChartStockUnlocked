@@ -22,6 +22,25 @@ goog.inherits(anychart.core.NoDataSettings, anychart.core.Base);
  */
 anychart.core.NoDataSettings.prototype.SUPPORTED_SIGNALS = anychart.Signal.NEEDS_REDRAW;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.NoDataSettings.prototype.supported = function() {
+  return {
+    "sigs": ["NEEDS_REDRAW"],
+    "cs": []
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.NoDataSettings.prototype.getThisType = function() {
+  return 'anychart.core.NoDataSettings';
+};
+
 
 /**
  * Getter/setter for no data label
@@ -66,3 +85,10 @@ anychart.core.NoDataSettings.prototype.disposeInternal = function() {
   goog.dispose(this.label_);
   anychart.core.NoDataSettings.base(this, 'disposeInternal');
 };
+
+//exports
+(function() {
+  var proto = anychart.core.NoDataSettings.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
+  proto['ul_supported'] = proto.supported;//jb
+})();

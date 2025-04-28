@@ -184,6 +184,7 @@ anychart.scales.dateTime = function() {
 //exports
 (function() {
   var proto = anychart.scales.DateTime.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   goog.exportSymbol('anychart.scales.dateTime', anychart.scales.dateTime);//doc|ex
   proto['getType'] = proto.getType;
   proto['ticks'] = proto.ticks;//doc|ex

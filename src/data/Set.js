@@ -139,6 +139,24 @@ goog.inherits(anychart.data.Set, anychart.core.Base);
  */
 anychart.data.Set.prototype.SUPPORTED_SIGNALS = anychart.Signal.DATA_CHANGED;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.data.Set.prototype.supported = function() {
+  return {
+    "sigs": ["DATA_CHANGED"],
+    "cs": []
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.data.Set.prototype.getThisType = function() {
+  return 'anychart.data.Set';
+};
 
 /**
  * Internal data set storage.
@@ -497,6 +515,7 @@ anychart.data.set = function(opt_data, opt_settings) {
 //exports
 (function() {
   var proto = anychart.data.Set.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   goog.exportSymbol('anychart.data.set', anychart.data.set);//doc|ex
   proto['data'] = proto.data;//doc|ex
   proto['mapAs'] = proto.mapAs;//doc|ex
@@ -505,4 +524,5 @@ anychart.data.set = function(opt_data, opt_settings) {
   proto['insert'] = proto.insert;//doc|ex
   proto['remove'] = proto.remove;//doc|ex
   proto['getRowsCount'] = proto.getRowsCount;//doc|ex
+  proto['ul_supported'] = proto.supported;//jb
 })();

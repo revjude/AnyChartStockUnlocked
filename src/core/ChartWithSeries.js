@@ -118,6 +118,41 @@ anychart.core.ChartWithSeries.prototype.SUPPORTED_CONSISTENCY_STATES =
     anychart.ConsistencyState.SERIES_CHART_HATCH_FILL_PALETTE |
     anychart.ConsistencyState.SERIES_CHART_SERIES;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.ChartWithSeries.prototype.supported = function() {
+  return {
+    "sigs": [],
+    "cs": [
+      "ENABLED",
+      "CONTAINER",
+      "BOUNDS",
+      "Z_INDEX",
+      "CHART_LABELS",
+      "CHART_BACKGROUND",
+      "CHART_TITLE",
+      "A11Y",
+      "CHART_ANIMATION",
+      "CHART_CREDITS",
+      "CHART_LEGEND",
+      "SERIES_CHART_PALETTE",
+      "SERIES_CHART_MARKER_PALETTE",
+      "SERIES_CHART_HATCH_FILL_PALETTE",
+      "SERIES_CHART_SERIES"
+    ]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.ChartWithSeries.prototype.getThisType = function() {
+  return 'anychart.core.ChartWithSeries';
+};
+
 
 /**
  * Creates proper public constructor functions.
@@ -1424,6 +1459,7 @@ anychart.core.ChartWithSeries.prototype.disposeInternal = function() {
 //exports
 (function() {
   var proto = anychart.core.ChartWithSeries.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   // auto generated
   // proto['defaultSeriesType'] = proto.defaultSeriesType;
   proto['labels'] = proto.labels;
@@ -1434,6 +1470,7 @@ anychart.core.ChartWithSeries.prototype.disposeInternal = function() {
   proto['selected'] = proto.selected;
   proto['isVertical'] = proto.isVertical;
   proto['dataArea'] = proto.dataArea;
+  proto['ul_supported'] = proto.supported;//jb
 })();
 
 

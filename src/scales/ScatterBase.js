@@ -631,8 +631,10 @@ anychart.scales.ScatterBase.fromString = function(type, opt_canReturnNull) {
 //exports
 (function() {
   var proto = anychart.scales.ScatterBase.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['maxTicksCount'] = proto.maxTicksCount;
   proto['minimum'] = proto.minimum;//doc|ex
   proto['maximum'] = proto.maximum;//doc|ex
   proto['extendDataRange'] = proto.extendDataRange;//doc|need-ex
+  proto['ul_calculate'] = proto.calculate;//jb
 })();

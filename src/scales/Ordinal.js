@@ -637,6 +637,7 @@ anychart.scales.ordinal = function() {
 //exports
 (function() {
   var proto = anychart.scales.Ordinal.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   goog.exportSymbol('anychart.scales.ordinal', anychart.scales.ordinal);//doc|ex
   proto['getType'] = proto.getType;
   proto['transform'] = proto.transform;//doc|ex

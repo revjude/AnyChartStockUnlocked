@@ -57,6 +57,24 @@ anychart.core.settings.populateAliases(anychart.stockModule.splitter.SplittersSe
 anychart.stockModule.splitter.SplittersSettings.prototype.SUPPORTED_SIGNALS =
     anychart.Signal.NEEDS_REDRAW;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.stockModule.splitter.SplittersSettings.prototype.supported = function() {
+  return {
+    "sigs": ["NEEDS_REDRAW"],
+    "cs": []
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.stockModule.splitter.SplittersSettings.prototype.getThisType = function() {
+  return 'anychart.stockModule.splitter.SplittersSettings';
+};
 
 //endregion
 //region -- Descriptors.
@@ -238,8 +256,10 @@ anychart.stockModule.splitter.SplittersSettings.prototype.disposeInternal = func
 
 (function() {
   var proto = anychart.stockModule.splitter.SplittersSettings.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['normal'] = proto.normal;
   proto['hovered'] = proto.hovered;
   proto['preview'] = proto.preview;
+  proto['ul_supported'] = proto.supported;//jb
 })();
 //endregion

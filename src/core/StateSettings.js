@@ -931,6 +931,7 @@ anychart.core.StateSettings.prototype.disposeInternal = function() {
 //region --- Exports
 (function() {
   var proto = anychart.core.StateSettings.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['labels'] = proto.labels;
   proto['minLabels'] = proto.minLabels;
   proto['maxLabels'] = proto.maxLabels;

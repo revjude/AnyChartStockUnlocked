@@ -96,6 +96,39 @@ anychart.core.ui.LabelBase.prototype.SUPPORTED_CONSISTENCY_STATES =
         anychart.ConsistencyState.LABEL_BACKGROUND;
 
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.ui.LabelBase.prototype.supported = function() {
+  return {
+    "sigs": [
+      "NEEDS_REDRAW",
+      "BOUNDS_CHANGED",
+      "ENABLED_STATE_CHANGED",
+      "Z_INDEX_STATE_CHANGED",
+      "BOUNDS_CHANGED"
+    ],
+    "cs": [
+      "ENABLED",
+      "CONTAINER",
+      "BOUNDS",
+      "Z_INDEX",
+      "APPEARANCE",
+      "LABEL_BACKGROUND"
+    ]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.ui.LabelBase.prototype.getThisType = function() {
+  return 'anychart.core.ui.LabelBase';
+};
+
+
 //region -- Descriptors.
 /**
  * Before invalidation hook for minFontSize and maxFontSize props.
@@ -932,3 +965,10 @@ anychart.core.ui.LabelBase.prototype.disposeInternal = function() {
   delete this.rootLayer_;
   anychart.core.ui.LabelBase.base(this, 'disposeInternal');
 };
+
+(function() {
+  var proto = anychart.core.ui.LabelBase.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
+  proto['ul_supported'] = proto.supported;//jb
+  proto['ul_draw'] = proto.draw;//jb
+})();

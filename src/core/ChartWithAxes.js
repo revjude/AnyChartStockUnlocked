@@ -124,6 +124,54 @@ anychart.core.ChartWithAxes.prototype.SUPPORTED_CONSISTENCY_STATES =
 
 
 /**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.ChartWithAxes.prototype.supported = function() {
+  return {
+    "sigs": [],
+    "cs": [
+      "ENABLED",
+      "CONTAINER",
+      "BOUNDS",
+      "Z_INDEX",
+      "CHART_LABELS",
+      "CHART_BACKGROUND",
+      "CHART_TITLE",
+      "A11Y",
+      "CHART_ANIMATION",
+      "CHART_CREDITS",
+      "CHART_LEGEND",
+      "SERIES_CHART_PALETTE",
+      "SERIES_CHART_MARKER_PALETTE",
+      "SERIES_CHART_HATCH_FILL_PALETTE",
+      "SERIES_CHART_SERIES",
+      "SCALE_CHART_SCALES",
+      "SCALE_CHART_SCALE_MAPS",
+      "SCALE_CHART_Y_SCALES",
+      "SCALE_CHART_STATISTICS",
+      "SCALE_CHART_SCALES_STATISTICS",
+      "AXES_CHART_AXES",
+      "AXES_CHART_AXES_MARKERS",
+      "AXES_CHART_GRIDS",
+      "AXES_CHART_CROSSHAIR",
+      "AXES_CHART_ANNOTATIONS",
+      "AXES_CHART_QUARTER",
+      "AXES_CHART_CROSSLINES"
+    ]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.ChartWithAxes.prototype.getThisType = function() {
+  return 'anychart.core.ChartWithAxes';
+};
+
+
+/**
  * Maximal number of attempts to calculate axes length.
  * @type {number}
  * @protected
@@ -2065,5 +2113,7 @@ anychart.core.ChartWithAxes.prototype.disposeInternal = function() {
 //exports
 (function() {
   var proto = anychart.core.ChartWithAxes.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['isVertical'] = proto.isVertical;
+  proto['ul_supported'] = proto.supported;//jb
 })();

@@ -106,6 +106,40 @@ anychart.core.GridBase.prototype.SUPPORTED_CONSISTENCY_STATES =
         anychart.ConsistencyState.GRIDS_POSITION;
 
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.GridBase.prototype.supported = function() {
+  return {
+    "sigs": [
+      "NEEDS_REDRAW",
+      "BOUNDS_CHANGED",
+      "ENABLED_STATE_CHANGED",
+      "Z_INDEX_STATE_CHANGED",
+      "BOUNDS_CHANGED",
+      "ENABLED_STATE_CHANGED"
+    ],
+    "cs": [
+      "ENABLED",
+      "CONTAINER",
+      "BOUNDS",
+      "Z_INDEX",
+      "APPEARANCE",
+      "GRIDS_POSITION"
+    ]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.GridBase.prototype.getThisType = function() {
+  return 'anychart.core.GridBase';
+};
+
+
 //endregion
 //region --- IObjectWithSettings overrides
 /**
@@ -973,12 +1007,15 @@ anychart.core.GridBase.prototype.disposeInternal = function() {
 //region --- Exports
 (function() {
   var proto = anychart.core.GridBase.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['enabled'] = proto.enabled;
   proto['palette'] = proto.palette;
-  // proto['zIndex'] = proto.zIndex;
+  proto['ul_zIndex'] = proto.zIndex;//jb
   // proto['stroke'] = proto.stroke;
   // proto['drawFirstLine'] = proto.drawFirstLine;
   // proto['drawLastLine'] = proto.drawLastLine;
-  // proto['fill'] = proto.fill;
+  proto['ul_fill'] = proto.fill;//jb
+  proto['ul_supported'] = proto.supported;//jb
+  proto['ul_draw'] = proto.draw;//jb
 })();
 //endregion

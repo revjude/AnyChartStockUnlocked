@@ -127,6 +127,36 @@ anychart.core.ui.Separator.prototype.SUPPORTED_CONSISTENCY_STATES =
     anychart.ConsistencyState.APPEARANCE |
     anychart.ConsistencyState.BOUNDS;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.ui.Separator.prototype.supported = function() {
+  return {
+    "sigs": [
+      "NEEDS_REDRAW",
+      "BOUNDS_CHANGED",
+      "ENABLED_STATE_CHANGED",
+      "Z_INDEX_STATE_CHANGED"
+    ],
+    "cs": [
+      "ENABLED",
+      "CONTAINER",
+      "BOUNDS",
+      "Z_INDEX",
+      "APPEARANCE"
+    ]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.ui.Separator.prototype.getThisType = function() {
+  return 'anychart.core.ui.Separator';
+};
+
 
 //region -- Optimized props descriptors
 /**
@@ -604,11 +634,14 @@ anychart.core.ui.Separator.prototype.disposeInternal = function() {
 //exports
 (function() {
   var proto = anychart.core.ui.Separator.prototype;
-  // proto['width'] = proto.width;
-  // proto['height'] = proto.height;
+  proto['ul_type'] = proto.getThisType;//jb
+  proto['ul_width'] = proto.width;//jb
+  proto['ul_height'] = proto.height;//jb
   proto['margin'] = proto.margin;
   // proto['orientation'] = proto.orientation;
-  // proto['fill'] = proto.fill;
+  proto['ul_fill'] = proto.fill;//jb
   // proto['stroke'] = proto.stroke;
   proto['getRemainingBounds'] = proto.getRemainingBounds;
+  proto['ul_supported'] = proto.supported;//jb
+  proto['ul_draw'] = proto.draw;//jb
 })();

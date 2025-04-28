@@ -86,6 +86,36 @@ anychart.core.Text.prototype.SUPPORTED_CONSISTENCY_STATES =
     anychart.core.VisualBase.prototype.SUPPORTED_CONSISTENCY_STATES |
     anychart.ConsistencyState.APPEARANCE;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.Text.prototype.supported = function() {
+  return {
+    "sigs": [
+      "NEEDS_REDRAW",
+      "BOUNDS_CHANGED",
+      "ENABLED_STATE_CHANGED",
+      "Z_INDEX_STATE_CHANGED",
+      "BOUNDS_CHANGED"
+    ],
+    "cs": [
+      "ENABLED",
+      "CONTAINER",
+      "BOUNDS",
+      "Z_INDEX",
+      "APPEARANCE"
+    ]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.Text.prototype.getThisType = function() {
+  return 'anychart.core.Text';
+};
 
 //endregion
 //region -- Descriptors.
@@ -376,5 +406,7 @@ anychart.core.Text.prototype.setupByJSON = function(config, opt_default) {
 // exports
 (function() {
   var proto = anychart.core.Text.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['textSettings'] = proto.textSettings;//in docs/final
+  proto['ul_supported'] = proto.supported;//jb
 })();

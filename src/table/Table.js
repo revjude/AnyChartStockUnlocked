@@ -195,6 +195,41 @@ anychart.tableModule.Table.prototype.SUPPORTED_CONSISTENCY_STATES =
     anychart.ConsistencyState.TABLE_CONTENT |
     anychart.ConsistencyState.TABLE_STRUCTURE;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.tableModule.Table.prototype.supported = function() {
+  return {
+    "sigs": [
+      "NEEDS_REDRAW",
+      "BOUNDS_CHANGED",
+      "ENABLED_STATE_CHANGED",
+      "Z_INDEX_STATE_CHANGED"
+    ],
+    "cs": [
+      "ENABLED",
+      "CONTAINER",
+      "BOUNDS",
+      "Z_INDEX",
+      "TABLE_CELL_BOUNDS",
+      "TABLE_OVERLAP",
+      "TABLE_BORDERS",
+      "TABLE_FILLS",
+      "TABLE_CONTENT",
+      "TABLE_STRUCTURE"
+    ]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.tableModule.Table.prototype.getThisType = function() {
+  return 'anychart.tableModule.Table';
+};
+
 
 //region Private properties with null defaults
 /**
@@ -2944,6 +2979,7 @@ anychart.tableModule.Table.prototype.isFullScreenAvailable = function() {
 //exports
 (function() {
   var proto = anychart.tableModule.Table.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['rowsCount'] = proto.rowsCount;//doc|ex
   proto['colsCount'] = proto.colsCount;//doc|ex
 
@@ -3026,8 +3062,12 @@ anychart.tableModule.Table.prototype.isFullScreenAvailable = function() {
   proto['parentBounds'] = proto.parentBounds;
   proto['container'] = proto.container;
 
+  proto['ul_supported'] = proto.supported;//jb
+
   proto = anychart.tableModule.Table.Standalone.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['draw'] = proto.draw;
+  proto['ul_supported'] = proto.supported;//jb
 
   goog.exportSymbol('anychart.standalones.table', anychart.tableModule.table);
 })();

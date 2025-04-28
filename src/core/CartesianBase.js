@@ -102,6 +102,57 @@ anychart.core.CartesianBase.prototype.SUPPORTED_CONSISTENCY_STATES =
     anychart.ConsistencyState.CARTESIAN_ZOOM;
 
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.CartesianBase.prototype.supported = function() {
+  return {
+    "sigs": [],
+    "cs": [
+      "ENABLED",
+      "CONTAINER",
+      "BOUNDS",
+      "Z_INDEX",
+      "CHART_LABELS",
+      "CHART_BACKGROUND",
+      "CHART_TITLE",
+      "A11Y",
+      "CHART_ANIMATION",
+      "CHART_CREDITS",
+      "CHART_LEGEND",
+      "SERIES_CHART_PALETTE",
+      "SERIES_CHART_MARKER_PALETTE",
+      "SERIES_CHART_HATCH_FILL_PALETTE",
+      "SERIES_CHART_SERIES",
+      "SCALE_CHART_SCALES",
+      "SCALE_CHART_SCALE_MAPS",
+      "SCALE_CHART_Y_SCALES",
+      "SCALE_CHART_STATISTICS",
+      "SCALE_CHART_SCALES_STATISTICS",
+      "AXES_CHART_AXES",
+      "AXES_CHART_AXES_MARKERS",
+      "AXES_CHART_GRIDS",
+      "AXES_CHART_CROSSHAIR",
+      "AXES_CHART_ANNOTATIONS",
+      "AXES_CHART_QUARTER",
+      "AXES_CHART_CROSSLINES",
+      "CARTESIAN_X_SCROLLER",
+      "CARTESIAN_Y_SCROLLER",
+      "CARTESIAN_ZOOM"
+    ]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.CartesianBase.prototype.getThisType = function() {
+  return 'anychart.core.CartesianBase';
+};
+
+
 //endregion
 //region --- Zoom and scroller
 //----------------------------------------------------------------------------------------------------------------------
@@ -588,3 +639,9 @@ anychart.core.CartesianBase.prototype.disposeInternal = function() {
 
 
 //endregion
+//exports
+(function() {
+  var proto = anychart.core.CartesianBase.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
+  proto['ul_supported'] = proto.supported;//jb
+})();

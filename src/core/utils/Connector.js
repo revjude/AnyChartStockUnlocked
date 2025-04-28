@@ -44,6 +44,24 @@ anychart.core.utils.Connector.prototype.SUPPORTED_CONSISTENCY_STATES =
  */
 anychart.core.utils.Connector.prototype.SUPPORTED_SIGNALS = anychart.Signal.NEEDS_REDRAW;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.utils.Connector.prototype.supported = function() {
+  return {
+    "sigs": ["NEEDS_REDRAW"],
+    "cs": [0,"APPEARANCE"]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.utils.Connector.prototype.getThisType = function() {
+  return 'anychart.core.utils.Connector';
+};
 
 /**
  * Connector descriptors.
@@ -116,3 +134,8 @@ anychart.core.utils.Connector.prototype.setupSpecial = function(isDefault, var_a
 //exports
 // stroke
 // length
+(function() {
+  var proto = anychart.core.utils.Connector.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
+  proto['ul_supported'] = proto.supported;//jb
+})();

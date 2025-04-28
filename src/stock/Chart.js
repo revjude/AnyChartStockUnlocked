@@ -242,6 +242,46 @@ anychart.stockModule.Chart.prototype.SUPPORTED_CONSISTENCY_STATES =
     anychart.ConsistencyState.STOCK_SPLITTERS |
     anychart.ConsistencyState.STOCK_GAP;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.stockModule.Chart.prototype.supported = function() {
+  return {
+    "sigs": [
+      "NEEDS_REDRAW",
+      "BOUNDS_CHANGED",
+      "ENABLED_STATE_CHANGED",
+      "Z_INDEX_STATE_CHANGED"
+    ],
+    "cs": [
+      "ENABLED",
+      "CONTAINER",
+      "BOUNDS",
+      "Z_INDEX",
+      "CHART_LABELS",
+      "CHART_BACKGROUND",
+      "CHART_TITLE",
+      "A11Y",
+      "CHART_ANIMATION",
+      "CHART_CREDITS",
+      "STOCK_PLOTS_APPEARANCE",
+      "STOCK_SCROLLER",
+      "STOCK_DATA",
+      "STOCK_SCALES",
+      "STOCK_SPLITTERS",
+      "STOCK_GAP"
+    ]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.stockModule.Chart.prototype.getThisType = function() {
+  return 'anychart.stockModule.Chart';
+};
 
 /**
  * Minimal ratio between marked range and the full range.
@@ -3665,6 +3705,7 @@ anychart.stock = function(opt_allowPointSettings) {
 //exports
 (function() {
   var proto = anychart.stockModule.Chart.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   goog.exportSymbol('anychart.stock', anychart.stock);
   proto['plot'] = proto.plot;
   proto['crosshair'] = proto.crosshair;
@@ -3682,8 +3723,9 @@ anychart.stock = function(opt_allowPointSettings) {
   proto['getPlotsCount'] = proto.getPlotsCount;
   proto['startZoomMarquee'] = proto.startZoomMarquee;
   // auto generated
-  // proto['zoomMarqueeFill'] = proto.zoomMarqueeFill;
-  // proto['zoomMarqueeStroke'] = proto.zoomMarqueeStroke;
+  // proto['ul_zoomMarqueeFill'] = proto.zoomMarqueeFill;
+  // proto['ul_zoomMarqueeStroke'] = proto.zoomMarqueeStroke;
   proto['interactivity'] = proto.interactivity;
   proto['preserveSelectedRangeOnDataUpdate'] = proto.preserveSelectedRangeOnDataUpdate;
+  proto['ul_supported'] = proto.supported;//jb
 })();

@@ -30,6 +30,25 @@ goog.inherits(anychart.stockModule.splitter.states.Normal, anychart.core.Base);
  */
 anychart.stockModule.splitter.states.Normal.prototype.SUPPORTED_SIGNALS = anychart.Signal.NEEDS_REDRAW;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.stockModule.splitter.states.Normal.prototype.supported = function() {
+  return {
+    "sigs": ["NEEDS_REDRAW"],
+    "cs": []
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.stockModule.splitter.states.Normal.prototype.getThisType = function() {
+  return 'anychart.stockModule.splitter.states.Normal';
+};
+
 
 //endregion
 //region -- Descriptors.
@@ -72,3 +91,10 @@ anychart.stockModule.splitter.states.Normal.prototype.serialize = function() {
 
 
 //endregion
+
+//exports
+(function() {
+  var proto = anychart.stockModule.splitter.states.Normal.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
+  proto['ul_supported'] = proto.supported;//jb
+})();

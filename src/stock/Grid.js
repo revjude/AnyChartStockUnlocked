@@ -222,6 +222,7 @@ anychart.stockModule.Grid.prototype.drawInternal = function() {
 //region --- Exports
 (function() {
   var proto = anychart.stockModule.Grid.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['isHorizontal'] = proto.isHorizontal;
   proto['scale'] = proto.scale;
   proto['axis'] = proto.axis;

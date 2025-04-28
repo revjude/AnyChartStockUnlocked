@@ -90,6 +90,39 @@ anychart.annotationsModule.FibonacciBase.prototype.SUPPORTED_CONSISTENCY_STATES 
 
 
 /**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.annotationsModule.FibonacciBase.prototype.supported = function() {
+  return {
+    "sigs": [],
+    "cs": [
+      "ENABLED",
+      "CONTAINER",
+      "BOUNDS",
+      "Z_INDEX",
+      "APPEARANCE",
+      "ANNOTATIONS_ANCHORS",
+      "ANNOTATIONS_LAST_POINT",
+      "ANNOTATIONS_SHAPES",
+      "ANNOTATIONS_INTERACTIVITY",
+      "ANNOTATIONS_MARKERS",
+      "ANNOTATIONS_LABELS",
+      "ANNOTATIONS_LEVELS"
+    ]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.annotationsModule.FibonacciBase.prototype.getThisType = function() {
+  return 'anychart.annotationsModule.FibonacciBase';
+};
+
+
+/**
  * Supported anchors.
  * @type {anychart.annotationsModule.AnchorSupport}
  */
@@ -491,7 +524,9 @@ anychart.annotationsModule.FibonacciBase.prototype.disposeInternal = function() 
 (function() {
   var proto = anychart.annotationsModule.FibonacciBase.prototype;
   proto['levels'] = proto.levels;
-  //proto['labels'] = proto.labels;
-  //proto['hoverLabels'] = proto.hoverLabels;
-  //proto['selectLabels'] = proto.selectLabels;
+  proto['ul_labels'] = proto.labels;//jb
+  // proto['hoverLabels'] = proto.hoverLabels;
+  // proto['selectLabels'] = proto.selectLabels;
+  proto['ul_type'] = proto.getThisType;//jb
+  proto['ul_supported'] = proto.supported;//jb
 })();

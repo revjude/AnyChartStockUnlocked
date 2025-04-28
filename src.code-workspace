@@ -1,0 +1,42 @@
+{
+	"folders": [
+		{
+			"path": "src"
+		}
+	],
+	"settings": {		"search.exclude": {
+		"bullet": true,
+		"calendar": true,
+		"cartesian": true,
+		"cartesian3d": true,
+		"circlePacking": true,
+		"circularGauge": true,
+		"gantt": true,
+		"ganttBase": true,
+		"graph": true,
+		"heatmap": true,
+		"linearGauge": true,
+		"map": true,
+		"mekko": true,
+		"pareto": true,
+		"pert": true,
+		"pie": true,
+		"polar": true,
+		"pyramidFunnel": true,
+		"radar": true,
+		"radarPolarBase": true,
+		"resource": true,
+		"sankey": true,
+		"scatter": true,
+		"sparkline": true,
+		"sunburst": true,
+		"surface": true,
+		"tagCloud": true,
+		"timeline": true,
+		"treeChartBase": true,
+		"treemap": true,
+		"venn": true,
+		"waterfall": true,
+		"wordtree": true
+	}}
+}

@@ -69,6 +69,37 @@ anychart.stockModule.CurrentPriceIndicator.prototype.SUPPORTED_CONSISTENCY_STATE
  */
 anychart.stockModule.CurrentPriceIndicator.prototype.SUPPORTED_SIGNALS = anychart.core.VisualBase.prototype.SUPPORTED_SIGNALS;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.stockModule.CurrentPriceIndicator.prototype.supported = function() {
+  return {
+    "sigs": [
+      "NEEDS_REDRAW",
+      "BOUNDS_CHANGED",
+      "ENABLED_STATE_CHANGED",
+      "Z_INDEX_STATE_CHANGED"
+    ],
+    "cs": [
+      "ENABLED",
+      "CONTAINER",
+      "BOUNDS",
+      "Z_INDEX",
+      "APPEARANCE",
+      "STOCK_PRICE_INDICATOR_LABEL",
+      "STOCK_PRICE_INDICATOR_SERIES"
+    ]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.stockModule.CurrentPriceIndicator.prototype.getThisType = function() {
+  return 'anychart.stockModule.CurrentPriceIndicator';
+};
 
 //endregion
 //region --- Descriptors
@@ -604,7 +635,8 @@ anychart.stockModule.CurrentPriceIndicator.prototype.disposeInternal = function(
 //exports
 (function() {
   var proto = anychart.stockModule.CurrentPriceIndicator.prototype;
-  // proto['value'] = proto.value;
+  proto['ul_type'] = proto.getThisType;//jb
+  proto['ul_value'] = proto.value;//jb
   // proto['valueField'] = proto.valueField
   // proto['stroke'] = proto.stroke;
   // proto['risingStroke'] = proto.risingStroke;
@@ -614,4 +646,6 @@ anychart.stockModule.CurrentPriceIndicator.prototype.disposeInternal = function(
   proto['risingLabel'] = proto.risingLabel;
   proto['axis'] = proto.axis;
   proto['series'] = proto.series;
+  proto['ul_supported'] = proto.supported;//jb
+  proto['ul_draw'] = proto.draw;//jb
 })();

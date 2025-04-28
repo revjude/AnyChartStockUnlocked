@@ -199,6 +199,7 @@ anychart.scales.log = function() {
 //exports
 (function() {
   var proto = anychart.scales.Logarithmic.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   goog.exportSymbol('anychart.scales.log', anychart.scales.log);//doc|ex
   proto['getType'] = proto.getType;//inherited
   proto['transform'] = proto.transform;//inherited

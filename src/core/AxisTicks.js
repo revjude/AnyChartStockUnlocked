@@ -56,6 +56,34 @@ anychart.core.AxisTicks.prototype.SUPPORTED_SIGNALS = anychart.core.VisualBase.p
  */
 anychart.core.AxisTicks.prototype.SUPPORTED_CONSISTENCY_STATES = anychart.core.VisualBase.prototype.SUPPORTED_CONSISTENCY_STATES; // ENABLED CONTAINER Z_INDEX
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.AxisTicks.prototype.supported = function() {
+  return {
+    "sigs": [
+      "NEEDS_REDRAW",
+      "BOUNDS_CHANGED",
+      "ENABLED_STATE_CHANGED",
+      "Z_INDEX_STATE_CHANGED"
+    ],
+    "cs": [
+      "ENABLED",
+      "CONTAINER",
+      "BOUNDS",
+      "Z_INDEX"
+    ]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.AxisTicks.prototype.getThisType = function() {
+  return 'anychart.core.AxisTicks';
+};
 
 //endregion
 //region --- Descriptors
@@ -352,10 +380,13 @@ anychart.core.AxisTicks.prototype.disposeInternal = function() {
 //endregion
 //region --- Export
 //exports
-// (function() {
-//   var proto = anychart.core.AxisTicks.prototype;
-  // proto['length'] = proto.length;
-  // proto['stroke'] = proto.stroke;
-  // proto['position'] = proto.position;
-// })();
+(function() {
+ var proto = anychart.core.AxisTicks.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
+ proto['length'] = proto.length;
+ // proto['stroke'] = proto.stroke;
+ // proto['position'] = proto.position;
+ proto['ul_supported'] = proto.supported;//jb
+ proto['ul_draw'] = proto.draw;//jb
+})();
 //endregion

@@ -754,6 +754,7 @@ anychart.colorScalesModule.Ordinal.prototype.disposeInternal = function() {
 //exports
 (function() {
   var proto = anychart.colorScalesModule.Ordinal.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   goog.exportSymbol('anychart.scales.ordinalColor', anychart.scales.ordinalColor);
   proto['getType'] = proto.getType;
   proto['colors'] = proto.colors;

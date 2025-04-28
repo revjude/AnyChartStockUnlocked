@@ -380,6 +380,7 @@ anychart.colorScalesModule.Linear.prototype.disposeInternal = function() {
 //exports
 (function() {
   var proto = anychart.colorScalesModule.Linear.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   goog.exportSymbol('anychart.scales.linearColor', anychart.scales.linearColor);
   proto['getType'] = proto.getType;
   proto['colors'] = proto.colors;

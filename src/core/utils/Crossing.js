@@ -42,6 +42,24 @@ anychart.core.utils.Crossing.prototype.SUPPORTED_SIGNALS =
     anychart.core.Base.prototype.SUPPORTED_SIGNALS |
     anychart.Signal.NEEDS_REDRAW;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.utils.Crossing.prototype.supported = function() {
+  return {
+    "sigs": [0,"NEEDS_REDRAW"],
+    "cs": [0]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.utils.Crossing.prototype.getThisType = function() {
+  return 'anychart.core.utils.Crossing';
+};
 
 //endregion
 //region --- setup/dispose
@@ -66,3 +84,9 @@ anychart.core.utils.Crossing.prototype.disposeInternal = function() {
   anychart.core.utils.Crossing.base(this, 'disposeInternal');
 };
 //endregion
+
+(function() {
+  var proto = anychart.core.utils.Crossing.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
+  proto['ul_supported'] = proto.supported;//jb
+})();

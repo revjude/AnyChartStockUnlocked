@@ -44,6 +44,32 @@ anychart.core.ui.Label.prototype.SUPPORTED_CONSISTENCY_STATES =
     anychart.core.ui.LabelBase.prototype.SUPPORTED_CONSISTENCY_STATES |
         anychart.ConsistencyState.LABEL_VISIBILITY;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.ui.Label.prototype.supported = function() {
+  return {
+    "sigs": [],
+    "cs": [
+      "ENABLED",
+      "CONTAINER",
+      "BOUNDS",
+      "Z_INDEX",
+      "APPEARANCE",
+      "LABEL_BACKGROUND",
+      "LABEL_VISIBILITY"
+    ]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.ui.Label.prototype.getThisType = function() {
+  return 'anychart.core.ui.Label';
+};
 
 /**
  * Descriptors.
@@ -109,11 +135,14 @@ anychart.standalones.label = function() {
 //exports
 (function() {
   var proto = anychart.core.ui.Label.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['background'] = proto.background;
   proto['padding'] = proto.padding;
   proto['draw'] = proto.draw;
+  proto['ul_supported'] = proto.supported;//jb
 
   proto = anychart.standalones.Label.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   goog.exportSymbol('anychart.standalones.label', anychart.standalones.label);
   proto['draw'] = proto.draw;
   proto['parentBounds'] = proto.parentBounds;

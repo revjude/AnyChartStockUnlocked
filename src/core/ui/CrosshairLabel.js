@@ -48,6 +48,32 @@ anychart.core.ui.CrosshairLabel.prototype.SUPPORTED_SIGNALS =
     anychart.core.ui.LabelBase.prototype.SUPPORTED_SIGNALS |
     anychart.Signal.NEEDS_REAPPLICATION;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.ui.CrosshairLabel.prototype.supported = function() {
+  return {
+    "sigs": [
+      "NEEDS_REDRAW",
+      "BOUNDS_CHANGED",
+      "ENABLED_STATE_CHANGED",
+      "Z_INDEX_STATE_CHANGED",
+      "BOUNDS_CHANGED",
+      "NEEDS_REAPPLICATION"
+    ],
+    "cs": []
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.ui.CrosshairLabel.prototype.getThisType = function() {
+  return 'anychart.core.ui.CrosshairLabel';
+};
+
 
 //region -- Descriptors.
 /**
@@ -201,10 +227,12 @@ anychart.core.ui.CrosshairLabel.prototype.setupByJSON = function(config, opt_def
 
 (function() {
   var proto = anychart.core.ui.CrosshairLabel.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   //exports
   proto['background'] = proto.background;
   proto['padding'] = proto.padding;
   // auto generated
   // proto['axisIndex'] = proto.axisIndex;
   // proto['format'] = proto.format;
+  proto['ul_supported'] = proto.supported;//jb
 })();

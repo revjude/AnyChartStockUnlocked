@@ -363,4 +363,5 @@ anychart.annotationsModule.ChartController.prototype.disposeInternal = function(
   proto['select'] = proto.select;
   proto['unselect'] = proto.unselect;
   goog.exportSymbol('anychart.annotations.ChartController', anychart.annotationsModule.ChartController);
+  proto['ul_type'] = proto.getThisType;//jb
 })();

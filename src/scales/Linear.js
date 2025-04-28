@@ -379,6 +379,7 @@ anychart.scales.linear = function() {
 //exports
 (function() {
   var proto = anychart.scales.Linear.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   goog.exportSymbol('anychart.scales.linear', anychart.scales.linear);//doc|ex
   proto['transform'] = proto.transform;//doc|ex
   proto['inverseTransform'] = proto.inverseTransform;//doc|ex

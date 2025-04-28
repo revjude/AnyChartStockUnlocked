@@ -196,6 +196,7 @@ anychart.core.utils.QuarterSettings.prototype.disposeInternal = function() {
 //region --- Exports
 (function() {
   var proto = anychart.core.utils.QuarterSettings.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['rightTop'] = proto.rightTop;
   proto['leftTop'] = proto.leftTop;
   proto['leftBottom'] = proto.leftBottom;

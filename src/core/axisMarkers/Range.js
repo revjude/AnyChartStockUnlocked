@@ -105,6 +105,38 @@ anychart.core.axisMarkers.Range.prototype.SUPPORTED_CONSISTENCY_STATES =
     anychart.core.axisMarkers.PathBase.prototype.SUPPORTED_CONSISTENCY_STATES;
 
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.axisMarkers.Range.prototype.supported = function() {
+  return {
+    "sigs": [
+      "NEEDS_REDRAW",
+      "BOUNDS_CHANGED",
+      "ENABLED_STATE_CHANGED",
+      "Z_INDEX_STATE_CHANGED",
+      "NEEDS_RECALCULATION"
+    ],
+    "cs": [
+      "ENABLED",
+      "CONTAINER",
+      "BOUNDS",
+      "Z_INDEX",
+      "APPEARANCE"
+    ]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.axisMarkers.Range.prototype.getThisType = function() {
+  return 'anychart.core.axisMarkers.Range';
+};
+
+
 //----------------------------------------------------------------------------------------------------------------------
 //  Layout.
 //----------------------------------------------------------------------------------------------------------------------
@@ -276,6 +308,7 @@ anychart.standalones.axisMarkers.range = function() {
 //exports
 (function() {
   var proto = anychart.core.axisMarkers.Range.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   // auto generated
   //proto['from'] = proto.from;
   //proto['to'] = proto.to;
@@ -284,8 +317,10 @@ anychart.standalones.axisMarkers.range = function() {
   proto['axis'] = proto.axis;
   proto['layout'] = proto.layout;
   proto['isHorizontal'] = proto.isHorizontal;
+  proto['ul_supported'] = proto.supported;//jb
 
   proto = anychart.standalones.axisMarkers.Range.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   goog.exportSymbol('anychart.standalones.axisMarkers.range', anychart.standalones.axisMarkers.range);
   proto['draw'] = proto.draw;
   proto['parentBounds'] = proto.parentBounds;

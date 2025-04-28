@@ -49,6 +49,24 @@ anychart.treeDataModule.View.prototype.SUPPORTED_SIGNALS =
     anychart.Signal.DATA_CHANGED |
     anychart.Signal.META_CHANGED;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.treeDataModule.View.prototype.supported = function() {
+  return {
+    "sigs": [0,"DATA_CHANGED","META_CHANGED"],
+    "cs": []
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.treeDataModule.View.prototype.getThisType = function() {
+  return 'anychart.treeDataModule.View';
+};
 
 /**
  * Tree events handler.
@@ -827,7 +845,7 @@ anychart.treeDataModule.View.DataItem.prototype.setParent = function(parentView)
 //exports
 (function() {
   var proto = anychart.treeDataModule.View.prototype;
-  proto['getTraverser'] = proto.getTraverser;
+    proto['getTraverser'] = proto.getTraverser;
   proto['addData'] = proto.addData;
   proto['search'] = proto.search;
   proto['searchItems'] = proto.searchItems;
@@ -841,9 +859,10 @@ anychart.treeDataModule.View.DataItem.prototype.setParent = function(parentView)
   proto['removeChildAt'] = proto.removeChildAt;
   proto['removeChildren'] = proto.removeChildren;
   proto['indexOfChild'] = proto.indexOfChild;
+  proto['ul_supported'] = proto.supported;//jb
 
   proto = anychart.treeDataModule.View.DataItem.prototype;
-  proto['get'] = proto.get;
+    proto['get'] = proto.get;
   proto['set'] = proto.set;
   proto['meta'] = proto.meta;
   proto['del'] = proto.del;

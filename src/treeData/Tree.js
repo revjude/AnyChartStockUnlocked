@@ -199,6 +199,24 @@ anychart.treeDataModule.Tree.Dependency;
  */
 anychart.treeDataModule.Tree.prototype.SUPPORTED_SIGNALS = anychart.Signal.DATA_CHANGED | anychart.Signal.META_CHANGED;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.treeDataModule.Tree.prototype.supported = function() {
+  return {
+    "sigs": ["DATA_CHANGED","META_CHANGED"],
+    "cs": []
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.treeDataModule.Tree.prototype.getThisType = function() {
+  return 'anychart.treeDataModule.Tree';
+};
 
 /**
  * Checks if potentialChild has potentialPrent in upper hierarchy.
@@ -2025,7 +2043,7 @@ anychart.data.tree = function(opt_data, opt_fillMethodOrCsvMapping, opt_csvSetti
 //exports
 (function() {
   var proto = anychart.treeDataModule.Tree.prototype;
-  goog.exportSymbol('anychart.data.tree', anychart.data.tree);
+    goog.exportSymbol('anychart.data.tree', anychart.data.tree);
   proto['getTraverser'] = proto.getTraverser;
   proto['dispatchEvents'] = proto.dispatchEvents;
   proto['addData'] = proto.addData;
@@ -2045,6 +2063,7 @@ anychart.data.tree = function(opt_data, opt_fillMethodOrCsvMapping, opt_csvSetti
   proto['removeChildren'] = proto.removeChildren;
   proto['indexOfChild'] = proto.indexOfChild;
   proto['mapAs'] = proto.mapAs;
+  proto['ul_supported'] = proto.supported;//jb
   //----------------------------------------------------------------------------------------------------------------------
   //
   //  anychart.treeDataModule.Tree.DataItem
@@ -2052,7 +2071,7 @@ anychart.data.tree = function(opt_data, opt_fillMethodOrCsvMapping, opt_csvSetti
   //
   //----------------------------------------------------------------------------------------------------------------------
   proto = anychart.treeDataModule.Tree.DataItem.prototype;
-  proto['get'] = proto.get;
+    proto['get'] = proto.get;
   proto['set'] = proto.set;
   proto['meta'] = proto.meta;
   proto['del'] = proto.del;

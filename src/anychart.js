@@ -974,6 +974,11 @@ goog.exportSymbol('anychart.data.loadJsonFile', anychart.getFeatureOrError('anyc
 goog.exportSymbol('anychart.data.loadXmlFile', anychart.getFeatureOrError('anychart.data.loadXmlFile', 'Data adapter'));
 goog.exportSymbol('anychart.data.loadCsvFile', anychart.getFeatureOrError('anychart.data.loadCsvFile', 'Data adapter'));
 goog.exportSymbol('anychart.data.loadGoogleSpreadsheet', anychart.getFeatureOrError('anychart.data.loadGoogleSpreadsheet', 'Data adapter'));
+goog.exportSymbol('anychart.globalLock.locked', anychart.globalLock.locked);
+goog.exportSymbol('anychart.globalLock.subscribers', anychart.globalLock.subscribers);
+goog.exportSymbol('anychart.globalLock.lock', anychart.globalLock.lock);
+goog.exportSymbol('anychart.globalLock.onUnlock', anychart.globalLock.onUnlock);
+goog.exportSymbol('anychart.globalLock.unlock', anychart.globalLock.unlock);
 (function() {
   var proto = acgraph.vector.Stage.prototype;
   proto['credits'] = proto.credits;

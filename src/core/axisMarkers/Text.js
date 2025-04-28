@@ -59,6 +59,40 @@ anychart.core.axisMarkers.Text.prototype.SUPPORTED_CONSISTENCY_STATES =
     anychart.core.axisMarkers.TextBase.prototype.SUPPORTED_CONSISTENCY_STATES;
 
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.axisMarkers.Text.prototype.supported = function() {
+  return {
+    "sigs": [
+      "NEEDS_REDRAW",
+      "BOUNDS_CHANGED",
+      "ENABLED_STATE_CHANGED",
+      "Z_INDEX_STATE_CHANGED",
+      "BOUNDS_CHANGED",
+      "NEEDS_RECALCULATION"
+    ],
+    "cs": [
+      "ENABLED",
+      "CONTAINER",
+      "BOUNDS",
+      "Z_INDEX",
+      "APPEARANCE",
+      "LABEL_BACKGROUND"
+    ]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.axisMarkers.Text.prototype.getThisType = function() {
+  return 'anychart.core.axisMarkers.Text';
+};
+
+
 //----------------------------------------------------------------------------------------------------------------------
 //  Scale.
 //----------------------------------------------------------------------------------------------------------------------
@@ -123,16 +157,19 @@ anychart.standalones.axisMarkers.text = function() {
 //exports
 (function() {
   var proto = anychart.core.axisMarkers.Text.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   // auto generated
-  //proto['value'] = proto.value;
+  proto['ul_value'] = proto.value;//jb
   proto['scale'] = proto.scale;
   proto['axis'] = proto.axis;
   proto['layout'] = proto.layout;
   proto['background'] = proto.background;
   proto['padding'] = proto.padding;
   proto['isHorizontal'] = proto.isHorizontal;
+  proto['ul_supported'] = proto.supported;//jb
 
   proto = anychart.standalones.axisMarkers.Text.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   goog.exportSymbol('anychart.standalones.axisMarkers.text', anychart.standalones.axisMarkers.text);
   proto['draw'] = proto.draw;
   proto['parentBounds'] = proto.parentBounds;

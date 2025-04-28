@@ -334,6 +334,50 @@ anychart.stockModule.Plot.prototype.SUPPORTED_CONSISTENCY_STATES =
   anychart.ConsistencyState.STOCK_PLOT_PRICE_INDICATORS |
   anychart.ConsistencyState.STOCK_PLOT_AXIS_MARKERS;
 
+  /**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+  anychart.stockModule.Plot.prototype.supported = function() {
+  return {
+    "sigs": [
+      "NEEDS_REDRAW",
+      "BOUNDS_CHANGED",
+      "ENABLED_STATE_CHANGED",
+      "Z_INDEX_STATE_CHANGED",
+      "NEEDS_RECALCULATION",
+      "NEED_UPDATE_LEGEND"
+    ],
+    "cs": [
+      "ENABLED",
+      "CONTAINER",
+      "BOUNDS",
+      "Z_INDEX",
+      "STOCK_PLOT_GRIDS",
+      "STOCK_PLOT_AXES",
+      "STOCK_PLOT_DT_AXIS",
+      "STOCK_PLOT_SERIES",
+      "STOCK_PLOT_BACKGROUND",
+      "STOCK_PLOT_PALETTE",
+      "STOCK_PLOT_ANNOTATIONS",
+      "STOCK_PLOT_EVENT_MARKERS",
+      "STOCK_PLOT_LEGEND",
+      "STOCK_PLOT_NO_DATA_LABEL",
+      "AXES_CHART_CROSSHAIR",
+      "STOCK_PLOT_TITLE",
+      "STOCK_PLOT_PRICE_INDICATORS",
+      "STOCK_PLOT_AXIS_MARKERS"
+    ]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.stockModule.Plot.prototype.getThisType = function() {
+  return 'anychart.stockModule.Plot';
+};
 
 /**
  * Grid z-index in chart root layer.
@@ -4057,6 +4101,7 @@ anychart.stockModule.Plot.Dragger.prototype.limitY = function(y) {
 //exports
 (function() {
   var proto = anychart.stockModule.Plot.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['crosshair'] = proto.crosshair;
   proto['background'] = proto.background;
   proto['title'] = proto.title;
@@ -4136,4 +4181,6 @@ anychart.stockModule.Plot.Dragger.prototype.limitY = function(y) {
   proto['moveDown'] = proto.moveDown;
   proto['toggleExpandedState'] = proto.toggleExpandedState;
   proto['isExpanded'] = proto.isExpanded;
+  proto['ul_supported'] = proto.supported;//jb
+  proto['ul_draw'] = proto.draw;//jb
 })();

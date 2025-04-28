@@ -126,6 +126,35 @@ anychart.core.VisualBase.prototype.SUPPORTED_CONSISTENCY_STATES =
     anychart.ConsistencyState.BOUNDS |
     anychart.ConsistencyState.Z_INDEX;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.VisualBase.prototype.supported = function() {
+  return {
+    "sigs": [
+      "NEEDS_REDRAW",
+      "BOUNDS_CHANGED",
+      "ENABLED_STATE_CHANGED",
+      "Z_INDEX_STATE_CHANGED"
+    ],
+    "cs": [
+      "ENABLED",
+      "CONTAINER",
+      "BOUNDS",
+      "Z_INDEX"
+    ]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.VisualBase.prototype.getThisType = function() {
+  return 'anychart.core.VisualBase';
+};
+
 
 /**
  * Applies all handlers to passed element. By default this.handleBrowserEvent handler is applied. But you can override
@@ -1004,7 +1033,9 @@ anychart.core.VisualBase.prototype.disposeInternal = function() {
 //exports
 (function() {
   var proto = anychart.core.VisualBase.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['zIndex'] = proto.zIndex;//in docs/final
   proto['enabled'] = proto.enabled;//doc|ex
   proto['print'] = proto.print;
+  proto['ul_supported'] = proto.supported;//jb
 })();

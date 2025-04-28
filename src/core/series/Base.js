@@ -249,6 +249,50 @@ anychart.core.series.Base.prototype.SUPPORTED_SIGNALS =
     anychart.Signal.NEED_UPDATE_LEGEND |
     anychart.Signal.NEEDS_UPDATE_A11Y;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.series.Base.prototype.supported = function() {
+  return {
+    "sigs": [
+      "NEEDS_REDRAW",
+      "BOUNDS_CHANGED",
+      "ENABLED_STATE_CHANGED",
+      "Z_INDEX_STATE_CHANGED",
+      "DATA_CHANGED",
+      "NEEDS_RECALCULATION",
+      "NEED_UPDATE_LEGEND",
+      "NEEDS_UPDATE_A11Y"
+    ],
+    "cs": [
+      "ENABLED",
+      "CONTAINER",
+      "BOUNDS",
+      "Z_INDEX",
+      "SERIES_DATA",
+      "SERIES_LABELS",
+      "SERIES_MARKERS",
+      "SERIES_OUTLIERS",
+      "SERIES_ERROR",
+      "SERIES_COLOR",
+      "SERIES_CLIP",
+      "SERIES_POINTS",
+      "SERIES_SHAPE_MANAGER",
+      "A11Y",
+      "SERIES_COLOR_SCALE"
+    ]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.series.Base.prototype.getThisType = function() {
+  return 'anychart.core.series.Base';
+};
+
 
 /**
  * Z-index increment multiplier.
@@ -5074,6 +5118,7 @@ anychart.core.series.Base.prototype.disposeInternal = function() {
 //exports
 (function() {
   var proto = anychart.core.series.Base.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['a11y'] = proto.a11y;
 
   proto['getType'] = proto.getType;//legacy for scatter
@@ -5110,4 +5155,7 @@ anychart.core.series.Base.prototype.disposeInternal = function() {
 
   proto['rendering'] = proto.rendering;
   proto['colorScale'] = proto.colorScale;
+
+  proto['ul_supported'] = proto.supported;//jb
+  proto['ul_draw'] = proto.draw;//jb
 })();

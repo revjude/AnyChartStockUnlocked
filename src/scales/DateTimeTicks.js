@@ -54,6 +54,25 @@ goog.inherits(anychart.scales.DateTimeTicks, anychart.core.Base);
  */
 anychart.scales.DateTimeTicks.prototype.SUPPORTED_SIGNALS = anychart.Signal.NEEDS_REAPPLICATION;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.scales.DateTimeTicks.prototype.supported = function() {
+  return {
+    "sigs": ["NEEDS_REAPPLICATION"],
+    "cs": []
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.scales.DateTimeTicks.prototype.getThisType = function() {
+  return 'anychart.scales.DateTimeTicks';
+};
+
 
 /**
  * Fixed interval setting.
@@ -385,6 +404,8 @@ anychart.scales.DateTimeTicks.prototype.setupAsMinor = function(min, max, adjust
  * @return {!Array} Array of two values: [newMin, newMax].
  */
 anychart.scales.DateTimeTicks.prototype.setupAsMajor = function(min, max, opt_canModifyMin, opt_canModifyMax) {
+  console.log("DateTimeTicks.setupAsMajor(min, max, opt_canModifyMin, opt_canModifyMax)");
+  console.log(arguments);
   this.autoTicks_ = null;
   var result = [min, max];
   if (!this.explicit_) {
@@ -648,10 +669,12 @@ anychart.scales.DateTimeTicks.prototype.setupByJSON = function(config, opt_defau
 //exports
 (function() {
   var proto = anychart.scales.DateTimeTicks.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['interval'] = proto.interval;//doc|ex
   proto['count'] = proto.count;//doc|ex
   proto['set'] = proto.set;//doc|ex
   proto['get'] = proto.get;//doc|ex
   proto['getIntervalUnit'] = proto.getIntervalUnit;
   proto['getIntervalUnitCount'] = proto.getIntervalUnitCount;
+  proto['ul_supported'] = proto.supported;//jb
 })();

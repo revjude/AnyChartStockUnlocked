@@ -113,6 +113,36 @@ anychart.stockModule.Axis.prototype.SUPPORTED_CONSISTENCY_STATES =
  */
 anychart.stockModule.Axis.prototype.SUPPORTED_SIGNALS = anychart.core.VisualBase.prototype.SUPPORTED_SIGNALS;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.stockModule.Axis.prototype.supported = function() {
+  return {
+    "sigs": [
+      "NEEDS_REDRAW",
+      "BOUNDS_CHANGED",
+      "ENABLED_STATE_CHANGED",
+      "Z_INDEX_STATE_CHANGED"
+    ],
+    "cs": [
+      "ENABLED",
+      "CONTAINER",
+      "BOUNDS",
+      "Z_INDEX",
+      "APPEARANCE",
+      "STOCK_DTAXIS_BACKGROUND"
+    ]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.stockModule.Axis.prototype.getThisType = function() {
+  return 'anychart.stockModule.Axis';
+};
 
 //endregion
 //region --- API
@@ -869,6 +899,7 @@ anychart.stockModule.Axis.prototype.setupByJSON = function(config, opt_default) 
 //exports
 (function() {
   var proto = anychart.stockModule.Axis.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['labels'] = proto.labels;
   proto['minorLabels'] = proto.minorLabels;
   proto['ticks'] = proto.ticks;
@@ -876,8 +907,11 @@ anychart.stockModule.Axis.prototype.setupByJSON = function(config, opt_default) 
   proto['background'] = proto.background;
 
   // auto generated
-  // proto['height'] = proto.height;
+  proto['ul_height'] = proto.height;//jb
   // proto['showHelperLabel'] = proto.showHelperLabel;
   // proto['overlapMode'] = proto.overlapMode;
+  
+  proto['ul_supported'] = proto.supported;//jb
+  proto['ul_draw'] = proto.draw;//jb
 })();
 //endregion

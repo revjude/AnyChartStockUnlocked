@@ -34,6 +34,25 @@ anychart.data.Mapping.prototype.SUPPORTED_SIGNALS = anychart.Signal.DATA_CHANGED
  */
 anychart.data.Mapping.prototype.SUPPORTED_CONSISTENCY_STATES = 0;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.data.Mapping.prototype.supported = function() {
+  return {
+    "sigs": ["DATA_CHANGED"],
+    "cs": [0]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.data.Mapping.prototype.getThisType = function() {
+  return 'anychart.data.Mapping';
+};
+
 
 /**
  * Fetches a field value from the row by its  name. Returns undefined, if no matching field found.
@@ -284,6 +303,7 @@ anychart.data.Mapping.prototype.getMapping = function() {
 //exports
 (function() {
   var proto = anychart.data.Mapping.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   goog.exportSymbol('anychart.data.Mapping.DEFAULT_MAPPING', anychart.data.Mapping.DEFAULT_MAPPING);
   goog.exportSymbol('anychart.data.Mapping.DEFAULT_SIMPLE_ROW_MAPPING', anychart.data.Mapping.DEFAULT_SIMPLE_ROW_MAPPING);
   goog.exportSymbol('anychart.data.Mapping.DEFAULT_INDEX_MAPPING', anychart.data.Mapping.DEFAULT_INDEX_MAPPING);
@@ -291,4 +311,5 @@ anychart.data.Mapping.prototype.getMapping = function() {
   proto['getIterator'] = proto.getIterator;
   proto['row'] = proto.row;
   proto['getMapping'] = proto.getMapping;
+  proto['ul_supported'] = proto.supported;//jb
 })();

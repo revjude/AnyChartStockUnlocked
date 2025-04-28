@@ -100,6 +100,24 @@ goog.inherits(anychart.stockModule.data.Table, anychart.core.Base);
  */
 anychart.stockModule.data.Table.prototype.SUPPORTED_SIGNALS = anychart.Signal.DATA_CHANGED;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.stockModule.data.Table.prototype.supported = function() {
+  return {
+    "sigs": ["DATA_CHANGED"],
+    "cs": []
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.stockModule.data.Table.prototype.getThisType = function() {
+  return 'anychart.stockModule.data.Table';
+};
 
 /**
  * Makes the table to enter transaction mode.
@@ -451,10 +469,12 @@ anychart.data.table = function(opt_keyColumnIndex, opt_dateTimePattern, opt_time
 //exports
 (function() {
   var proto = anychart.stockModule.data.Table.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   goog.exportSymbol('anychart.data.table', anychart.data.table);
   proto['addData'] = proto.addData;
   proto['remove'] = proto.remove;
   proto['removeFirst'] = proto.removeFirst;
   proto['mapAs'] = proto.mapAs;
   proto['createComputer'] = proto.createComputer;
+  proto['ul_supported'] = proto.supported;//jb
 })();

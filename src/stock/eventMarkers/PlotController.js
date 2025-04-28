@@ -91,6 +91,30 @@ anychart.stockModule.eventMarkers.PlotController.prototype.SUPPORTED_CONSISTENCY
     anychart.core.VisualBase.prototype.SUPPORTED_CONSISTENCY_STATES |
     anychart.ConsistencyState.EVENT_MARKERS_DATA;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.stockModule.eventMarkers.PlotController.prototype.supported = function() {
+  return {
+    "sigs": [],
+    "cs": [
+      "ENABLED",
+      "CONTAINER",
+      "BOUNDS",
+      "Z_INDEX",
+      "EVENT_MARKERS_DATA"
+    ]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.stockModule.eventMarkers.PlotController.prototype.getThisType = function() {
+  return 'anychart.stockModule.eventMarkers.PlotController';
+};
 
 /**
  * Z index multiplier for default group zIndex.
@@ -591,11 +615,14 @@ anychart.stockModule.eventMarkers.PlotController.prototype.disposeInternal = fun
 //exports
 (function() {
   var proto = anychart.stockModule.eventMarkers.PlotController.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['group'] = proto.group;
   proto['data'] = proto.data;
   proto['tooltip'] = proto.tooltip;
   proto['normal'] = proto.normal;
   proto['hovered'] = proto.hovered;
   proto['selected'] = proto.selected;
+  proto['ul_supported'] = proto.supported;//jb
+  proto['ul_draw'] = proto.draw;//jb
 })();
 

@@ -53,6 +53,25 @@ anychart.data.View.prototype.SUPPORTED_SIGNALS = anychart.Signal.DATA_CHANGED;
  */
 anychart.data.View.prototype.SUPPORTED_CONSISTENCY_STATES = anychart.ConsistencyState.DATA_MASK;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.data.View.prototype.supported = function() {
+  return {
+    "sigs": ["DATA_CHANGED"],
+    "cs": ["DATA_MASK"]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.data.View.prototype.getThisType = function() {
+  return 'anychart.data.View';
+};
+
 
 /**
  * The redirection mask for a view. Each value in this array is an index of the row in parentView to fetch,
@@ -789,6 +808,7 @@ anychart.data.View.prototype.serialize = function() {
 //exports
 (function() {
   var proto = anychart.data.View.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['derive'] = proto.derive;//doc|ex
   proto['filter'] = proto.filter;//doc|ex
   proto['sort'] = proto.sort;//doc|ex
@@ -801,4 +821,5 @@ anychart.data.View.prototype.serialize = function() {
   proto['get'] = proto.get;//doc|ex
   proto['set'] = proto.set;//doc|ex
   proto['find'] = proto.find;//doc|ex
+  proto['ul_supported'] = proto.supported;//jb
 })();

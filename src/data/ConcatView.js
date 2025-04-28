@@ -34,6 +34,25 @@ goog.inherits(anychart.data.ConcatView, anychart.data.View);
  */
 anychart.data.ConcatView.prototype.SUPPORTED_CONSISTENCY_STATES = 0;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.data.ConcatView.prototype.supported = function() {
+  return {
+    "sigs": [],
+    "cs": [0]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.data.ConcatView.prototype.getThisType = function() {
+  return 'anychart.data.ConcatView';
+};
+
 
 /** @inheritDoc */
 anychart.data.ConcatView.prototype.getRowMapping = function(rowIndex) {
@@ -105,3 +124,9 @@ anychart.data.ConcatView.prototype.parentMeta = function(index, name, opt_value)
     return parentView.meta(index, name);
   }
 };
+
+(function() {
+  var proto = anychart.data.ConcatView.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
+  proto['ul_supported'] = proto.supported;//jb
+})();

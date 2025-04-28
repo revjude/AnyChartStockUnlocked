@@ -410,9 +410,11 @@ anychart.core.ui.CircularLabelsFactory.Label.prototype.drawLabel = function(boun
 //region --- Exports
 //exports
 (function() {
-  // var proto = anychart.core.ui.CircularLabelsFactory.prototype;
+  var proto = anychart.core.ui.CircularLabelsFactory.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   // proto['autoRotate'] = proto.autoRotate;
-  // proto = anychart.core.ui.CircularLabelsFactory.Label.prototype;
+  proto = anychart.core.ui.CircularLabelsFactory.Label.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   // proto['autoRotate'] = proto.autoRotate;
 })();
 //endregion

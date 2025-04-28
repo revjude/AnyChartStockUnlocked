@@ -160,6 +160,37 @@ anychart.core.axisMarkers.PathBase.prototype.SUPPORTED_CONSISTENCY_STATES =
     anychart.ConsistencyState.BOUNDS |
     anychart.ConsistencyState.APPEARANCE;
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.core.axisMarkers.PathBase.prototype.supported = function() {
+  return {
+    "sigs": [
+      "NEEDS_REDRAW",
+      "BOUNDS_CHANGED",
+      "ENABLED_STATE_CHANGED",
+      "Z_INDEX_STATE_CHANGED",
+      "NEEDS_RECALCULATION"
+    ],
+    "cs": [
+      "ENABLED",
+      "CONTAINER",
+      "BOUNDS",
+      "Z_INDEX",
+      "APPEARANCE"
+    ]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.core.axisMarkers.PathBase.prototype.getThisType = function() {
+  return 'anychart.core.axisMarkers.PathBase';
+};
+
 
 /**
  * Sets the chart axisMarkers belongs to.
@@ -669,3 +700,10 @@ anychart.core.axisMarkers.PathBase.prototype.disposeInternal = function() {
   this.axesLinesSpace_ = null;
   anychart.core.axisMarkers.PathBase.base(this, 'disposeInternal');
 };
+
+(function() {
+  var proto = anychart.core.axisMarkers.PathBase.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
+  proto['ul_supported'] = proto.supported;//jb
+  proto['ul_draw'] = proto.draw;//jb
+})();

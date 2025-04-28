@@ -87,6 +87,29 @@ anychart.format.FormatSelector.prototype.SUPPORTED_SIGNALS =
     anychart.Signal.MEASURE_COLLECT | //Signal for Measuriator to collect labels to measure.
     anychart.Signal.MEASURE_BOUNDS; //Signal for Measuriator to measure the bounds of collected labels.
 
+/**
+ * Getter for supported signals.
+ * @return {Object}
+ */
+anychart.format.FormatSelector.prototype.supported = function() {
+  return {
+    "sigs": [
+      0,
+      "MEASURE_COLLECT",
+      "MEASURE_BOUNDS"
+    ],
+    "cs": [0]
+  };
+};
+
+/**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.format.FormatSelector.prototype.getThisType = function() {
+  return 'anychart.format.FormatSelector';
+};
+
 
 //endregion
 //region -- Constants and typedefs.
@@ -339,4 +362,8 @@ anychart.format.FormatSelector.prototype.disposeInternal = function() {
 
 //endregion
 
-
+(function() {
+  var proto = anychart.format.FormatSelector.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
+  proto['ul_supported'] = proto.supported;//jb
+})();
