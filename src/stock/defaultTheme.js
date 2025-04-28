@@ -662,7 +662,6 @@ goog.mixin(goog.global['anychart']['themes']['defaultTheme'], {
         },
         'hollowcandles': {
           'normal': {
-            'risingFill': anychart.stockModule.defaultTheme.stockScrollerUnselected,
             'risingStroke': anychart.stockModule.defaultTheme.stockScrollerUnselected,
             'fallingFill': anychart.stockModule.defaultTheme.stockScrollerUnselected,
             'fallingStroke': anychart.stockModule.defaultTheme.stockScrollerUnselected

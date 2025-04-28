@@ -1689,7 +1689,7 @@ goog.exportSymbol('anychart.themes.defaultTheme', {
       },
       'hollowcandles': {
         'normal': {
-          'risingFill': anychart.core.defaultTheme.risingColor,
+          'risingFill': false,
           'risingStroke': anychart.core.defaultTheme.risingColor,
           'fallingFill': anychart.core.defaultTheme.fallingColor,
           'fallingStroke': anychart.core.defaultTheme.fallingColor,
