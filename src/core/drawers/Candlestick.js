@@ -90,26 +90,27 @@ anychart.core.drawers.Candlestick.prototype.drawSubsequentPoint = function(point
   var widthHalf = this.pointWidth / 2;
 
   var path = /** @type {acgraph.vector.Path} */(shapes[name]);
-  anychart.core.drawers.move(path, this.isVertical, x, high);
-  anychart.core.drawers.line(path, this.isVertical, x, rising ? close : open);
+  //anychart.core.drawers.move(path, this.isVertical, x, high);
+  //anychart.core.drawers.line(path, this.isVertical, x, rising ? close : open);
   anychart.core.drawers.move(path, this.isVertical, x - widthHalf, open);
   anychart.core.drawers.line(path, this.isVertical,
       x + widthHalf, open,
       x + widthHalf, close,
       x - widthHalf, close,
       x - widthHalf, open);
-  anychart.core.drawers.move(path, this.isVertical, x, low);
-  anychart.core.drawers.line(path, this.isVertical, x, rising ? open : close);
+  //anychart.core.drawers.move(path, this.isVertical, x, low);
+  //anychart.core.drawers.line(path, this.isVertical, x, rising ? open : close);
 
+  shapes[hatchName].stroke(shapes[hatchName].fill().color+' 1');
   path = /** @type {acgraph.vector.Path} */(shapes[hatchName]);
   anychart.core.drawers.move(path, this.isVertical, x, high);
   anychart.core.drawers.line(path, this.isVertical, x, rising ? close : open);
-  anychart.core.drawers.move(path, this.isVertical, x - widthHalf, open);
-  anychart.core.drawers.line(path, this.isVertical,
-      x + widthHalf, open,
-      x + widthHalf, close,
-      x - widthHalf, close,
-      x - widthHalf, open);
+  //anychart.core.drawers.move(path, this.isVertical, x - widthHalf, open);
+  //anychart.core.drawers.line(path, this.isVertical,
+  //    x + widthHalf, open,
+  //    x + widthHalf, close,
+  //    x - widthHalf, close,
+  //    x - widthHalf, open);
   anychart.core.drawers.move(path, this.isVertical, x, low);
   anychart.core.drawers.line(path, this.isVertical, x, rising ? open : close);
 };
