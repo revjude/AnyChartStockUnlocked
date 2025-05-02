@@ -109,6 +109,13 @@ anychart.scales.ScatterBase = function() {
    * @protected
    */
   this.stickToZeroFlag = false;
+
+  /**
+   * Soft maximum setting.
+   * @type {number}
+   * @protected
+   */
+  this.minTick = .0000001;
 };
 goog.inherits(anychart.scales.ScatterBase, anychart.scales.Base);
 
@@ -129,6 +136,24 @@ anychart.scales.ScatterBase.prototype.maxTicksCount = function(opt_value) {
     return this;
   }
   return this.maxTicksCount_;
+};
+
+
+/**
+ * @param {number=} opt_value
+ * @return {number|anychart.scales.ScatterBase}
+ */
+anychart.scales.ScatterBase.prototype.minimumTick = function(opt_value) {
+  if (goog.isDef(opt_value)) {
+    opt_value = +opt_value || .01;
+    if (!(isNaN(opt_value) && isNaN(this.minTick)) && opt_value != this.minTick) {
+      this.minTick = opt_value;
+      this.consistent = false;
+      this.dispatchSignal(anychart.Signal.NEEDS_RECALCULATION);
+    }
+    return this;
+  }
+  return this.minTick;
 };
 
 
@@ -501,8 +526,8 @@ anychart.scales.ScatterBase.prototype.determineScaleMinMax = function() {
   }
 
   tmp = this.applyGaps(min, max, !cannotChangeMin, !cannotChangeMax, this.stickToZeroFlag, true);
-  this.min = tmp.min;
-  this.max = tmp.max;
+  this.min = this.stickToZeroFlag ? 0 : Math.round(tmp.min/this.minTick)*this.minTick;
+  this.max = Math.round(tmp.max/this.minTick)*this.minTick;
   this.borderLog = tmp.borderLog || 0;
 };
 
@@ -577,6 +602,22 @@ anychart.scales.ScatterBase.prototype.inverseTransform = function(ratio) {
 };
 
 
+/**
+ * @return {boolean} returns minimum auto mode flag.
+ */
+anychart.scales.ScatterBase.prototype.getMinimumAutoMode = function() {
+  return this.minimumModeAuto;
+};
+
+
+/**
+ * @return {boolean} returns maximum auto mode flag.
+ */
+anychart.scales.ScatterBase.prototype.getMaximumAutoMode = function() {
+  return this.maximumModeAuto;
+};
+
+
 /** @inheritDoc */
 anychart.scales.ScatterBase.prototype.serialize = function() {
   var json = anychart.scales.ScatterBase.base(this, 'serialize');
@@ -586,7 +627,7 @@ anychart.scales.ScatterBase.prototype.serialize = function() {
   json['maximumGap'] = this.maximumGap();
   json['softMinimum'] = isNaN(this.softMin) ? null : this.softMin;
   json['softMaximum'] = isNaN(this.softMax) ? null : this.softMax;
-  json['softMaximum'] = isNaN(this.softMax) ? null : this.softMax;
+  json['minimumTick'] = isNaN(this.minTick) ? null : this.minTick;
   json['alignMinimum'] = this.alignMinimumVal;
   json['alignMaximum'] = this.alignMaximumVal;
   json['maxTicksCount'] = this.maxTicksCount_;
@@ -606,6 +647,7 @@ anychart.scales.ScatterBase.prototype.setupByJSON = function(config, opt_default
   this.alignMinimum(config['alignMinimum']);
   this.alignMaximum(config['alignMaximum']);
   this.maxTicksCount(config['maxTicksCount']);
+  this.minimumTick(config['minimumTick']);
 };
 
 
@@ -637,4 +679,9 @@ anychart.scales.ScatterBase.fromString = function(type, opt_canReturnNull) {
   proto['maximum'] = proto.maximum;//doc|ex
   proto['extendDataRange'] = proto.extendDataRange;//doc|need-ex
   proto['ul_calculate'] = proto.calculate;//jb
+  proto['ul_minTick'] = proto.minimumTick;//jb
+  proto['ul_getMinimumAutoMode'] = proto.getMinimumAutoMode;//jb
+  proto['ul_getMaximumAutoMode'] = proto.getMaximumAutoMode;//jb
+  proto['ul_minTick'] = proto.minimumTick;//jb
+  proto['minimumTick'] = proto.minimumTick;//jb
 })();
