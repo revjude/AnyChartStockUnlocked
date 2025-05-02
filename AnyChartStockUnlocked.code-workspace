@@ -1,10 +1,10 @@
 {
 	"folders": [
 		{
-			"path": "src"
+			"path": "."
 		}
 	],
-	"settings": {		"search.exclude": {
+	"settings": {"search.exclude": {
 		"src/bullet": true,
 		"src/calendar": true,
 		"src/cartesian": true,
