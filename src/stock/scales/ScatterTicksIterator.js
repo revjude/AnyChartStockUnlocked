@@ -75,7 +75,7 @@ anychart.stockModule.scales.ScatterTicksIterator.prototype.setup = function(star
 anychart.stockModule.scales.ScatterTicksIterator.prototype.reset = function() {
   var startAlignedByMajor = anychart.utils.alignDateLeft(this.start, this.majorInterval, this.globalStart);
   var startAlignedByMinor = anychart.utils.alignDateLeft(this.start, this.minorInterval, this.globalStart);
-
+  
   /**
    * @type {goog.date.UtcDateTime}
    * @protected
@@ -207,3 +207,37 @@ anychart.stockModule.scales.ScatterTicksIterator.prototype.toArray = function(ma
 
   return result;
 };
+
+
+/*
+ * left over debug code from xaxis alignment sperlunking
+ * @return {Object}
+anychart.stockModule.scales.ScatterTicksIterator.prototype.getInfo = function() {
+  return {
+    "start": this.start,
+    "globalStart": this.globalStart,
+    "currentMajor": this.currentMajor,
+    "preFirstMajor": this.preFirstMajor,
+    "majorInterval": this.majorInterval,
+    "end": this.end,
+    "majorTicksArrayCache_": this.majorTicksArrayCache_,
+    "current": this.current,
+    "currentIsMajor": this.currentIsMajor,
+    "reset": this.reset()
+  };
+};
+*/
+
+//exports
+(function() {
+  var proto = anychart.stockModule.scales.ScatterTicksIterator.prototype;
+  proto['setup'] = proto.setup;
+  proto['reset'] = proto.reset;
+  proto['advance'] = proto.advance;
+  proto['getCurrentIsMajor'] = proto.getCurrentIsMajor;
+  proto['getCurrentIsMinor'] = proto.getCurrentIsMinor;
+  proto['getCurrent'] = proto.getCurrent;
+  proto['getPreFirstMajor'] = proto.getPreFirstMajor;
+  proto['toArray'] = proto.toArray;
+  //proto['getInfo'] = proto.getInfo;
+})();
