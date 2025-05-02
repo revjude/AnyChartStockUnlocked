@@ -775,6 +775,7 @@ anychart.core.Chart.prototype.statistics = function(opt_name, opt_value) {
       return this.statistics_[opt_name.toLowerCase()];
     }
   } else {
+    this.ensureStatisticsReady();
     return this.statistics_;
   }
 };
@@ -4070,5 +4071,6 @@ anychart.core.Chart.prototype.id = function(opt_value) {
   proto['fullScreen'] = proto.fullScreen;
   proto['isFullScreenAvailable'] = proto.isFullScreenAvailable;
   proto['ul_supported'] = proto.supported;//jb
+  proto['ul_statistics'] = proto.statistics;//jb
 })();
 

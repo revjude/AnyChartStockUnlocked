@@ -529,6 +529,7 @@ anychart.stockModule.Plot.prototype.statistics = function(opt_name, opt_value) {
       return this.statistics_[opt_name.toLowerCase()];
     }
   } else {
+    this.chart_.ensureStatisticsReady();
     return this.statistics_;
   }
 };
@@ -4202,4 +4203,5 @@ anychart.stockModule.Plot.Dragger.prototype.limitY = function(y) {
   proto['isExpanded'] = proto.isExpanded;
   proto['ul_supported'] = proto.supported;//jb
   proto['ul_draw'] = proto.draw;//jb
+  proto['ul_statistics'] = proto.statistics;//jb
 })();

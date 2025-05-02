@@ -1819,6 +1819,8 @@ anychart.core.Base.prototype.removeAllListeners = function(opt_type) {
   proto['ul_dispatchSignal'] = proto.dispatchSignal;//jb
   proto['ul_invalidate'] = proto.invalidate;//jb
   proto['ul_supported'] = proto.supported;//jb
+  proto['ul_suspendSignalsDispatching'] = proto.suspendSignalsDispatching;//jb
+  proto['ul_resumeSignalsDispatching'] = proto.resumeSignalsDispatching;//jb
   
   goog.exportSymbol('anychart.Signal.NEEDS_REDRAW', anychart.Signal.NEEDS_REDRAW);
   goog.exportSymbol('anychart.Signal.NEEDS_REAPPLICATION', anychart.Signal.NEEDS_REAPPLICATION);

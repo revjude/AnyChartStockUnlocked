@@ -138,6 +138,7 @@ anychart.core.Point.prototype.statistics = function(opt_name, opt_value) {
       return this.statistics_[opt_name.toLowerCase()];
     }
   } else {
+    this.chart.ensureStatisticsReady();
     return this.statistics_;
   }
 };
@@ -174,4 +175,5 @@ anychart.core.Point.prototype.getStat = function(key) {
   proto['selected'] = proto.selected;
   proto['exists'] = proto.exists;
   proto['getStat'] = proto.getStat;
+  proto['ul_statistics'] = proto.statistics;//jb
 })();

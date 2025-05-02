@@ -4906,6 +4906,7 @@ anychart.core.series.Base.prototype.statistics = function(opt_name, opt_value) {
       return this.statistics_[opt_name.toLowerCase()];
     }
   } else {
+    this.chart.ensureStatisticsReady();
     return this.statistics_;
   }
 };
@@ -5158,4 +5159,5 @@ anychart.core.series.Base.prototype.disposeInternal = function() {
 
   proto['ul_supported'] = proto.supported;//jb
   proto['ul_draw'] = proto.draw;//jb
+  proto['ul_statistics'] = proto.statistics;//jb
 })();
