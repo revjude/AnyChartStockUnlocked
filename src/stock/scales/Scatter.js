@@ -883,7 +883,157 @@ anychart.stockModule.scales.Scatter.prototype.getIndexByKey = function(key) {
  * @type {anychart.stockModule.scales.Scatter.TicksSettings}
  * @private
  */
-anychart.stockModule.scales.Scatter.DEFAULT_TICKS_ = [
+anychart.stockModule.scales.Scatter.DEFAULT_TICKS_ = [  
+  {
+  'minor': {'unit': anychart.enums.Interval.MILLISECOND, 'count': 1},
+  'major': {'unit': anychart.enums.Interval.MILLISECOND, 'count': 1}
+  },
+  {
+  'minor': {'unit': anychart.enums.Interval.MILLISECOND, 'count': 2},
+  'major': {'unit': anychart.enums.Interval.MILLISECOND, 'count': 2}
+  },
+  {
+    'minor': {'unit': anychart.enums.Interval.MILLISECOND, 'count': 5},
+    'major': {'unit': anychart.enums.Interval.MILLISECOND, 'count': 5}
+  },
+  {
+    'minor': {'unit': anychart.enums.Interval.MILLISECOND, 'count': 10},
+    'major': {'unit': anychart.enums.Interval.MILLISECOND, 'count': 10}
+  },
+  {
+    'minor': {'unit': anychart.enums.Interval.MILLISECOND, 'count': 25},
+    'major': {'unit': anychart.enums.Interval.MILLISECOND, 'count': 25}
+  },
+  {
+    'minor': {'unit': anychart.enums.Interval.MILLISECOND, 'count': 50},
+    'major': {'unit': anychart.enums.Interval.MILLISECOND, 'count': 50}
+  },
+  {
+    'minor': {'unit': anychart.enums.Interval.MILLISECOND, 'count': 100},
+    'major': {'unit': anychart.enums.Interval.MILLISECOND, 'count': 100}
+  },
+  {
+    'minor': {'unit': anychart.enums.Interval.MILLISECOND, 'count': 250},
+    'major': {'unit': anychart.enums.Interval.MILLISECOND, 'count': 250}
+  },
+  {
+    'minor': {'unit': anychart.enums.Interval.MILLISECOND, 'count': 500},
+    'major': {'unit': anychart.enums.Interval.MILLISECOND, 'count': 500}
+  },
+  {
+    'minor': {'unit': anychart.enums.Interval.SECOND, 'count': 1},
+    'major': {'unit': anychart.enums.Interval.SECOND, 'count': 1}
+  },
+  {
+    'minor': {'unit': anychart.enums.Interval.SECOND, 'count': 5},
+    'major': {'unit': anychart.enums.Interval.SECOND, 'count': 5}
+  },
+  {
+    'minor': {'unit': anychart.enums.Interval.SECOND, 'count': 15},
+    'major': {'unit': anychart.enums.Interval.SECOND, 'count': 15}
+  },
+  {
+    'minor': {'unit': anychart.enums.Interval.SECOND, 'count': 30},
+    'major': {'unit': anychart.enums.Interval.SECOND, 'count': 30}
+  },
+  {
+    'minor': {'unit': anychart.enums.Interval.MINUTE, 'count': 1},
+    'major': {'unit': anychart.enums.Interval.MINUTE, 'count': 1}
+  },
+  {
+    'minor': {'unit': anychart.enums.Interval.MINUTE, 'count': 5},
+    'major': {'unit': anychart.enums.Interval.MINUTE, 'count': 5}
+  },
+  {
+    'minor': {'unit': anychart.enums.Interval.MINUTE, 'count': 15},
+    'major': {'unit': anychart.enums.Interval.MINUTE, 'count': 15}
+  },
+  {
+    'minor': {'unit': anychart.enums.Interval.MINUTE, 'count': 30},
+    'major': {'unit': anychart.enums.Interval.MINUTE, 'count': 30}
+  },
+  {
+    'minor': {'unit': anychart.enums.Interval.MINUTE, 'count': 60},
+    'major': {'unit': anychart.enums.Interval.MINUTE, 'count': 60}
+  },
+  {
+    'minor': {'unit': anychart.enums.Interval.MINUTE, 'count': 180},
+    'major': {'unit': anychart.enums.Interval.MINUTE, 'count': 180}
+  },
+  {
+    'minor': {'unit': anychart.enums.Interval.MINUTE, 'count': 360},
+    'major': {'unit': anychart.enums.Interval.MINUTE, 'count': 360}
+  },
+  {
+    'minor': {'unit': anychart.enums.Interval.MINUTE, 'count': 720},
+    'major': {'unit': anychart.enums.Interval.MINUTE, 'count': 720}
+  },
+  {
+    'minor': {'unit': anychart.enums.Interval.DAY, 'count': 1},
+    'major': {'unit': anychart.enums.Interval.DAY, 'count': 1}
+  },
+  {
+    'minor': {'unit': anychart.enums.Interval.WEEK, 'count': 1},
+    'major': {'unit': anychart.enums.Interval.WEEK, 'count': 1}
+  },
+  {
+    'minor': {'unit': anychart.enums.Interval.MONTH, 'count': 1},
+    'major': {'unit': anychart.enums.Interval.MONTH, 'count': 1}
+  },
+  {
+    'minor': {'unit': anychart.enums.Interval.QUARTER, 'count': 1},
+    'major': {'unit': anychart.enums.Interval.QUARTER, 'count': 1}
+  },
+  {
+    'minor': {'unit': anychart.enums.Interval.SEMESTER, 'count': 1},
+    'major': {'unit': anychart.enums.Interval.SEMESTER, 'count': 1}
+  },
+  {
+    'minor': {'unit': anychart.enums.Interval.YEAR, 'count': 1},
+    'major': {'unit': anychart.enums.Interval.YEAR, 'count': 1}
+  },
+  {
+    'minor': {'unit': anychart.enums.Interval.YEAR, 'count': 2},
+    'major': {'unit': anychart.enums.Interval.YEAR, 'count': 2}
+  },
+  {
+    'minor': {'unit': anychart.enums.Interval.YEAR, 'count': 5},
+    'major': {'unit': anychart.enums.Interval.YEAR, 'count': 5}
+  },
+  {
+    'minor': {'unit': anychart.enums.Interval.YEAR, 'count': 10},
+    'major': {'unit': anychart.enums.Interval.YEAR, 'count': 10}
+  },
+  {
+    'minor': {'unit': anychart.enums.Interval.YEAR, 'count': 25},
+    'major': {'unit': anychart.enums.Interval.YEAR, 'count': 25}
+  },
+  {
+    'minor': {'unit': anychart.enums.Interval.YEAR, 'count': 50},
+    'major': {'unit': anychart.enums.Interval.YEAR, 'count': 50}
+  },
+  {
+    'minor': {'unit': anychart.enums.Interval.YEAR, 'count': 100},
+    'major': {'unit': anychart.enums.Interval.YEAR, 'count': 100}
+  },
+  {
+    'minor': {'unit': anychart.enums.Interval.YEAR, 'count': 250},
+    'major': {'unit': anychart.enums.Interval.YEAR, 'count': 250}
+  },
+  {
+    'minor': {'unit': anychart.enums.Interval.YEAR, 'count': 500},
+    'major': {'unit': anychart.enums.Interval.YEAR, 'count': 500}
+  }
+];
+
+
+
+/**
+ * Array of default tick settings.
+ * @type {anychart.stockModule.scales.Scatter.TicksSettings}
+ * @private
+ */
+anychart.stockModule.scales.Scatter.DEFAULT_TICKS_ORIG_ = [
   {
     'minor': {'unit': anychart.enums.Interval.MILLISECOND, 'count': 1},
     'major': {'unit': anychart.enums.Interval.MILLISECOND, 'count': 5}
@@ -1062,4 +1212,5 @@ anychart.stockModule.scales.IKeyIndexTransformer.prototype.getIndexByKey = funct
   proto['maximumGap'] = proto.maximumGap;
   proto['ul_calculate'] = proto.calculate;//jb
   proto['ul_supported'] = proto.supported;//jb
+  proto['ul_maxTicksCount'] = proto.maxTicksCount;//jb
 })();
