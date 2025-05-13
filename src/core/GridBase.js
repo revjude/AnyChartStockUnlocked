@@ -1002,6 +1002,14 @@ anychart.core.GridBase.prototype.disposeInternal = function() {
   anychart.core.GridBase.base(this, 'disposeInternal');
 };
 
+/**
+ * Drawing.
+ * @return {anychart.core.GridBase} An instance of {@link anychart.core.GridBase} class for method chaining.
+ */
+anychart.core.GridBase.prototype.forceDraw = function() {
+  return /** @type {!(anychart.core.GridBase)} */(this.draw());
+};
+
 
 //endregion
 //region --- Exports
@@ -1016,7 +1024,6 @@ anychart.core.GridBase.prototype.disposeInternal = function() {
   // proto['drawLastLine'] = proto.drawLastLine;
   proto['ul_fill'] = proto.fill;//jb
   proto['ul_supported'] = proto.supported;//jb
-  proto['ul_draw'] = proto.draw;//jb
-  proto['ul_drawInternal'] = proto.drawInternal;//jb
+  proto['ul_forceDraw'] = proto.forceDraw;//jb
 })();
 //endregion
