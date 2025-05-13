@@ -226,6 +226,8 @@ anychart.stockModule.Grid.prototype.drawInternal = function() {
   proto['isHorizontal'] = proto.isHorizontal;
   proto['scale'] = proto.scale;
   proto['axis'] = proto.axis;
+  proto['ul_draw'] = proto.drawInternal;
+  proto['ul_drawInternal'] = proto.drawInternal;//jb
   // proto['isMinor'] = proto.isMinor;
 })();
 //endregion

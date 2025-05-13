@@ -1017,5 +1017,6 @@ anychart.core.GridBase.prototype.disposeInternal = function() {
   proto['ul_fill'] = proto.fill;//jb
   proto['ul_supported'] = proto.supported;//jb
   proto['ul_draw'] = proto.draw;//jb
+  proto['ul_drawInternal'] = proto.drawInternal;//jb
 })();
 //endregion

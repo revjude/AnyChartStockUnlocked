@@ -4204,4 +4204,5 @@ anychart.stockModule.Plot.Dragger.prototype.limitY = function(y) {
   proto['ul_supported'] = proto.supported;//jb
   proto['ul_draw'] = proto.draw;//jb
   proto['ul_statistics'] = proto.statistics;//jb
+  proto['ul_invalidateRedrawable'] = proto.invalidateRedrawable;//jb
 })();

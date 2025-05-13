@@ -4072,5 +4072,6 @@ anychart.core.Chart.prototype.id = function(opt_value) {
   proto['isFullScreenAvailable'] = proto.isFullScreenAvailable;
   proto['ul_supported'] = proto.supported;//jb
   proto['ul_statistics'] = proto.statistics;//jb
+  proto['ul_drawInternal'] = proto.drawInternal;//jb
 })();
 

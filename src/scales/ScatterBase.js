@@ -140,24 +140,6 @@ anychart.scales.ScatterBase.prototype.maxTicksCount = function(opt_value) {
 
 
 /**
- * @param {number=} opt_value
- * @return {number|anychart.scales.ScatterBase}
- */
-anychart.scales.ScatterBase.prototype.minimumTick = function(opt_value) {
-  if (goog.isDef(opt_value)) {
-    opt_value = +opt_value || .01;
-    if (!(isNaN(opt_value) && isNaN(this.minTick)) && opt_value != this.minTick) {
-      this.minTick = opt_value;
-      this.consistent = false;
-      this.dispatchSignal(anychart.Signal.NEEDS_RECALCULATION);
-    }
-    return this;
-  }
-  return this.minTick;
-};
-
-
-/**
  * Getter/setter for minimum.
  * @param {number=} opt_value Value to set.
  * @return {number|anychart.scales.ScatterBase} Scale minimum.
@@ -603,18 +585,54 @@ anychart.scales.ScatterBase.prototype.inverseTransform = function(ratio) {
 
 
 /**
- * @return {boolean} returns minimum auto mode flag.
+ * Getter/setter for a setting that turns maximumModeAuto on or off.
+ * @param {boolean=} opt_value
+ * @return {boolean|anychart.scales.ScatterBase}
  */
-anychart.scales.ScatterBase.prototype.getMinimumAutoMode = function() {
+anychart.scales.ScatterBase.prototype.maxModeAuto = function(opt_value) {
+  if (goog.isDef(opt_value)) {
+    opt_value = !!opt_value;
+    if (this.maximumModeAuto != opt_value) {
+      this.maximumModeAuto = opt_value;
+    }
+    return this;
+  }
+  return this.maximumModeAuto;
+};
+
+
+/**
+ * Getter/setter for a setting that turns minimumModeAuto on or off.
+ * @param {boolean=} opt_value
+ * @return {boolean|anychart.scales.ScatterBase}
+ */
+anychart.scales.ScatterBase.prototype.minModeAuto = function(opt_value) {
+  if (goog.isDef(opt_value)) {
+    opt_value = !!opt_value;
+    if (this.minimumModeAuto != opt_value) {
+      this.minimumModeAuto = opt_value;
+    }
+    return this;
+  }
   return this.minimumModeAuto;
 };
 
 
 /**
- * @return {boolean} returns maximum auto mode flag.
+ * @param {number=} opt_value
+ * @return {number|anychart.scales.ScatterBase}
  */
-anychart.scales.ScatterBase.prototype.getMaximumAutoMode = function() {
-  return this.maximumModeAuto;
+anychart.scales.ScatterBase.prototype.minimumTick = function(opt_value) {
+  if (goog.isDef(opt_value)) {
+    opt_value = +opt_value || .01;
+    if (!(isNaN(opt_value) && isNaN(this.minTick)) && opt_value != this.minTick) {
+      this.minTick = opt_value;
+      this.consistent = false;
+      this.dispatchSignal(anychart.Signal.NEEDS_RECALCULATION);
+    }
+    return this;
+  }
+  return this.minTick;
 };
 
 
@@ -680,8 +698,8 @@ anychart.scales.ScatterBase.fromString = function(type, opt_canReturnNull) {
   proto['extendDataRange'] = proto.extendDataRange;//doc|need-ex
   proto['ul_calculate'] = proto.calculate;//jb
   proto['ul_minTick'] = proto.minimumTick;//jb
-  proto['ul_getMinimumAutoMode'] = proto.getMinimumAutoMode;//jb
-  proto['ul_getMaximumAutoMode'] = proto.getMaximumAutoMode;//jb
+  proto['ul_minModeAuto'] = proto.minModeAuto;//jb
+  proto['ul_maxModeAuto'] = proto.maxModeAuto;//jb
   proto['ul_minTick'] = proto.minimumTick;//jb
   proto['minimumTick'] = proto.minimumTick;//jb
 })();
