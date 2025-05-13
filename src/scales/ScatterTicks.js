@@ -341,8 +341,6 @@ anychart.scales.ScatterTicks.prototype.mode = function(opt_value) {
  * @return {Array} Array of two values: [newMin, newMax].
  */
 anychart.scales.ScatterTicks.prototype.setupAsMajor = function(min, max, opt_canModifyMin, opt_canModifyMax, opt_logBase, opt_borderLog) {
-  //console.log("ScatterTicks.setupAsMajor(min, max, opt_canModifyMin, opt_canModifyMax, opt_logBase, opt_borderLog)");
-  //console.log(arguments);
   var result;
   if (this.explicit_) {
     this.autoTicks_ = null;
@@ -353,6 +351,27 @@ anychart.scales.ScatterTicks.prototype.setupAsMajor = function(min, max, opt_can
       result[1] = Math.max(max, this.explicit_[this.explicit_.length - 1] || 0);
   } else {
     var tmp;
+
+    //unlock code - normalize base factors for reasonable tick positioning
+    if(!isNaN(this.scale_.maxTicksCount()) && !isNaN(this.scale_.minimumTick())){
+      var maxTicks = /** @type {number} */(this.scale_.maxTicksCount());
+      var minTicks = Math.max(maxTicks-1, 4);
+      var tickSize = this.scale_.minimumTick();
+      var range = max-min;
+      var minInterval = range / maxTicks;
+      var scaleFactor = Math.pow(10, Math.round(Math.log10(minInterval)));
+      var interval = NaN;
+      [.25,.5,1,2,2.5,4,5].forEach(function(i){
+          var thisScaledFactor = i*scaleFactor;
+          if(isNaN(interval) && thisScaledFactor > minInterval){
+              interval = Math.max(Math.round(thisScaledFactor/tickSize)*tickSize, tickSize);
+          }
+      });
+      this.interval_ = interval;
+      this.minCount_ = minTicks;
+      this.maxCount_ = maxTicks;
+    }
+    
     if (this.mode_ == anychart.enums.ScatterTicksMode.LOGARITHMIC) {
       tmp = this.setupLogarithmic_(min, max, opt_logBase || 10, opt_borderLog || 0, !!opt_canModifyMin, !!opt_canModifyMax);
     } else {
@@ -451,8 +470,6 @@ anychart.scales.ScatterTicks.prototype.setupAsMinor = function(values, opt_logBa
  * @private
  */
 anychart.scales.ScatterTicks.prototype.setupLogarithmic_ = function(min, max, logBase, borderLog, canModifyMin, canModifyMax) {
-  //console.log("setupLogarithmic_ = function(min, max, logBase, borderLog, canModifyMin, canModifyMax)");
-  //console.log(arguments);
   var minLog = anychart.math.log(Math.abs(min), logBase);
   var maxLog = anychart.math.log(Math.abs(max), logBase);
   var minMaxProd = min * max;
@@ -523,8 +540,6 @@ anychart.scales.ScatterTicks.prototype.setupLogarithmic_ = function(min, max, lo
  * @private
  */
 anychart.scales.ScatterTicks.prototype.setupLinear_ = function(min, max, canModifyMin, canModifyMax, opt_allowFractionalTicks, opt_base) {
-  //console.log("ScatterTicks.setupLinear_(min, max, canModifyMin, canModifyMax, opt_allowFractionalTicks, opt_base)");
-  //console.log(arguments);
   opt_base = opt_base || 0;
   var interval = this.interval_;
   var minCount = this.minCount_;

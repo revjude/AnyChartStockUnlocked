@@ -700,6 +700,5 @@ anychart.scales.ScatterBase.fromString = function(type, opt_canReturnNull) {
   proto['ul_minTick'] = proto.minimumTick;//jb
   proto['ul_minModeAuto'] = proto.minModeAuto;//jb
   proto['ul_maxModeAuto'] = proto.maxModeAuto;//jb
-  proto['ul_minTick'] = proto.minimumTick;//jb
   proto['minimumTick'] = proto.minimumTick;//jb
 })();
