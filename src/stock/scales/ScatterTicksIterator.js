@@ -208,26 +208,6 @@ anychart.stockModule.scales.ScatterTicksIterator.prototype.toArray = function(ma
   return result;
 };
 
-
-/*
- * left over debug code from xaxis alignment sperlunking
- * @return {Object}
-anychart.stockModule.scales.ScatterTicksIterator.prototype.getInfo = function() {
-  return {
-    "start": this.start,
-    "globalStart": this.globalStart,
-    "currentMajor": this.currentMajor,
-    "preFirstMajor": this.preFirstMajor,
-    "majorInterval": this.majorInterval,
-    "end": this.end,
-    "majorTicksArrayCache_": this.majorTicksArrayCache_,
-    "current": this.current,
-    "currentIsMajor": this.currentIsMajor,
-    "reset": this.reset()
-  };
-};
-*/
-
 //exports
 (function() {
   var proto = anychart.stockModule.scales.ScatterTicksIterator.prototype;
@@ -239,5 +219,4 @@ anychart.stockModule.scales.ScatterTicksIterator.prototype.getInfo = function() 
   proto['getCurrent'] = proto.getCurrent;
   proto['getPreFirstMajor'] = proto.getPreFirstMajor;
   proto['toArray'] = proto.toArray;
-  //proto['getInfo'] = proto.getInfo;
 })();
