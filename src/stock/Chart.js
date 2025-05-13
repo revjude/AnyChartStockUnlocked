@@ -3744,4 +3744,5 @@ anychart.stock = function(opt_allowPointSettings) {
   proto['interactivity'] = proto.interactivity;
   proto['preserveSelectedRangeOnDataUpdate'] = proto.preserveSelectedRangeOnDataUpdate;
   proto['ul_supported'] = proto.supported;//jb
+  proto['ul_invalidateRedrawable'] = proto.invalidateRedrawable;//jb
 })();
