@@ -751,6 +751,38 @@ anychart.utils.alignRight = function(value, interval, opt_base, opt_precision) {
 };
 
 
+/**  this is un-lock code round each x tick time to the nearest interval so you don't get weird values when the data isn't perfect
+ * Rounds a date to the nearest time interval, handling day boundaries.
+ * Supports intervals: 1,5,15,30,60,180,360,720 minutes (12h max).
+ * @param {Date|number} dateOrEpoch - Input date as Date object or epoch milliseconds
+ * @param {number} interval - Rounding interval in minutes (1-720)
+ * @return {Date} Rounded Date object
+ */
+anychart.utils.roundDateToInterval = function(dateOrEpoch, interval) {
+  // Handle both Date objects and epoch inputs
+  var date = dateOrEpoch instanceof Date ? 
+             new Date(dateOrEpoch.getTime()) : 
+             new Date(dateOrEpoch);
+  
+  // Calculate total milliseconds since midnight
+  var totalMs = date.getHours()*3.6e6 + 
+                date.getMinutes()*6e4 + 
+                date.getSeconds()*1e3 + 
+                date.getMilliseconds();
+  
+  // Calculate rounded milliseconds
+  var intervalMs = interval * 6e4; // Convert minutes to ms
+  var roundedMs = Math.round(totalMs/intervalMs) * intervalMs;
+  
+  // Create new Date with rounded time (same date)
+  var roundedDate = new Date(date);
+  roundedDate.setHours(0, 0, 0, 0); // Reset to midnight
+  roundedDate.setMilliseconds(roundedDate.getMilliseconds() + roundedMs);
+  
+  return roundedDate;
+};
+
+
 /**
  * Aligns passed timestamp to the left according to the passed interval.
  * @param {number} date Date to align.
@@ -791,7 +823,7 @@ anychart.utils.alignDateLeft = function(date, interval, flagDateValue) {
     minutes = anychart.utils.alignLeft(minutes, interval.minutes);
 
     //unlocking xAxis intervals by adding rounding for the 180 (3-hour), 360 (6-hour), and 720 (12-hour) intervals
-    var newDate = new Date(years, months, days, hours, minutes);
+    var newDate = anychart.utils.roundDateToInterval(new Date(years, months, days, hours, minutes), interval.minutes);
     var addMilliseconds = 0;
     var baseOffset = newDate.getTimezoneOffset()*1000 + (newDate.getTimezoneOffset()*1000 - new Date().getTimezoneOffset()*1000);
 
