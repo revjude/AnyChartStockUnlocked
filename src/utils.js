@@ -789,49 +789,59 @@ anychart.utils.alignDateLeft = function(date, interval, flagDateValue) {
     return Date.UTC(years, months, days, hours);
   } else if (interval.minutes) {
     minutes = anychart.utils.alignLeft(minutes, interval.minutes);
+
     //unlocking xAxis intervals by adding rounding for the 180 (3-hour), 360 (6-hour), and 720 (12-hour) intervals
-    //these adjustments are based on the client machine being in EST.  If the misalignment is being caused by the client timezone offset
-    //then this code will likely break in another client timezone
     var newDate = new Date(years, months, days, hours, minutes);
     var addMilliseconds = 0;
+    var baseOffset = newDate.getTimezoneOffset()*1000 + (newDate.getTimezoneOffset()*1000 - new Date().getTimezoneOffset()*1000);
+
     if(interval.minutes==180){
+      if(
+        newDate.getHours()==2 || newDate.getHours()==5 || newDate.getHours()==8 || newDate.getHours()==11 || 
+        newDate.getHours()==14 || newDate.getHours()==17 || newDate.getHours()==20 || newDate.getHours()==23
+      ) addMilliseconds = (baseOffset*0);
       if(
         newDate.getHours()==1 || newDate.getHours()==4 || newDate.getHours()==7 || newDate.getHours()==10 || 
         newDate.getHours()==13 || newDate.getHours()==16 || newDate.getHours()==19 || newDate.getHours()==22
-      ) addMilliseconds = 3600000;
+      ) addMilliseconds = (baseOffset*1);
       if(
         newDate.getHours()==0 || newDate.getHours()==3 || newDate.getHours()==6 || newDate.getHours()==9 || 
         newDate.getHours()==12 || newDate.getHours()==15 || newDate.getHours()==18 || newDate.getHours()==21
-      ) addMilliseconds = 7200000;
+      ) addMilliseconds = (baseOffset*2);
       var finalDate = new Date(newDate.getTime()+addMilliseconds);
       return Date.UTC(finalDate.getFullYear(), finalDate.getMonth(), finalDate.getDate(), finalDate.getHours(), finalDate.getMinutes());
+
     } else if (interval.minutes==360) {
       if(newDate.getHours()!=5 && newDate.getHours()!=11 && newDate.getHours()!=17 && newDate.getHours()!=23){
-        if(newDate.getHours()==18 || newDate.getHours()==6 || newDate.getHours()==0 || newDate.getHours()==12) addMilliseconds = -(3600000*1);
-        if(newDate.getHours()==19 || newDate.getHours()==7 || newDate.getHours()==1 || newDate.getHours()==13) addMilliseconds = -(3600000*2);
-        if(newDate.getHours()==20 || newDate.getHours()==8 || newDate.getHours()==2 || newDate.getHours()==14) addMilliseconds = -(3600000*3);
-        if(newDate.getHours()==21 || newDate.getHours()==9 || newDate.getHours()==3 || newDate.getHours()==15) addMilliseconds = -(3600000*4);
-        if(newDate.getHours()==22 || newDate.getHours()==10 || newDate.getHours()==4 || newDate.getHours()==16) addMilliseconds = -(3600000*5);
+        if(newDate.getHours()==17 || newDate.getHours()==5 || newDate.getHours()==23 || newDate.getHours()==11) addMilliseconds = -(baseOffset*0);
+        if(newDate.getHours()==18 || newDate.getHours()==6 || newDate.getHours()==0 || newDate.getHours()==12) addMilliseconds = -(baseOffset*1);
+        if(newDate.getHours()==19 || newDate.getHours()==7 || newDate.getHours()==1 || newDate.getHours()==13) addMilliseconds = -(baseOffset*2);
+        if(newDate.getHours()==20 || newDate.getHours()==8 || newDate.getHours()==2 || newDate.getHours()==14) addMilliseconds = -(baseOffset*3);
+        if(newDate.getHours()==21 || newDate.getHours()==9 || newDate.getHours()==3 || newDate.getHours()==15) addMilliseconds = -(baseOffset*4);
+        if(newDate.getHours()==22 || newDate.getHours()==10 || newDate.getHours()==4 || newDate.getHours()==16) addMilliseconds = -(baseOffset*5);
       }
       var finalDate = new Date(newDate.getTime()+addMilliseconds);
       return Date.UTC(finalDate.getFullYear(), finalDate.getMonth(), finalDate.getDate(), finalDate.getHours(), finalDate.getMinutes());
+
     } else if (interval.minutes==720) {
       if(newDate.getHours()!=17 && newDate.getHours()!=5){
-        if(newDate.getHours()==18 || newDate.getHours()==6) addMilliseconds = -(3600000*1);
-        if(newDate.getHours()==19 || newDate.getHours()==7) addMilliseconds = -(3600000*2);
-        if(newDate.getHours()==20 || newDate.getHours()==8) addMilliseconds = -(3600000*3);
-        if(newDate.getHours()==21 || newDate.getHours()==9) addMilliseconds = -(3600000*4);
-        if(newDate.getHours()==22 || newDate.getHours()==10) addMilliseconds = -(3600000*5);
-        if(newDate.getHours()==23 || newDate.getHours()==11) addMilliseconds = -(3600000*6);
-        if(newDate.getHours()==0 || newDate.getHours()==12) addMilliseconds = -(3600000*7);
-        if(newDate.getHours()==1 || newDate.getHours()==13) addMilliseconds = -(3600000*8);
-        if(newDate.getHours()==2 || newDate.getHours()==14) addMilliseconds = -(3600000*9);
-        if(newDate.getHours()==3 || newDate.getHours()==15) addMilliseconds = -(3600000*10);
-        if(newDate.getHours()==4 || newDate.getHours()==16) addMilliseconds = -(3600000*11);
+        if(newDate.getHours()==17 || newDate.getHours()==5) addMilliseconds = -(baseOffset*0);
+        if(newDate.getHours()==18 || newDate.getHours()==6) addMilliseconds = -(baseOffset*1);
+        if(newDate.getHours()==19 || newDate.getHours()==7) addMilliseconds = -(baseOffset*2);
+        if(newDate.getHours()==20 || newDate.getHours()==8) addMilliseconds = -(baseOffset*3);
+        if(newDate.getHours()==21 || newDate.getHours()==9) addMilliseconds = -(baseOffset*4);
+        if(newDate.getHours()==22 || newDate.getHours()==10) addMilliseconds = -(baseOffset*5);
+        if(newDate.getHours()==23 || newDate.getHours()==11) addMilliseconds = -(baseOffset*6);
+        if(newDate.getHours()==0 || newDate.getHours()==12) addMilliseconds = -(baseOffset*7);
+        if(newDate.getHours()==1 || newDate.getHours()==13) addMilliseconds = -(baseOffset*8);
+        if(newDate.getHours()==2 || newDate.getHours()==14) addMilliseconds = -(baseOffset*9);
+        if(newDate.getHours()==3 || newDate.getHours()==15) addMilliseconds = -(baseOffset*10);
+        if(newDate.getHours()==4 || newDate.getHours()==16) addMilliseconds = -(baseOffset*11);
       }
       var finalDate = new Date(newDate.getTime()+addMilliseconds);
       return Date.UTC(finalDate.getFullYear(), finalDate.getMonth(), finalDate.getDate(), finalDate.getHours(), finalDate.getMinutes());
     }
+
     return Date.UTC(years, months, days, hours, minutes);
   } else if (interval.seconds >= 1) {
     seconds = anychart.utils.alignLeft(seconds, interval.seconds);
