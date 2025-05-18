@@ -3081,6 +3081,9 @@ anychart.standalones.labelsFactory = function() {
   // proto['minFontSize'] = proto.minFontSize;
   // proto['maxFontSize'] = proto.maxFontSize;
   proto['ul_supported'] = proto.supported;//jb
+  proto['ul_getDomElement'] = proto.getDomElement;//jb
+  proto['ul_getRootLayer'] = proto.getRootLayer;//jb
+  proto['ul_getDimension'] = proto.getDimension;//jb
 
   proto = anychart.core.ui.LabelsFactory.Label.prototype;
   proto['ul_type'] = proto.getThisType;//jb
@@ -3107,6 +3110,9 @@ anychart.standalones.labelsFactory = function() {
   // proto['minFontSize'] = proto.minFontSize;
   // proto['maxFontSize'] = proto.maxFontSize;
   proto['ul_supported'] = proto.supported;//jb
+  proto['ul_getDomElement'] = proto.getDomElement;//jb
+  proto['ul_getConnectorElement'] = proto.getConnectorElement;//jb
+  proto['ul_positionProvider'] = proto.positionProvider;//jb
 
 
   proto = anychart.standalones.LabelsFactory.prototype;
