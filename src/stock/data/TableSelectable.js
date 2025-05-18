@@ -687,6 +687,19 @@ anychart.stockModule.data.TableSelectable.RowProxy.prototype.isAggregated = func
   proto['select'] = proto.select;
   proto['selectAll'] = proto.selectAll;
   proto['getIterator'] = proto.getIterator;
+  proto['ul_getFullPointsCount'] = proto.getFullPointsCount;//jb
+  proto['ul_getAtIndex'] = proto.getAtIndex;//jb
+  proto['ul_getPreFirstRow'] = proto.getPreFirstRow;//jb
+  proto['ul_getPostLastRow'] = proto.getPostLastRow;//jb
+  proto['ul_getLastVisibleRow'] = proto.getLastVisibleRow;//jb
+  proto['ul_getFirstVisibleRow'] = proto.getFirstVisibleRow;//jb
+  proto['ul_getMin'] = proto.getMin;//jb
+  proto['ul_getMax'] = proto.getMax;//jb
+  proto['ul_getFieldColumn'] = proto.getFieldColumn;//jb
+  proto['ul_getMapping'] = proto.getMapping;//jb
+  proto['ul_getColumnMin'] = proto.getColumnMin;//jb
+  proto['ul_getColumnMax'] = proto.getColumnMax;//jb
+  proto['ul_selectFast'] = proto.selectFast;//jb
 
   proto = anychart.stockModule.data.TableSelectable.RowProxy.prototype;
   proto['meta'] = proto.meta;
@@ -694,4 +707,5 @@ anychart.stockModule.data.TableSelectable.RowProxy.prototype.isAggregated = func
   proto['getKey'] = proto.getKey;
   proto['getColumn'] = proto.getColumn;
   proto['getIndex'] = proto.getIndex;
+  proto['ul_getX'] = proto.getX;
 })();

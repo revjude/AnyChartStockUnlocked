@@ -13,6 +13,15 @@ anychart.stockModule.scales.ScatterTicksIterator = function() {
 
 
 /**
+ * Returns this type.
+ * @return {string}
+ */
+anychart.stockModule.scales.ScatterTicksIterator.prototype.getThisType = function() {
+  return 'anychart.stockModule.scales.ScatterTicksIterator';
+};
+
+
+/**
  * @param {number} start
  * @param {number} end
  * @param {!goog.date.Interval} majorInterval
@@ -211,6 +220,7 @@ anychart.stockModule.scales.ScatterTicksIterator.prototype.toArray = function(ma
 //exports
 (function() {
   var proto = anychart.stockModule.scales.ScatterTicksIterator.prototype;
+  proto['ul_type'] = proto.getThisType;//jb
   proto['setup'] = proto.setup;
   proto['reset'] = proto.reset;
   proto['advance'] = proto.advance;

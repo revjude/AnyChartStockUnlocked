@@ -373,4 +373,11 @@ anychart.stockModule.data.TableIterator.ICoIterator.prototype.getRowsCount = fun
   proto['getKey'] = proto.getKey;
   proto['getIndex'] = proto.getIndex;
   proto['meta'] = proto.meta;
+  proto['ul_current'] = proto.current;//jb
+  proto['ul_specialSelect'] = proto.specialSelect;//jb
+  proto['ul_meta'] = proto.meta;//jb
+  proto['ul_getColumn'] = proto.getColumn;//jb
+  proto['ul_getX'] = proto.getX;//jb
+  proto['ul_getIndex'] = proto.getIndex;//jb
+  proto['ul_getRowsCount'] = proto.getRowsCount;//jb
 })();
