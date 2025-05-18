@@ -524,5 +524,5 @@ anychart.data.set = function(opt_data, opt_settings) {
   proto['insert'] = proto.insert;//doc|ex
   proto['remove'] = proto.remove;//doc|ex
   proto['getRowsCount'] = proto.getRowsCount;//doc|ex
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 })();

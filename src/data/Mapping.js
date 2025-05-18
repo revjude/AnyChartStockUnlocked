@@ -311,5 +311,5 @@ anychart.data.Mapping.prototype.getMapping = function() {
   proto['getIterator'] = proto.getIterator;
   proto['row'] = proto.row;
   proto['getMapping'] = proto.getMapping;
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 })();

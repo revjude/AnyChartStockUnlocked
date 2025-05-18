@@ -1840,7 +1840,7 @@ anychart.stockModule.Scroller.prototype.setupElements = function(opt_default, op
   proto['removeAllSeries'] = proto.removeAllSeries;
   proto['palette'] = proto.palette;
   proto['hatchFillPalette'] = proto.hatchFillPalette;
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
   proto['ul_draw'] = proto.draw;//jb
   // auto generated methods
   //proto['adl'] = proto.adl;

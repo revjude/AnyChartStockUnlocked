@@ -1401,10 +1401,10 @@ anychart.standalones.markersFactory = function() {
   // proto['type'] = proto.type;
   // proto['size'] = proto.size;
   proto['ul_fill'] = proto.fill;//jb
-  // proto['ul_stroke'] = proto.stroke;
+  //proto['ul_stroke'] = proto.stroke;
   proto['disablePointerEvents'] = proto.disablePointerEvents;
   proto['enabled'] = proto.enabled;
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 
   proto = anychart.core.ui.MarkersFactory.Marker.prototype;
   proto['ul_type'] = proto.getThisType;//jb
@@ -1419,7 +1419,7 @@ anychart.standalones.markersFactory = function() {
   // proto['size'] = proto.size;
   proto['ul_fill'] = proto.fill;//jb
   // proto['stroke'] = proto.stroke;
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 
   proto = anychart.standalones.MarkersFactory.prototype;
   proto['ul_type'] = proto.getThisType;//jb

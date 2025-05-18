@@ -1816,13 +1816,13 @@ anychart.core.Base.prototype.removeAllListeners = function(opt_type) {
   proto['isConsistent'] = proto.isConsistent; // Added for debug purposes! Do not add to API and docs.
   proto['suspendSignalsDispatching'] = proto.suspendSignalsDispatching;
   proto['resumeSignalsDispatching'] = proto.resumeSignalsDispatching;
-  proto['ul_dispatchSignal'] = proto.dispatchSignal;//jb
-  proto['ul_invalidate'] = proto.invalidate;//jb
-  proto['ul_supported'] = proto.supported;//jb
-  proto['ul_suspendSignalsDispatching'] = proto.suspendSignalsDispatching;//jb
-  proto['ul_resumeSignalsDispatching'] = proto.resumeSignalsDispatching;//jb
-  proto['ul_dispatchDetachedEvent'] = proto.dispatchDetachedEvent;//jb
-  proto['ul_dispatchEvent'] = proto.dispatchEvent;//jb
+  //proto['ul_dispatchSignal'] = proto.dispatchSignal;//jb
+  //proto['ul_invalidate'] = proto.invalidate;//jb
+  //proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_suspendSignalsDispatching'] = proto.suspendSignalsDispatching;//jb
+  //proto['ul_resumeSignalsDispatching'] = proto.resumeSignalsDispatching;//jb
+  //proto['ul_dispatchDetachedEvent'] = proto.dispatchDetachedEvent;//jb
+  //proto['ul_dispatchEvent'] = proto.dispatchEvent;//jb
   
   goog.exportSymbol('anychart.Signal.NEEDS_REDRAW', anychart.Signal.NEEDS_REDRAW);
   goog.exportSymbol('anychart.Signal.NEEDS_REAPPLICATION', anychart.Signal.NEEDS_REAPPLICATION);
@@ -1975,7 +1975,7 @@ anychart.core.Base.prototype.removeAllListeners = function(opt_type) {
   goog.exportSymbol('anychart.ConsistencyState.ALL', anychart.ConsistencyState.ALL);
   
   proto = anychart.SignalEvent.prototype;
-  proto['ul_hasSignal'] = proto.hasSignal;//jb
+  //proto['ul_hasSignal'] = proto.hasSignal;//jb
   proto['targetNeedsRedraw'] = proto.targetNeedsRedraw;//doc
   proto['targetBoundsChanged'] = proto.targetBoundsChanged;//doc
   proto['targetDataChanged'] = proto.targetDataChanged;//doc

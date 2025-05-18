@@ -964,7 +964,7 @@ anychart.core.ui.NewButton.prototype.disposeInternal = function() {
   proto['selected'] = proto.selected;
   proto['padding'] = proto.padding;
   proto['ul_position'] = proto.position;//jb
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
   proto['ul_draw'] = proto.draw;//jb
 })();
 //endregion

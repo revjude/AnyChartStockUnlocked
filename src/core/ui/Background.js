@@ -806,7 +806,7 @@ anychart.standalones.background = function() {
   // proto['leftStroke'] = proto.leftStroke;
   // proto['cornerType'] = proto.cornerType;//in docs/final
   proto['corners'] = proto.corners;//in docs/final
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 
   proto = anychart.standalones.Background.prototype;
   proto['ul_type'] = proto.getThisType;//jb

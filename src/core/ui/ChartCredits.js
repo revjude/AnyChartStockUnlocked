@@ -285,5 +285,5 @@ anychart.core.ui.ChartCredits.prototype.setupByJSON = function(config) {
   proto['imgAlt'] = proto.imgAlt;
   proto['logoSrc'] = proto.logoSrc;//doc|ex
   proto['enabled'] = proto.enabled;//doc|ex
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 })();

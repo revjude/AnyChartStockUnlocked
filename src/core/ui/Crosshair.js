@@ -1233,6 +1233,6 @@ anychart.core.ui.Crosshair.prototype.setupByJSON = function(config, opt_default)
   proto['ul_type'] = proto.getThisType;//jb
   proto['xLabel'] = proto.xLabel;
   proto['yLabel'] = proto.yLabel;
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
   proto['ul_draw'] = proto.draw;//jb
 })();

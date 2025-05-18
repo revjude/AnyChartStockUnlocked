@@ -859,7 +859,7 @@ anychart.treeDataModule.View.DataItem.prototype.setParent = function(parentView)
   proto['removeChildAt'] = proto.removeChildAt;
   proto['removeChildren'] = proto.removeChildren;
   proto['indexOfChild'] = proto.indexOfChild;
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 
   proto = anychart.treeDataModule.View.DataItem.prototype;
     proto['get'] = proto.get;

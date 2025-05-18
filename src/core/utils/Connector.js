@@ -137,5 +137,5 @@ anychart.core.utils.Connector.prototype.setupSpecial = function(isDefault, var_a
 (function() {
   var proto = anychart.core.utils.Connector.prototype;
   proto['ul_type'] = proto.getThisType;//jb
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 })();

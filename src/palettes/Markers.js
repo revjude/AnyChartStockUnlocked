@@ -186,5 +186,5 @@ anychart.palettes.markers = function(opt_value, var_args) {
   goog.exportSymbol('anychart.palettes.markers', anychart.palettes.markers);
   proto['itemAt'] = proto.itemAt;
   proto['items'] = proto.items;
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 })();

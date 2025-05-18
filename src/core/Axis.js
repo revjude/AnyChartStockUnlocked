@@ -2568,7 +2568,7 @@ anychart.standalones.axes.linear = function() {
   proto['padding'] = proto.padding;
   proto['getPixelBounds'] = proto.getPixelBounds;
   proto['valueTarget'] = proto.valueTarget;
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
   proto['ul_draw'] = proto.draw;//jb
 
   proto = anychart.standalones.axes.Linear.prototype;

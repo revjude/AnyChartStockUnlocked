@@ -1023,7 +1023,7 @@ anychart.core.GridBase.prototype.forceDraw = function() {
   // proto['drawFirstLine'] = proto.drawFirstLine;
   // proto['drawLastLine'] = proto.drawLastLine;
   proto['ul_fill'] = proto.fill;//jb
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
   proto['ul_forceDraw'] = proto.forceDraw;//jb
 })();
 //endregion

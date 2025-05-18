@@ -375,7 +375,7 @@ anychart.core.utils.Quarter.prototype.disposeInternal = function() {
   proto['margin'] = proto.margin;
   proto['padding'] = proto.padding;
   proto['label'] = proto.label;
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
   proto['ul_draw'] = proto.draw;//jb
 })();
 //endregion

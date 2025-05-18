@@ -378,5 +378,5 @@ anychart.stockModule.eventMarkers.ChartController.prototype.disposeInternal = fu
   proto['normal'] = proto.normal;
   proto['hovered'] = proto.hovered;
   proto['selected'] = proto.selected;
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 })();

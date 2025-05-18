@@ -413,5 +413,5 @@ anychart.scales.OrdinalTicks.prototype.setupByJSON = function(config, opt_defaul
   proto['set'] = proto.set;//doc|ex
   proto['get'] = proto.get;//doc|ex
   proto['names'] = proto.names;//doc|ex
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 })();

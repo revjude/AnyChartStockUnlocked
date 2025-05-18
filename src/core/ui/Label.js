@@ -139,7 +139,7 @@ anychart.standalones.label = function() {
   proto['background'] = proto.background;
   proto['padding'] = proto.padding;
   proto['draw'] = proto.draw;
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 
   proto = anychart.standalones.Label.prototype;
   proto['ul_type'] = proto.getThisType;//jb

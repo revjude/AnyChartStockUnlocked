@@ -383,6 +383,6 @@ anychart.core.utils.SeriesA11y.prototype.disposeInternal = function() {
   // auto generated
   proto['ul_enabled'] = proto.enabled;//jb
   //proto['titleFormat'] = proto.titleFormat;
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 })();
 

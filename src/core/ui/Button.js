@@ -896,7 +896,7 @@ anychart.core.ui.Button.prototype.disposeInternal = function() {
   proto['ul_pushed'] = proto.pushed;//jb
   proto['ul_checked'] = proto.checked;//jb
   proto['ul_disabled'] = proto.disabled;//jb
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
   proto['ul_draw'] = proto.draw;//jb
 })();
 

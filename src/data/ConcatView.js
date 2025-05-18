@@ -128,5 +128,5 @@ anychart.data.ConcatView.prototype.parentMeta = function(index, name, opt_value)
 (function() {
   var proto = anychart.data.ConcatView.prototype;
   proto['ul_type'] = proto.getThisType;//jb
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 })();

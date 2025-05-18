@@ -277,5 +277,5 @@ anychart.core.VisualBaseWithBounds.prototype.disposeInternal = function() {
   proto['maxWidth'] = proto.maxWidth;
   proto['maxHeight'] = proto.maxHeight;
   proto['getPixelBounds'] = proto.getPixelBounds;
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 })();

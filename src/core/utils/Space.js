@@ -488,6 +488,6 @@ anychart.core.utils.Space.prototype.setupByJSON = function(config, opt_default) 
   proto['ul_bottom'] = proto.bottom;//jb
   proto['ul_left'] = proto.left;//jb
   proto['set'] = proto.set;
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 })();
 //endregion

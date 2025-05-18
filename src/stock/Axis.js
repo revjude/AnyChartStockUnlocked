@@ -911,7 +911,7 @@ anychart.stockModule.Axis.prototype.setupByJSON = function(config, opt_default) 
   // proto['showHelperLabel'] = proto.showHelperLabel;
   // proto['overlapMode'] = proto.overlapMode;
   
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
   proto['ul_draw'] = proto.draw;//jb
 })();
 //endregion

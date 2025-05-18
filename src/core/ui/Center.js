@@ -294,6 +294,6 @@ anychart.core.ui.Center.prototype.disposeInternal = function() {
   proto['content'] = proto.content;
   proto['getPoint'] = proto.getPoint;
   proto['getBounds'] = proto.getBounds;
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 })();
 //endregion

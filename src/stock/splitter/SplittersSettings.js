@@ -260,6 +260,6 @@ anychart.stockModule.splitter.SplittersSettings.prototype.disposeInternal = func
   proto['normal'] = proto.normal;
   proto['hovered'] = proto.hovered;
   proto['preview'] = proto.preview;
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 })();
 //endregion

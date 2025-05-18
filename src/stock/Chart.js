@@ -3739,10 +3739,10 @@ anychart.stock = function(opt_allowPointSettings) {
   proto['getPlotsCount'] = proto.getPlotsCount;
   proto['startZoomMarquee'] = proto.startZoomMarquee;
   // auto generated
-  // proto['ul_zoomMarqueeFill'] = proto.zoomMarqueeFill;
-  // proto['ul_zoomMarqueeStroke'] = proto.zoomMarqueeStroke;
+  //proto['ul_zoomMarqueeFill'] = proto.zoomMarqueeFill;
+  //proto['ul_zoomMarqueeStroke'] = proto.zoomMarqueeStroke;
   proto['interactivity'] = proto.interactivity;
   proto['preserveSelectedRangeOnDataUpdate'] = proto.preserveSelectedRangeOnDataUpdate;
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
   proto['ul_invalidateRedrawable'] = proto.invalidateRedrawable;//jb
 })();

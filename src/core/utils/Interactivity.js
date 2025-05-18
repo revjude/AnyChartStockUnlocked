@@ -114,5 +114,5 @@ anychart.core.utils.Interactivity.prototype.serialize = function() {
   // proto['selectionMode'] = proto.selectionMode;
   // proto['zoomOnMouseWheel'] = proto.zoomOnMouseWheel;
   // proto['scrollOnMouseWheel'] = proto.scrollOnMouseWheel;
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 })();

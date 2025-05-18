@@ -3062,12 +3062,12 @@ anychart.tableModule.Table.prototype.isFullScreenAvailable = function() {
   proto['parentBounds'] = proto.parentBounds;
   proto['container'] = proto.container;
 
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 
   proto = anychart.tableModule.Table.Standalone.prototype;
   proto['ul_type'] = proto.getThisType;//jb
   proto['draw'] = proto.draw;
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 
   goog.exportSymbol('anychart.standalones.table', anychart.tableModule.table);
 })();

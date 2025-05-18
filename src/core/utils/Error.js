@@ -810,6 +810,6 @@ anychart.core.utils.ISeriesWithError.prototype.yScale = function(opt_value) {};
   proto['valueErrorWidth'] = proto.valueErrorWidth;
   proto['xErrorStroke'] = proto.xErrorStroke;
   proto['valueErrorStroke'] = proto.valueErrorStroke;
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
   proto['ul_draw'] = proto.draw;//jb
 })();

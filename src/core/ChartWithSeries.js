@@ -1471,7 +1471,7 @@ anychart.core.ChartWithSeries.prototype.disposeInternal = function() {
   proto['selected'] = proto.selected;
   proto['isVertical'] = proto.isVertical;
   proto['dataArea'] = proto.dataArea;
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 })();
 
 

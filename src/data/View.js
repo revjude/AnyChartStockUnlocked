@@ -821,5 +821,5 @@ anychart.data.View.prototype.serialize = function() {
   proto['get'] = proto.get;//doc|ex
   proto['set'] = proto.set;//doc|ex
   proto['find'] = proto.find;//doc|ex
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 })();

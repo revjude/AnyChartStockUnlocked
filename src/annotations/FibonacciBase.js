@@ -528,5 +528,5 @@ anychart.annotationsModule.FibonacciBase.prototype.disposeInternal = function() 
   // proto['hoverLabels'] = proto.hoverLabels;
   // proto['selectLabels'] = proto.selectLabels;
   proto['ul_type'] = proto.getThisType;//jb
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 })();

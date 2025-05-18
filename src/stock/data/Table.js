@@ -476,5 +476,5 @@ anychart.data.table = function(opt_keyColumnIndex, opt_dateTimePattern, opt_time
   proto['removeFirst'] = proto.removeFirst;
   proto['mapAs'] = proto.mapAs;
   proto['createComputer'] = proto.createComputer;
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 })();

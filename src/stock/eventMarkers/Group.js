@@ -1244,6 +1244,6 @@ anychart.stockModule.eventMarkers.Group.prototype.disposeInternal = function() {
   proto['normal'] = proto.normal;
   proto['hovered'] = proto.hovered;
   proto['selected'] = proto.selected;
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
   proto['ul_draw'] = proto.draw;//jb
 })();

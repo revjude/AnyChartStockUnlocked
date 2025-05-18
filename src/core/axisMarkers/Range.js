@@ -317,7 +317,7 @@ anychart.standalones.axisMarkers.range = function() {
   proto['axis'] = proto.axis;
   proto['layout'] = proto.layout;
   proto['isHorizontal'] = proto.isHorizontal;
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 
   proto = anychart.standalones.axisMarkers.Range.prototype;
   proto['ul_type'] = proto.getThisType;//jb

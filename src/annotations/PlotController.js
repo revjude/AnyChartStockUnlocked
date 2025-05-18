@@ -1375,6 +1375,6 @@ anychart.annotationsModule.PlotController.AnchorDragger.prototype.handleDragEnd_
   proto['fromXml'] = proto.fromXml;
   proto['toXml'] = proto.toXml;
   goog.exportSymbol('anychart.annotations.PlotController', anychart.annotationsModule.PlotController);
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
   proto['ul_draw'] = proto.draw;//jb
 })();

@@ -399,5 +399,5 @@ anychart.palettes.rangeColors = function(opt_value, var_args) {
   proto['itemAt'] = proto.itemAt;
   proto['items'] = proto.items;
   proto['count'] = proto.count;
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 })();

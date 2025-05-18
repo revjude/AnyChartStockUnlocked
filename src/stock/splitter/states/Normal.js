@@ -96,5 +96,5 @@ anychart.stockModule.splitter.states.Normal.prototype.serialize = function() {
 (function() {
   var proto = anychart.stockModule.splitter.states.Normal.prototype;
   proto['ul_type'] = proto.getThisType;//jb
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 })();

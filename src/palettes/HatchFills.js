@@ -194,5 +194,5 @@ anychart.palettes.hatchFills = function(opt_value, var_args) {
   goog.exportSymbol('anychart.palettes.hatchFills', anychart.palettes.hatchFills);
   proto['itemAt'] = proto.itemAt;
   proto['items'] = proto.items;
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 })();

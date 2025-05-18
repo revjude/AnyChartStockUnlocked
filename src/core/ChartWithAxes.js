@@ -2115,5 +2115,5 @@ anychart.core.ChartWithAxes.prototype.disposeInternal = function() {
   var proto = anychart.core.ChartWithAxes.prototype;
   proto['ul_type'] = proto.getThisType;//jb
   proto['isVertical'] = proto.isVertical;
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 })();

@@ -2036,7 +2036,7 @@ anychart.core.series.Cartesian.prototype.disposeInternal = function() {
   proto['keepOnlyPoints'] = proto.keepOnlyPoints;
   proto['includeAllPoints'] = proto.includeAllPoints;
   proto['getExcludedPoints'] = proto.getExcludedPoints;
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
   proto['ul_draw'] = proto.draw;//jb
 })();
 //endregion

@@ -704,6 +704,6 @@ anychart.core.axisMarkers.PathBase.prototype.disposeInternal = function() {
 (function() {
   var proto = anychart.core.axisMarkers.PathBase.prototype;
   proto['ul_type'] = proto.getThisType;//jb
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
   proto['ul_draw'] = proto.draw;//jb
 })();

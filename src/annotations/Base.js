@@ -1384,7 +1384,7 @@ anychart.annotationsModule.Base.prototype.disposeInternal = function() {
   proto['normal'] = proto.normal;
   proto['hovered'] = proto.hovered;
   proto['selected'] = proto.selected;
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
   proto['ul_draw'] = proto.draw;//jb
   proto['ul_type'] = proto.getThisType;//jb
 })();

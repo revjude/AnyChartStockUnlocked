@@ -386,7 +386,7 @@ anychart.core.AxisTicks.prototype.disposeInternal = function() {
  proto['length'] = proto.length;
  // proto['stroke'] = proto.stroke;
  // proto['position'] = proto.position;
- proto['ul_supported'] = proto.supported;//jb
+ //proto['ul_supported'] = proto.supported;//jb
  proto['ul_draw'] = proto.draw;//jb
 })();
 //endregion

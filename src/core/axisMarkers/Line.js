@@ -249,7 +249,7 @@ anychart.standalones.axisMarkers.line = function() {
   // proto['stroke'] = proto.stroke;
   proto['ul_value'] = proto.value;//jb
   proto['isHorizontal'] = proto.isHorizontal;
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 
   proto = anychart.standalones.axisMarkers.Line.prototype;
   proto['ul_type'] = proto.getThisType;//jb

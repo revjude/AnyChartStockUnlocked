@@ -88,5 +88,5 @@ anychart.core.utils.Crossing.prototype.disposeInternal = function() {
 (function() {
   var proto = anychart.core.utils.Crossing.prototype;
   proto['ul_type'] = proto.getThisType;//jb
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 })();

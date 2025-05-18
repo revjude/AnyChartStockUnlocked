@@ -2471,7 +2471,7 @@ anychart.core.ui.Tooltip.prototype.disposeInternal = function() {
   proto['padding'] = proto.padding;
   proto['hide'] = proto.hide;
   proto['textSettings'] = proto.textSettings;
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
   proto['ul_draw'] = proto.draw;//jb
   // auto generated
   // proto['useHtml'] = proto.useHtml;

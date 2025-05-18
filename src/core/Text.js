@@ -408,5 +408,5 @@ anychart.core.Text.prototype.setupByJSON = function(config, opt_default) {
   var proto = anychart.core.Text.prototype;
   proto['ul_type'] = proto.getThisType;//jb
   proto['textSettings'] = proto.textSettings;//in docs/final
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 })();

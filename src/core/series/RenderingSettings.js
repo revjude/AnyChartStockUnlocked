@@ -488,7 +488,7 @@ anychart.core.series.RenderingSettings.PointContext.prototype.getStackedZero = f
   // proto['needsWidth'] = proto.needsWidth;
   // proto['yValues'] = proto.yValues;
   proto['shapes'] = proto.shapes;
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 
   proto = anychart.core.series.RenderingSettings.Context.prototype;
     proto['getShapesGroup'] = proto.getShapesGroup;

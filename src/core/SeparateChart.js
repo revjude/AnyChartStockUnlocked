@@ -334,5 +334,5 @@ anychart.core.SeparateChart.prototype.disposeInternal = function() {
   proto['legend'] = proto.legend;//doc|ex
   proto['interactivity'] = proto.interactivity;
   proto['noData'] = proto.noData;
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 })();

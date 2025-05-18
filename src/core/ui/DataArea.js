@@ -176,7 +176,7 @@ anychart.core.ui.DataArea.prototype.disposeInternal = function() {
   var proto = anychart.core.ui.DataArea.prototype;
   proto['ul_type'] = proto.getThisType;//jb
   proto['background'] = proto.background;
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
   proto['ul_draw'] = proto.draw;//jb
 })();
 //endregion

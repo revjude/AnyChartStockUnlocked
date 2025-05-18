@@ -682,5 +682,5 @@ anychart.core.axisMarkers.TextBase.prototype.disposeInternal = function() {
 (function() {
   var proto = anychart.core.axisMarkers.TextBase.prototype;
   proto['ul_type'] = proto.getThisType;//jb
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 })();

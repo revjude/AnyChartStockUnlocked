@@ -120,5 +120,5 @@ anychart.core.utils.Animation.prototype.setupSpecial = function(isDefault, var_a
   // auto generated
   proto['ul_enabled'] = proto.enabled;//jb
   proto['ul_duration'] = proto.duration;//jb
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 })();

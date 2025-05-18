@@ -642,6 +642,6 @@ anychart.core.ui.Separator.prototype.disposeInternal = function() {
   proto['ul_fill'] = proto.fill;//jb
   // proto['stroke'] = proto.stroke;
   proto['getRemainingBounds'] = proto.getRemainingBounds;
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
   proto['ul_draw'] = proto.draw;//jb
 })();

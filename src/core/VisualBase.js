@@ -1037,6 +1037,6 @@ anychart.core.VisualBase.prototype.disposeInternal = function() {
   proto['zIndex'] = proto.zIndex;//in docs/final
   proto['enabled'] = proto.enabled;//doc|ex
   proto['print'] = proto.print;
-  proto['ul_supported'] = proto.supported;//jb
-  proto['ul_resumeSignalsDispatching'] = proto.resumeSignalsDispatching;//jb
+  //proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_resumeSignalsDispatching'] = proto.resumeSignalsDispatching;//jb
 })();

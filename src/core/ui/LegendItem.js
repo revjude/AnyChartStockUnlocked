@@ -1302,13 +1302,13 @@ anychart.core.ui.LegendItem.prototype.disposeInternal = function() {
   // auto generated
   proto['ul_x'] = proto.x;//jb
   proto['ul_y'] = proto.y;//jb
-  // proto['ul_iconType'] = proto.iconType;
-  // proto['ul_iconTextSpacing'] = proto.iconTextSpacing;
-  // proto['ul_maxWidth'] = proto.maxWidth;
+  //proto['ul_iconType'] = proto.iconType;
+  //proto['ul_iconTextSpacing'] = proto.iconTextSpacing;
+  //proto['ul_maxWidth'] = proto.maxWidth;
   proto['ul_maxHeight'] = proto.maxHeight;//jb
-  // proto['ul_iconFill'] = proto.iconFill;
-  // proto['ul_iconStroke'] = proto.iconStroke;
-  // proto['ul_iconHatchFill'] = proto.iconHatchFill;
+  //proto['ul_iconFill'] = proto.iconFill;
+  //proto['ul_iconStroke'] = proto.iconStroke;
+  //proto['ul_iconHatchFill'] = proto.iconHatchFill;
   proto['getTextElement'] = proto.getTextElement;
   proto['getContentBounds'] = proto.getContentBounds;
   proto['getWidth'] = proto.getWidth;
@@ -1316,6 +1316,6 @@ anychart.core.ui.LegendItem.prototype.disposeInternal = function() {
   proto['draw'] = proto.draw;
   // auto from anychart.core.Text
   proto['ul_text'] = proto.text;//jb
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 })();
 //endregion

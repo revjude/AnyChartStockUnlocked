@@ -485,5 +485,5 @@ anychart.stockModule.Grouping.prototype.setupByJSON = function(config, opt_defau
   proto['minPixPerPoint'] = proto.minPixPerPoint;
   proto['getCurrentDataInterval'] = proto.getCurrentDataInterval;
   proto['isGrouped'] = proto.isGrouped;
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 })();

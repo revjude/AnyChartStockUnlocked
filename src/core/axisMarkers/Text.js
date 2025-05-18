@@ -166,7 +166,7 @@ anychart.standalones.axisMarkers.text = function() {
   proto['background'] = proto.background;
   proto['padding'] = proto.padding;
   proto['isHorizontal'] = proto.isHorizontal;
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 
   proto = anychart.standalones.axisMarkers.Text.prototype;
   proto['ul_type'] = proto.getThisType;//jb

@@ -252,6 +252,6 @@ anychart.core.ui.Outline.prototype.disposeInternal = function() {
   proto['ul_width'] = proto.width;//jb
   // proto['offset'] = proto.offset;
   proto['ul_enabled'] = proto.enabled;//jb
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 })();
 //endregion

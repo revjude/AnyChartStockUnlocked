@@ -865,5 +865,5 @@ anychart.scales.ScatterTicks.prototype.setupByJSON = function(config, opt_defaul
   proto['set'] = proto.set;//doc|ex
   proto['get'] = proto.get;//doc|ex
   proto['mode'] = proto.mode;//doc|ex
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 })();

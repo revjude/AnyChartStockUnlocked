@@ -970,9 +970,9 @@ anychart.core.ui.Paginator.prototype.disposeInternal = function() {
   proto['margin'] = proto.margin;
   proto['currentPage'] = proto.currentPage;
   proto['getPagesCount'] = proto.getPagesCount;
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
   // auto from anychart.core.Text
   proto['ul_text'] = proto.text;//jb
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
   proto['ul_draw'] = proto.draw;//jb
 })();

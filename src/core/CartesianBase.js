@@ -643,5 +643,5 @@ anychart.core.CartesianBase.prototype.disposeInternal = function() {
 (function() {
   var proto = anychart.core.CartesianBase.prototype;
   proto['ul_type'] = proto.getThisType;//jb
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 })();

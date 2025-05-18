@@ -535,5 +535,5 @@ anychart.scales.Base.setupScale = function(currentScale, opt_newScaleSetupValue,
   proto['inverted'] = proto.inverted;//doc|ex
   proto['startAutoCalc'] = proto.startAutoCalc;//doc|need-ex
   proto['finishAutoCalc'] = proto.finishAutoCalc;//doc|need-ex
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 })();

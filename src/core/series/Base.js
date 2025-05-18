@@ -5157,7 +5157,7 @@ anychart.core.series.Base.prototype.disposeInternal = function() {
   proto['rendering'] = proto.rendering;
   proto['colorScale'] = proto.colorScale;
 
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
   proto['ul_draw'] = proto.draw;//jb
   proto['ul_statistics'] = proto.statistics;//jb
 })();

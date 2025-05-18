@@ -2139,7 +2139,7 @@ anychart.scales.GanttDateTime.prototype.setupByJSON = function(config, opt_defau
   proto['zoomLevels'] = proto.zoomLevels;
   proto['maxTicksCount'] = proto.maxTicksCount;
   proto['calendar'] = proto.calendar;
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 })();
 
 

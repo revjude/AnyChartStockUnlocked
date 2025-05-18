@@ -718,7 +718,7 @@ anychart.core.ui.LabelsSettings.prototype.disposeInternal = function() {
   proto['ul_type'] = proto.getThisType;//jb
   proto['padding'] = proto.padding;
   proto['background'] = proto.background;
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 })();
 
 

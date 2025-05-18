@@ -1287,7 +1287,7 @@ anychart.standalones.title = function() {
   // proto['align'] = proto.align;
   // proto['orientation'] = proto.orientation;
   proto['getRemainingBounds'] = proto.getRemainingBounds;
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 
   proto = anychart.standalones.Title.prototype;
   proto['ul_type'] = proto.getThisType;//jb
@@ -1295,6 +1295,6 @@ anychart.standalones.title = function() {
   proto['draw'] = proto.draw;
   proto['parentBounds'] = proto.parentBounds;
   proto['container'] = proto.container;
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
   proto['ul_draw'] = proto.draw;//jb
 })();

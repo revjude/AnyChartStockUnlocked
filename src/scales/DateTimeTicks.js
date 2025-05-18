@@ -676,5 +676,5 @@ anychart.scales.DateTimeTicks.prototype.setupByJSON = function(config, opt_defau
   proto['get'] = proto.get;//doc|ex
   proto['getIntervalUnit'] = proto.getIntervalUnit;
   proto['getIntervalUnitCount'] = proto.getIntervalUnitCount;
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 })();

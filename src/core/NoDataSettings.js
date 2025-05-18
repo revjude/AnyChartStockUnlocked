@@ -90,5 +90,5 @@ anychart.core.NoDataSettings.prototype.disposeInternal = function() {
 (function() {
   var proto = anychart.core.NoDataSettings.prototype;
   proto['ul_type'] = proto.getThisType;//jb
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 })();

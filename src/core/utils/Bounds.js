@@ -700,5 +700,5 @@ anychart.core.utils.Bounds.prototype.setupSpecial = function(isDefault, var_args
   proto['maxHeight'] = proto.maxHeight;
   proto['set'] = proto.set;
   proto['toRect'] = proto.toRect;
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 })();

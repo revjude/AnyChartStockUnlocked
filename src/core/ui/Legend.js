@@ -2482,7 +2482,7 @@ anychart.standalones.legend = function() {
   // proto['iconSize'] = proto.iconSize;
   proto['ul_width'] = proto.width;//jb
   proto['ul_height'] = proto.height;//jb
-  // proto['ul_maxWidth'] = proto.maxWidth;
+  //proto['ul_maxWidth'] = proto.maxWidth;
   proto['ul_maxHeight'] = proto.maxHeight;//jb
   // proto['align'] = proto.align;
   // proto['drag'] = proto.drag;
@@ -2494,7 +2494,7 @@ anychart.standalones.legend = function() {
   // proto['iconTextSpacing'] = proto.iconTextSpacing;
   // proto['position'] = proto.position;
   // proto['positionMode'] = proto.positionMode;
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 
   proto = anychart.standalones.Legend.prototype;
   proto['ul_type'] = proto.getThisType;//jb

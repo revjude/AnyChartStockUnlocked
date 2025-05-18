@@ -1727,16 +1727,16 @@ anychart.standalones.scroller = function() {
   proto['thumbs'] = proto.thumbs;
   // auto generated
   proto['ul_height'] = proto.height;//jb
-  // proto['ul_minHeight'] = proto.minHeight;
-  // proto['ul_maxHeight'] = proto.maxHeight;
-  // proto['ul_orientation'] = proto.orientation;
-  // proto['ul_autoHide'] = proto.autoHide;
+  //proto['ul_minHeight'] = proto.minHeight;
+  //proto['ul_maxHeight'] = proto.maxHeight;
+  //proto['ul_orientation'] = proto.orientation;
+  //proto['ul_autoHide'] = proto.autoHide;
   proto['ul_fill'] = proto.fill;//jb
   // proto['selectedFill'] = proto.selectedFill;
   // proto['outlineStroke'] = proto.outlineStroke;
   // proto['allowRangeChange'] = proto.allowRangeChange;
   // proto['inverted'] = proto.inverted;
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 
   proto = anychart.core.ui.Scroller.Thumbs.prototype;
   proto['ul_type'] = proto.getThisType;//jb
@@ -1757,5 +1757,5 @@ anychart.standalones.scroller = function() {
   proto['container'] = proto.container;
   proto['padding'] = proto.padding;
   proto['draw'] = proto.draw;
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 })();

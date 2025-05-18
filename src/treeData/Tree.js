@@ -2063,7 +2063,7 @@ anychart.data.tree = function(opt_data, opt_fillMethodOrCsvMapping, opt_csvSetti
   proto['removeChildren'] = proto.removeChildren;
   proto['indexOfChild'] = proto.indexOfChild;
   proto['mapAs'] = proto.mapAs;
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
   //----------------------------------------------------------------------------------------------------------------------
   //
   //  anychart.treeDataModule.Tree.DataItem

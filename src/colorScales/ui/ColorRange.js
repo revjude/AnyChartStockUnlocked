@@ -1133,6 +1133,6 @@ anychart.standalones.colorRange = function() {
   proto['container'] = proto.container;
   // auto generated
   // proto['colorLineSize'] = proto.colorLineSize;
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 })();
 

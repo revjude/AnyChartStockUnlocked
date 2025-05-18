@@ -916,5 +916,5 @@ anychart.stockModule.controller = function() {
 (function() {
   var proto = anychart.stockModule.Controller.prototype;
   proto['ul_type'] = proto.getThisType;//jb
-  proto['ul_supported'] = proto.supported;//jb
+  //proto['ul_supported'] = proto.supported;//jb
 })();
