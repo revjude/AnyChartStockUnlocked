@@ -379,7 +379,15 @@ anychart.format.outputTimeFormat_ = null;
  * @type {number}
  * @private
  */
-anychart.format.outputTimezone_ = 0;
+anychart.format.outputTimezoneOffset_ = 0;
+
+
+/**
+ * Actually is output offset in minutes.
+ * @type {string}
+ * @private
+ */
+anychart.format.outputTimezone_ = new Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC';
 
 
 /**
@@ -702,9 +710,22 @@ anychart.format.outputTimeFormat = function(opt_value) {
  * @param {number=} opt_value
  * @return {number}
  */
+anychart.format.outputTimezoneOffset = function(opt_value) {
+  if (goog.isDef(opt_value)) {
+    anychart.format.outputTimezoneOffset_ = anychart.utils.toNumber(opt_value) || 0;
+  }
+  return anychart.format.outputTimezoneOffset_;
+};
+
+
+/**
+ * Un-locked code making outpuTimezone work right
+ * @param {string=} opt_value
+ * @return {string}
+ */
 anychart.format.outputTimezone = function(opt_value) {
   if (goog.isDef(opt_value)) {
-    anychart.format.outputTimezone_ = anychart.utils.toNumber(opt_value) || 0;
+    anychart.format.outputTimezone_ = opt_value;
   }
   return anychart.format.outputTimezone_;
 };
@@ -957,7 +978,7 @@ anychart.format.dateTime = function(date, opt_format, opt_timeZone, opt_locale) 
   /** @type {goog.i18n.DateTimeFormat} */
   var formatter = anychart.format.formatDateTimeCache_[formatterCacheKey];
 
-  opt_timeZone = opt_timeZone || anychart.format.outputTimezone_;
+  opt_timeZone = opt_timeZone || anychart.format.outputTimezoneOffset_;
   if (!(opt_timeZone in anychart.format.UTCTimeZoneCache_)) {
     anychart.format.UTCTimeZoneCache_[opt_timeZone] = goog.i18n.TimeZone.createTimeZone(opt_timeZone);
   }
@@ -1179,6 +1200,7 @@ goog.exportSymbol('anychart.format.inputLocale', anychart.format.inputLocale);
 goog.exportSymbol('anychart.format.inputBaseDate', anychart.format.inputBaseDate);
 goog.exportSymbol('anychart.format.inputDateTimeFormat', anychart.format.inputDateTimeFormat);
 goog.exportSymbol('anychart.format.outputLocale', anychart.format.outputLocale);
+goog.exportSymbol('anychart.format.outputTimezoneOffset', anychart.format.outputTimezoneOffset);
 goog.exportSymbol('anychart.format.outputTimezone', anychart.format.outputTimezone);
 goog.exportSymbol('anychart.format.outputDateFormat', anychart.format.outputDateFormat);
 goog.exportSymbol('anychart.format.outputTimeFormat', anychart.format.outputTimeFormat);

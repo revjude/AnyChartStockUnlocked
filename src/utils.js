@@ -752,6 +752,7 @@ anychart.utils.alignRight = function(value, interval, opt_base, opt_precision) {
 
 
 /**  this is un-lock code round each x tick time to the nearest interval so you don't get weird values when the data isn't perfect
+ * It also adjusts the xScale data to the system's locale
  * Rounds a date to the nearest time interval, handling day boundaries.
  * Supports intervals: 1,5,15,30,60,180,360,720 minutes (12h max).
  * @param {Date|number} dateOrEpoch - Input date as Date object or epoch milliseconds
@@ -759,30 +760,59 @@ anychart.utils.alignRight = function(value, interval, opt_base, opt_precision) {
  * @return {Date} Rounded Date object
  */
 anychart.utils.roundDateToInterval = function(dateOrEpoch, interval) {
-  // Handle both Date objects and epoch inputs
-  var date = dateOrEpoch instanceof Date ? 
-             new Date(dateOrEpoch.getTime()) : 
-             new Date(dateOrEpoch);
-  
-  // Calculate total milliseconds since midnight
-  var totalMs = date.getHours()*3.6e6 + 
-                date.getMinutes()*6e4 + 
-                date.getSeconds()*1e3 + 
-                date.getMilliseconds();
-  
-  // Calculate rounded milliseconds
+  var date = dateOrEpoch instanceof Date ? new Date(dateOrEpoch.getTime()) : new Date(dateOrEpoch);
+  // calculate total milliseconds since midnight
+  var totalMs = date.getHours()*3.6e6 + date.getMinutes()*6e4 + date.getSeconds()*1e3 + date.getMilliseconds();
+  // calculate rounded milliseconds
   var intervalMs = interval * 6e4; // Convert minutes to ms
   var roundedMs = Math.round(totalMs/intervalMs) * intervalMs;
-  
-  // Create new Date with rounded time (same date)
+  // create new Date with rounded time (same date)
   var roundedDate = new Date(date);
   roundedDate.setHours(0, 0, 0, 0); // Reset to midnight
   roundedDate.setMilliseconds(roundedDate.getMilliseconds() + roundedMs);
-  
-  return roundedDate;
+
+  //get the milliseconds offset of the source date rounded to the nearest interval
+  var roundedOffsetHours = Math.round(anychart.utils.getTimezoneOffsetInMs(roundedDate, "UTC")/3600000);
+  //now get the milliseconds offset of the source date as if it were EST as a baseline - round to nearest interval
+  var roundedBaseOffsetHours = Math.round(anychart.utils.getTimezoneOffsetInMs(roundedDate, "America/New_York")/3600000);
+  //now get the current offset of this system so we know if we're in daylight savings right now
+  var baseOffsetHours = Math.round(anychart.utils.getTimezoneOffsetInMs(new Date(), "America/New_York")/3600000);
+  //calculate the difference between the dates offset and the current systenm offset
+  var hourDiff = roundedOffsetHours - roundedBaseOffsetHours;
+
+  //calculate how much to adjust the date so that no matter what timezone the system is in,
+  //and regardless of whether the source date is in daylight savings or not, it looks correct to the sytstem user
+  var adjustedHours = roundedBaseOffsetHours - (roundedBaseOffsetHours - baseOffsetHours) + hourDiff + 9;
+  var adjustedDate = new Date(roundedDate.getTime() - (adjustedHours*3600000));
+
+  return adjustedDate;
 };
 
 
+/**
+ * Gets the timezone offset in milliseconds for a specific date and timezone.
+ * @param {Date} date - Input date.
+ * @param {string} timezone - IANA timezone string (e.g., "America/New_York").
+ * @return {number} Offset in miliseconds from UTC.
+ */
+anychart.utils.getTimezoneOffsetInMs = function(date, timezone) {
+    // Construct the date string in the target timezone
+    var dateString = date.toLocaleString('en-US', {
+        timeZone: timezone,
+        year: 'numeric',
+        month: 'numeric',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric',
+        hour12: false
+    });
+    // Create a new date from the timezone-specific string
+    var dateInTimeZone = new Date(dateString);
+    // Calculate the difference between the UTC time and the timezone time
+    var timeDiff = date.getTime() - dateInTimeZone.getTime();
+    return timeDiff;
+};
 /**
  * Aligns passed timestamp to the left according to the passed interval.
  * @param {number} date Date to align.
@@ -821,60 +851,9 @@ anychart.utils.alignDateLeft = function(date, interval, flagDateValue) {
     return Date.UTC(years, months, days, hours);
   } else if (interval.minutes) {
     minutes = anychart.utils.alignLeft(minutes, interval.minutes);
-
     //unlocking xAxis intervals by adding rounding for the 180 (3-hour), 360 (6-hour), and 720 (12-hour) intervals
     var newDate = anychart.utils.roundDateToInterval(new Date(years, months, days, hours, minutes), interval.minutes);
-    var addMilliseconds = 0;
-    var baseOffset = newDate.getTimezoneOffset()*1000 + (newDate.getTimezoneOffset()*1000 - new Date().getTimezoneOffset()*1000);
-
-    if(interval.minutes==180){
-      if(
-        newDate.getHours()==2 || newDate.getHours()==5 || newDate.getHours()==8 || newDate.getHours()==11 || 
-        newDate.getHours()==14 || newDate.getHours()==17 || newDate.getHours()==20 || newDate.getHours()==23
-      ) addMilliseconds = (baseOffset*0);
-      if(
-        newDate.getHours()==1 || newDate.getHours()==4 || newDate.getHours()==7 || newDate.getHours()==10 || 
-        newDate.getHours()==13 || newDate.getHours()==16 || newDate.getHours()==19 || newDate.getHours()==22
-      ) addMilliseconds = (baseOffset*1);
-      if(
-        newDate.getHours()==0 || newDate.getHours()==3 || newDate.getHours()==6 || newDate.getHours()==9 || 
-        newDate.getHours()==12 || newDate.getHours()==15 || newDate.getHours()==18 || newDate.getHours()==21
-      ) addMilliseconds = (baseOffset*2);
-      var finalDate = new Date(newDate.getTime()+addMilliseconds);
-      return Date.UTC(finalDate.getFullYear(), finalDate.getMonth(), finalDate.getDate(), finalDate.getHours(), finalDate.getMinutes());
-
-    } else if (interval.minutes==360) {
-      if(newDate.getHours()!=5 && newDate.getHours()!=11 && newDate.getHours()!=17 && newDate.getHours()!=23){
-        if(newDate.getHours()==17 || newDate.getHours()==5 || newDate.getHours()==23 || newDate.getHours()==11) addMilliseconds = -(baseOffset*0);
-        if(newDate.getHours()==18 || newDate.getHours()==6 || newDate.getHours()==0 || newDate.getHours()==12) addMilliseconds = -(baseOffset*1);
-        if(newDate.getHours()==19 || newDate.getHours()==7 || newDate.getHours()==1 || newDate.getHours()==13) addMilliseconds = -(baseOffset*2);
-        if(newDate.getHours()==20 || newDate.getHours()==8 || newDate.getHours()==2 || newDate.getHours()==14) addMilliseconds = -(baseOffset*3);
-        if(newDate.getHours()==21 || newDate.getHours()==9 || newDate.getHours()==3 || newDate.getHours()==15) addMilliseconds = -(baseOffset*4);
-        if(newDate.getHours()==22 || newDate.getHours()==10 || newDate.getHours()==4 || newDate.getHours()==16) addMilliseconds = -(baseOffset*5);
-      }
-      var finalDate = new Date(newDate.getTime()+addMilliseconds);
-      return Date.UTC(finalDate.getFullYear(), finalDate.getMonth(), finalDate.getDate(), finalDate.getHours(), finalDate.getMinutes());
-
-    } else if (interval.minutes==720) {
-      if(newDate.getHours()!=17 && newDate.getHours()!=5){
-        if(newDate.getHours()==17 || newDate.getHours()==5) addMilliseconds = -(baseOffset*0);
-        if(newDate.getHours()==18 || newDate.getHours()==6) addMilliseconds = -(baseOffset*1);
-        if(newDate.getHours()==19 || newDate.getHours()==7) addMilliseconds = -(baseOffset*2);
-        if(newDate.getHours()==20 || newDate.getHours()==8) addMilliseconds = -(baseOffset*3);
-        if(newDate.getHours()==21 || newDate.getHours()==9) addMilliseconds = -(baseOffset*4);
-        if(newDate.getHours()==22 || newDate.getHours()==10) addMilliseconds = -(baseOffset*5);
-        if(newDate.getHours()==23 || newDate.getHours()==11) addMilliseconds = -(baseOffset*6);
-        if(newDate.getHours()==0 || newDate.getHours()==12) addMilliseconds = -(baseOffset*7);
-        if(newDate.getHours()==1 || newDate.getHours()==13) addMilliseconds = -(baseOffset*8);
-        if(newDate.getHours()==2 || newDate.getHours()==14) addMilliseconds = -(baseOffset*9);
-        if(newDate.getHours()==3 || newDate.getHours()==15) addMilliseconds = -(baseOffset*10);
-        if(newDate.getHours()==4 || newDate.getHours()==16) addMilliseconds = -(baseOffset*11);
-      }
-      var finalDate = new Date(newDate.getTime()+addMilliseconds);
-      return Date.UTC(finalDate.getFullYear(), finalDate.getMonth(), finalDate.getDate(), finalDate.getHours(), finalDate.getMinutes());
-    }
-
-    return Date.UTC(years, months, days, hours, minutes);
+    return Date.UTC(newDate.getFullYear(), newDate.getMonth(), newDate.getDate(), newDate.getHours(), newDate.getMinutes());
   } else if (interval.seconds >= 1) {
     seconds = anychart.utils.alignLeft(seconds, interval.seconds);
     return Date.UTC(years, months, days, hours, minutes, seconds);
