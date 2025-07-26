@@ -850,10 +850,14 @@ anychart.utils.alignDateLeft = function(date, interval, flagDateValue) {
     hours = anychart.utils.alignLeft(hours, interval.hours);
     return Date.UTC(years, months, days, hours);
   } else if (interval.minutes) {
-    minutes = anychart.utils.alignLeft(minutes, interval.minutes);
-    //unlocking xAxis intervals by adding rounding for the 180 (3-hour), 360 (6-hour), and 720 (12-hour) intervals
-    var newDate = anychart.utils.roundDateToInterval(new Date(years, months, days, hours, minutes), interval.minutes);
-    return Date.UTC(newDate.getFullYear(), newDate.getMonth(), newDate.getDate(), newDate.getHours(), newDate.getMinutes());
+    if(interval.minutes>60){
+      //unlocking xAxis intervals by adding rounding for the 180 (3-hour), 360 (6-hour), and 720 (12-hour) intervals
+      var newDate = anychart.utils.roundDateToInterval(new Date(years, months, days, hours, minutes), interval.minutes);
+      return Date.UTC(newDate.getFullYear(), newDate.getMonth(), newDate.getDate(), newDate.getHours(), newDate.getMinutes());
+    } else {
+      minutes = anychart.utils.alignLeft(minutes, interval.minutes);
+      return Date.UTC(years, months, days, hours, minutes);
+    }
   } else if (interval.seconds >= 1) {
     seconds = anychart.utils.alignLeft(seconds, interval.seconds);
     return Date.UTC(years, months, days, hours, minutes, seconds);
